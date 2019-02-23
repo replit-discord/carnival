@@ -1,3 +1,0 @@
-[submodule "src/snake-test"]
-	path = src/snake-test
-	url = https://github.com/EanKeen/multiplayer-snake
