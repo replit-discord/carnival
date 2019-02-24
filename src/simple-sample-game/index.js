@@ -56,6 +56,7 @@ server.listen(port, () => {
   console.log(`Working on port ${port}`);
 });
 
+// RESABLE FUNCTIONS \\
 // playerList refers to the global object playerList
 function incrementPlayerPoints(playerName) {
   playerList.forEach((player, index, playerListArray) => {
@@ -68,7 +69,7 @@ function incrementPlayerPoints(playerName) {
 // playerList refers to the global object playerList
 function deletePlayerFromPlayerList(playerName) {
   playerList.forEach((player, index, playerListArray) => {
-    console.log(`[server] Deleting disconnected user: Comparing ${playerName} with ${player.name}`);
+    // console.log(`[server] Deleting disconnected user: Comparing ${playerName} with ${player.name}`);
     if (playerName === player.name) {
       playerListArray.splice(index, 1);
     }
