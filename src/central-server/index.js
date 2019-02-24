@@ -1,7 +1,6 @@
-import express from "express";
-import opn from "opn";
-import path from "path";
-require("dotenv").config();
+let express = require("express");
+let opn = require("opn");
+let path = require("path");
 
 let app = express();
 

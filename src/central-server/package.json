@@ -4,7 +4,7 @@
   "description": "A place to play a variety of mini-games with other people.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,css,html --exec babel-node index.js"
+    "start": "nodemon -e js,css,html index.js"
   },
   "repository": {
     "type": "git",
