@@ -1,3 +1,7 @@
-* {
-    
+.totally-visible {
+    display: inline;
+}
+
+.totally-not-visible {
+    display: none;
 }

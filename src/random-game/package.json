@@ -9,6 +9,7 @@
   "author": "Edwin Kofler",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "socketio": "^1.0.0"
   }
 }
