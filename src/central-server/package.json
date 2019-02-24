@@ -18,7 +18,8 @@
   "homepage": "https://github.com/repl-it/repl.it-electron#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "opn": "^5.4.0"
+    "opn": "^5.4.0",
+    "passport": "^0.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
