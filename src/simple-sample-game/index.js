@@ -1,16 +1,27 @@
 let express = require("express");
 let app = express();
-var server = require("http").Server(app);
-var io = require("socket.io")(server);
+let server = require("http").Server(app);
+let io = require("socket.io")(server);
 let path = require("path");
 
+// Main
 app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-let playerList = [];
+const port = process.env.PORT || 4001;
+server.listen(port, () => {
+  console.log(`Working on port ${port}`);
+});
 
+
+// Auth
+
+
+
+// Game
+let playerList = [];
 io.on("connection", function(socket) {
   console.log("Guest User Connected");
 
@@ -51,12 +62,7 @@ io.on("connection", function(socket) {
   });
 });
 
-const port = process.env.PORT || 4001;
-server.listen(port, () => {
-  console.log(`Working on port ${port}`);
-});
-
-// RESABLE FUNCTIONS \\
+// RUESABLE FUNCTIONS \\
 // playerList refers to the global object playerList
 function incrementPlayerPoints(playerName) {
   playerList.forEach((player, index, playerListArray) => {
