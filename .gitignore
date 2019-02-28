@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 # Python
->>>>>>> wip/proto-old
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -191,3 +188,4 @@ typings/
 
 ## Other
 .vscode
+.idea
