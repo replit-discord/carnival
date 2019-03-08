@@ -7,7 +7,7 @@ const clients = [
     client_id: "RST",
     grant_types: ["authorization_code"],
     response_types: ["code"],
-    redirect_uris: ["https://testapp/signin-oidc"],
+    redirect_uris: ["http://localhost:3101/callback"],
     token_endpoint_auth_method: "none"
   }
 ];
