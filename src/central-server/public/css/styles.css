@@ -1,9 +1,7 @@
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  margin: 10px;
 }
 
 p {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 5px;
 }

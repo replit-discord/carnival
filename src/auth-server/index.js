@@ -12,14 +12,18 @@ const clients = [
   }
 ];
 
-const oidc = new Provider("http://localhost:3100", {
+const oidcConfiguration = {
   scopes: ["api1"],
   claims: {
     profile: ["name", "email", "picture"]
   }
-});
+};
+
+const port = process.env.PORT || 3100;
+const oidc = new Provider(`http://localhost:${port}`, oidcConfiguration);
+
 oidc.initialize({ clients }).then(function() {
   console.log(clients);
   app.use("/", oidc.callback);
-  app.listen(3100);
+  app.listen(port);
 });

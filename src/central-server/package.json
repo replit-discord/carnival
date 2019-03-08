@@ -18,6 +18,7 @@
   "homepage": "https://github.com/repl-it/repl.it-electron#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "openid-client": "^2.4.5",
     "opn": "^5.4.0",
     "passport": "^0.4.0"
   },

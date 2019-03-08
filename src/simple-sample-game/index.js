@@ -1,5 +1,6 @@
 let express = require("express");
 let app = express();
+const Provider = require('openid-client');
 let server = require("http").Server(app);
 let io = require("socket.io")(server);
 let path = require("path");
@@ -10,7 +11,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 3102;
 server.listen(port, () => {
   console.log(`Working on port ${port}`);
 });
