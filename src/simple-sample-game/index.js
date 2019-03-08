@@ -19,7 +19,6 @@ server.listen(port, () => {
 // Auth
 
 
-
 // Game
 let playerList = [];
 io.on("connection", function(socket) {
@@ -52,7 +51,6 @@ io.on("connection", function(socket) {
     socket.on("disconnect", function() {
       console.log(`[server] ${playerName} Disconnected`);
       deletePlayerFromPlayerList(playerName);
-      console.log(playerList);
       // After deleting a user, update to all other clients
       socket.broadcast.emit("player-update", playerList); // to all clients connected
     });

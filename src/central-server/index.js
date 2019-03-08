@@ -1,10 +1,23 @@
-let express = require("express");
-let opn = require("opn");
-const Provider = require('oidc-provider');
-let path = require("path");
-let app = express();
+// let express = require("express");
+// const Provider = require('oidc-provider');
+// let path = require("path");
+// const url = require('url');
+// let app = express();
 
-// Auth
+// Main
+// app.use(express.static("public"));
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/public/index.html"));
+// });
+//
+// const port = process.env.PORT || 4000;
+// app.listen(port, () => {
+//   console.log(`Working on port ${port}`);
+// });
+
+
+
+const Provider = require('oidc-provider');
 const configuration = {
   // ... see available options /docs/configuration.md
 };
@@ -12,10 +25,11 @@ const clients = [{
   client_id: 'foo',
   client_secret: 'bar',
   redirect_uris: ['http://lvh.me:8080/cb'],
+  // token_endpoint_auth_method, grant_types, response_types
   // + other client properties
 }];
 
-const oidc = new Provider('http://localhost:4001', configuration);
+const oidc = new Provider('http://localhost:3000', configuration);
 
 let server;
 (async () => {
@@ -28,22 +42,10 @@ let server;
 
   // or just expose a server standalone, see /examples/standalone.js
   server = oidc.listen(3000, () => {
-    console.log('oidc-provider listening on port 3000, check http://localhost:3000/.well-known/openid-configuration');
+    console.log('oidc-provider listening on port 3000, check http://localhost:3000/openid');
   });
 })().catch((err) => {
   if (server && server.listening) server.close();
   console.error(err);
   process.exitCode = 1;
-});
-
-// Routes
-app.use(express.static("public"));
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
-
-// Listening
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`Working on port ${port}`);
 });

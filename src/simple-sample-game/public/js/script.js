@@ -40,7 +40,7 @@ function replaceUserInterface(name) {
 }
 
 function updatePlayerStats(playerListData) {
-  console.log(playerListData);
+  // console.log(playerListData);
   let playerList = document.getElementById("player-list");
 
   let newPlayerList = document.createElement("tbody");
