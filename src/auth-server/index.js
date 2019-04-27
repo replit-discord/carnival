@@ -5,9 +5,18 @@ const app = express();
 const clients = [
   {
     client_id: "RST",
+    client_secret: "RomeoSierraTango",
     grant_types: ["authorization_code"],
     response_types: ["code"],
     redirect_uris: ["http://localhost:3101/callback"],
+    token_endpoint_auth_method: "none"
+  },
+  {
+    client_id: "DEF",
+    client_secret: "DeltaEchoFoxtrot",
+    grant_types: ["authorization_code"],
+    response_types: ["code"],
+    redirect_uris: ["http://localhost:3102/auth/openid/v1/callback"],
     token_endpoint_auth_method: "none"
   }
 ];
