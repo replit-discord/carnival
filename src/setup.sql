@@ -1,7 +1,5 @@
 CREATE DATABASE IF NOT EXISTS carnival;
 
-\c carnival
-
 CREATE TABLE IF NOT EXISTS USERS(
   id SERIAL,  -- for arranging
   username VARCHAR(20) NOT NULL PRIMARY KEY, -- can also make id primary key or remove the id field
@@ -21,7 +19,7 @@ The games array can hold values in JSON format such as
   }
 */
 
-CREATE TABLE IF NOT EXISTS games(
+CREATE TABLE IF NOT EXISTS GAMES(
   id SERIAL PRIMARY KEY,
   game_name VARCHAR NOT NULL,
   owned_by VARCHAR NOT NULL, -- username or userId
