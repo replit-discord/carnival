@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS carnival;
 
+\c carnival
+
 CREATE TABLE IF NOT EXISTS USERS(
   id SERIAL,  -- for arranging
   username VARCHAR(20) NOT NULL PRIMARY KEY, -- can also make id primary key or remove the id field
