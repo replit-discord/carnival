@@ -31,8 +31,12 @@ const oidcConfiguration = {
 const port = process.env.PORT || 3100;
 const oidc = new Provider(`http://localhost:${port}`, oidcConfiguration);
 
-oidc.initialize({ clients }).then(function() {
-  console.log(clients);
-  app.use("/", oidc.callback);
-  app.listen(port);
-});
+oidc
+  .initialize({ clients })
+  .then(t => {
+    console.log("THIS", t);
+    console.log("ALFA", clients);
+    app.use("/", t.callback);
+    app.listen(port);
+  })
+  .catch(e => console.log(e));
