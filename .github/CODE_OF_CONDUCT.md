@@ -1,6 +1,6 @@
-## Code of Conduct
+# Code of Conduct
 
-### Our Pledge
+## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as
 contributors and maintainers pledge to making participation in our project and
@@ -9,7 +9,7 @@ size, disability, ethnicity, gender identity and expression, level of experience
 nationality, personal appearance, race, religion, or sexual identity and
 orientation.
 
-### Our Standards
+## Our Standards
 
 Examples of behavior that contributes to creating a positive environment
 include:
@@ -32,7 +32,7 @@ Examples of unacceptable behavior by participants include:
 - Other conduct which could reasonably be considered inappropriate in a
   professional setting
 
-### Our Responsibilities
+## Our Responsibilities
 
 Project maintainers (moderators and helpers) are responsible for clarifying the standards of acceptable
 behavior and are expected to take appropriate and fair corrective action in
@@ -44,7 +44,7 @@ that are not aligned to this Code of Conduct, or to ban temporarily or
 permanently any contributor for other behaviors that they deem inappropriate,
 threatening, offensive, or harmful.
 
-### Enforcement
+## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported by contacting moderators or admins in the Discord server. All
@@ -57,7 +57,7 @@ Project maintainers who do not follow or enforce the Code of Conduct in good
 faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
 
-### Attribution
+## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
 available at [http://contributor-covenant.org/version/1/4][version]
