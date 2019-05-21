@@ -1,7 +1,7 @@
 {
-  "name": "Carnival",
+  "name": "carnival",
   "version": "1.0.0",
-  "description": "Game hub",
+  "description": "Hub that allows users to view and play community-made games.",
   "author": "Carnival Contributors",
   "private": true,
   "scripts": {
