@@ -11,8 +11,18 @@ git clone --recurse-submodules https://github.com/repl-it-discord/carnival
 cd src
 ```
 
-### Run the postgres db
+## About
 
-```sh
+This repository is split in three sections.
 
-```
+### db
+
+Handles and stores user, game, etc. data
+
+### experiment 
+
+Projects which may later integrate with `src` or `db`, but not fully developed.
+
+### src
+
+Frontend w/ Next
