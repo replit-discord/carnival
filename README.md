@@ -19,10 +19,10 @@ This repository is split in three sections.
 
 Handles and stores user, game, etc. data
 
-### experiment 
+### experiment
 
 Projects which may later integrate with `src` or `db`, but not fully developed.
 
 ### front
 
-Frontend w/ Next
+Frontend with Nuxt
