@@ -23,6 +23,6 @@ Handles and stores user, game, etc. data
 
 Projects which may later integrate with `src` or `db`, but not fully developed.
 
-### src
+### front
 
 Frontend w/ Next
