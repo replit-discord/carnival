@@ -1,10 +1,6 @@
-# Carnival
+# NextJS Setup
 
-> Game hub
-
-## Build Setup
-
-``` bash
+```sh
 # install dependencies
 $ pnpm install
 
@@ -18,5 +14,3 @@ $ pnpm start
 # generate static project
 $ pnpm run generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
