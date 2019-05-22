@@ -1,5 +1,5 @@
-import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
-import pkg from './package'
+import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin';
+import pkg from './package';
 
 export default {
   mode: 'universal',
@@ -76,8 +76,8 @@ export default {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   }
-}
+};
