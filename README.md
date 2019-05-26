@@ -8,20 +8,22 @@ The project is in early development. If you have a suggestion, feel free to [add
 
 ```bash
 git clone --recurse-submodules https://github.com/repl-it-discord/carnival
-cd src
+cd front
+pnpm install
+pnpm run dev
 ```
 
 ## About
 
 This repository is split in three sections.
 
-### db
+### fix
 
 Handles and stores user, game, etc. data
 
 ### experiment
 
-Projects which may later integrate with `src` or `db`, but not fully developed.
+Projects which may later integrate with `front` or `db`, but not fully developed.
 
 ### front
 
