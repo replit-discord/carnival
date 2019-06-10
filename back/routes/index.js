@@ -2,11 +2,15 @@ var express = require("express");
 var router = express.Router();
 const { discoId, discoSecret } = require("../config");
 const discoOAuthClient = require("disco-oauth");
-const {Pool} = require("pg");
+const { Pool } = require("pg");
 const discoClient = new discoOAuthClient(discoId, discoSecret);
 
 const dbPool = new Pool({
-  connectionString: `postgres://postgres:root@localhost:5432/carnivaldb`
+  connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
+});
+dbPool.connect().catch(e => {
+  console.error(e);
+  process.exit(5);
 });
 
 discoClient.setScopes(["identify", "email"]);
