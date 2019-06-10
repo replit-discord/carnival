@@ -5,16 +5,17 @@ CREATE DATABASE carnival_db;
 
 /* Create tables */
 CREATE TABLE IF NOT EXISTS users(
-    user_id SERIAL, 
-    user_name VARCHAR, 
+    user_id SERIAL,
+    user_name VARCHAR,
     user_email VARCHAR PRIMARY KEY,
     user_games JSON []
 );
 
+
 CREATE TABLE IF NOT EXISTS games(
-    game_id SERIAL, 
-    game_name VARCHAR, 
+    game_id SERIAL,
+    game_name VARCHAR,
     game_owner VARCHAR, -- userId
-    game_scores JSON [], 
-    auth_token VARCHAR(64)
+    game_scores JSON [],
+    auth_token VARCHAR(64) -- fixed 64 characters long
 );
