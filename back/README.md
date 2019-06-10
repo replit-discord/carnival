@@ -12,6 +12,9 @@ Make sure to install using the default settings: -
 - Username: `postgres`
 - Password: `root`
 
+## Setup the database
+Once installed postgresql, execute the queries written in the `setup.sql` file under the `back/db/` directory.
+
 ## Install dependencies
 Open up any command line client and open up the directory containing this file in it. Then run the following command to install dependecies.
 ```
