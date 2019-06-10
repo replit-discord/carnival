@@ -32,8 +32,24 @@ router.get("/auth/:provider", (req, res) => {
 router.get("/login/:provider", async (req, res) => {
   switch (req.params["provider"].toLowerCase()) {
     case "discord":
-      let key = await discoClient.getAccess(req.query.code);
-      res.send(await discoClient.getAuthorizedUser(key).catch(console.log));
+      let k = await discoClient.getAccess(req.query.code);
+      let user = await discoClient.getAuthorizedUser(k);
+      if (user.email) {
+        dbPool
+          .query(`SELECT * FROM users WHERE user_email='${user.email}'`)
+          .then(returnedUser => {
+            if (!(returnedUser.rowCount > 0))
+              dbPool.query(
+                `INSERT INTO users(user_name, user_email) VALUES('${
+                  user.username
+                }', '${user.email}')`
+              );
+            res.cookie("userIn", user.email);
+            res.redirect("/home/");
+          });
+      } else {
+        res.redirect("/error/no-email");
+      }
       break;
   }
 });
