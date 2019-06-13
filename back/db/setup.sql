@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS users(
     user_id SERIAL,
     user_name VARCHAR,
     user_email VARCHAR PRIMARY KEY,
-    user_games JSON []
+    user_games JSON [],
+    user_preferences JSON
 );
 
 
