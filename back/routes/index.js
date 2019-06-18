@@ -5,6 +5,10 @@ const discoOAuthClient = require("disco-oauth");
 const { Pool } = require("pg");
 const discoClient = new discoOAuthClient(discoId, discoSecret);
 
+let defaultPreferences = {
+  darkMode: true
+};
+
 const dbPool = new Pool({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
@@ -40,9 +44,9 @@ router.get("/login/:provider", async (req, res) => {
           .then(returnedUser => {
             if (!(returnedUser.rowCount > 0))
               dbPool.query(
-                `INSERT INTO users(user_name, user_email) VALUES('${
+                `INSERT INTO users(user_name, user_email, user_preferences) VALUES('${
                   user.username
-                }', '${user.email}')`
+                }', '${user.email}', '${JSON.stringify(defaultPreferences)}')`
               );
             res.cookie("userIn", user.email);
             res.redirect("/home/");
