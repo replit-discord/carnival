@@ -1,8 +1,19 @@
 <template>
-  <div>
+  <div class="carnival-menu">
+    <Navigation></Navigation>
     <nuxt />
   </div>
 </template>
+
+<script>
+import Navigation from '~/components/Navigation'
+
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
 
 <style>
 html {
@@ -22,6 +33,13 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.carnival-menu {
+  display: grid;
+  grid-template-columns: 300px 1fr;
 }
 
 .button--green {
