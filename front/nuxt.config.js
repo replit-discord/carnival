@@ -45,6 +45,17 @@ export default {
    ** Build configuration
    */
   build: {
+    postcss: {
+      plugins: {
+        'postcss-simple-vars': {}
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: false
+        }
+      }
+    },
     /*
      ** You can extend webpack config here
      */

@@ -5,10 +5,12 @@
 </template>
 
 <style>
+$color: lightgray;
+
 header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightgray;
+  background-color: $color;
 }
 </style>

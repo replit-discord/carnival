@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 li {
   display: flex;
   align-items: center;
