@@ -1,16 +1,19 @@
 <template>
-  <div class="carnival-menu">
-    <Navigation></Navigation>
-    <nuxt />
+  <div class="carnival-app">
+    <Heading class="heading" />
+    <Menu class="navigation" />
+    <nuxt class="nuxt" />
   </div>
 </template>
 
 <script>
-import Navigation from '~/components/Navigation'
+import Heading from '~/components/for-layouts/Heading'
+import Menu from '~/components/for-layouts/Nav'
 
 export default {
   components: {
-    Navigation
+    Heading,
+    Menu
   }
 }
 </script>
@@ -37,37 +40,25 @@ html {
   border: none;
 }
 
-.carnival-menu {
+.carnival-app {
   display: grid;
+  grid-template-rows: 50px 1fr;
   grid-template-columns: 300px 1fr;
+  gap: 10px;
+  grid-template-areas:
+    'header header'
+    'navigation nuxt';
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.heading {
+  grid-area: header;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.navigation {
+  grid-area: navigation;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.nuxt {
+  grid-area: nuxt;
 }
 </style>

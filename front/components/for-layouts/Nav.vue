@@ -1,23 +1,22 @@
 <template>
   <nav>
-    <ul class="navigation">
-      <NavigationItem
-        class="navigation-item"
+    <ul class="nav">
+      <NavItem
         v-for="d in navigationData"
         :key="d.name"
         :name="d.name"
         :to="d.to"
-      ></NavigationItem>
+      ></NavItem>
     </ul>
   </nav>
 </template>
 
 <script>
-import NavigationItem from '~/components/NavigationItem'
+import NavItem from '~/components/for-layouts/NavItem'
 
 export default {
   components: {
-    NavigationItem
+    NavItem
   },
   // TODO: Import some routes.js-like file or use Next API
   data() {
@@ -42,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.navigation {
+.nav {
   display: grid;
   gap: 20px;
   padding: 10px;
