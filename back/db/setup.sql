@@ -1,20 +1,22 @@
 /* Create and connect to the database */
-CREATE DATABASE IF NOT EXISTS carnivalDb;
+CREATE DATABASE carnival_db;
 
-\c carnivalDb;
+\c carnival_db;
 
 /* Create tables */
 CREATE TABLE IF NOT EXISTS users(
-    userId SERIAL, 
-    username VARCHAR, 
-    userEmail VARCHAR PRIMARY KEY,
-    userGames JSON []
-)
+    user_id SERIAL,
+    user_name VARCHAR,
+    user_email VARCHAR PRIMARY KEY,
+    user_games JSON [],
+    user_preferences JSON
+);
+
 
 CREATE TABLE IF NOT EXISTS games(
-    gId SERIAL, 
-    gName VARCHAR, 
-    gOwner VARCHAR, -- userId
-    gScores JSON [], 
-    authToken VARCHAR(64)
-)
+    game_id SERIAL,
+    game_name VARCHAR,
+    game_owner VARCHAR, -- userId
+    game_scores JSON [],
+    auth_token VARCHAR(64) -- fixed 64 characters long
+);

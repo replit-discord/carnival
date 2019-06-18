@@ -14,6 +14,7 @@ cd src
 ## About
 
 This repository is split in three sections.
+**NOTE :** _For now, please refer to stuff only inside the_ `back` _folder. That is the one currently under development and the content of this folder might not be up to date._
 
 ### db
 
