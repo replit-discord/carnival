@@ -1,83 +1,53 @@
-const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
-const pkg = require("./package");
-
-module.exports = {
-  mode: "universal",
-
+export default {
+  mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: process.env.npm_package_name || '',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
-    ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
       }
-    ]
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
-
+  loading: { color: '#fff' },
   /*
    ** Global CSS
    */
-  css: ["~/assets/style/app.styl"],
-
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["@/plugins/vuetify"],
-
+  plugins: [],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    "@nuxtjs/axios",
-    "@nuxtjs/pwa"
+    '@nuxtjs/axios',
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Axios module configuration
+   ** See https://axios.nuxtjs.org/options
    */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
-
+  axios: {},
   /*
    ** Build configuration
    */
   build: {
-    transpile: ["vuetify/lib"],
-    plugins: [new VuetifyLoaderPlugin()],
-    loaders: {
-      stylus: {
-        import: ["~assets/style/variables.styl"]
-      }
-    },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: "pre",
-          test: /\.(js|vue)$/,
-          loader: "eslint-loader",
-          exclude: /(node_modules)/
-        });
-      }
-    }
+    extend(config, ctx) {}
   }
-};
+}
