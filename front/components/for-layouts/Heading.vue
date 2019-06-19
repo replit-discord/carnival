@@ -4,13 +4,15 @@
   </header>
 </template>
 
-<style>
-$color: lightgray;
-
+<style lang="postcss" scoped>
 header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color;
+  background-color: $oc-red-3;
+}
+
+h1 {
+  color: $oc-gray-9;
 }
 </style>

@@ -1,3 +1,5 @@
+let path = require('path')
+
 export default {
   mode: 'universal',
   /*
@@ -54,11 +56,29 @@ export default {
         autoprefixer: {
           grid: false
         }
+      },
+      loaderOptions: {
+
       }
     },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      // sass-resource-loader goes right after (array positioning) 
+      let sassResourceLoader = {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: path.join(__dirname, 'assets/open-color.css')
+        }
+      }
+
+      // 6 corresponds to the test for /\.p(ost)?css$/i
+      let css = config.module.rules[6]
+
+      css.oneOf.forEach(item => {
+        item.use.push(sassResourceLoader);
+      })
+    }
   }
 }
