@@ -8,15 +8,15 @@
 </template>
 
 <script>
-import GridResponsive from '~/components/structures/GridResponsive'
-import CarnivalGame from '~/components/CarnivalGame'
+import GridResponsive from '~/components/structures/GridResponsive';
+import CarnivalGame from '~/components/CarnivalGame';
 
 export default {
   components: {
     GridResponsive,
     CarnivalGame
   }
-}
+};
 </script>
 
 <style lang="postcss" scoped>

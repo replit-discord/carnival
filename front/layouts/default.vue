@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import Heading from '~/components/for-layouts/Heading'
-import Menu from '~/components/for-layouts/Nav'
+import Heading from '~/components/for-layouts/Heading';
+import Menu from '~/components/for-layouts/Nav';
 
 export default {
   components: {
     Heading,
     Menu
   }
-}
+};
 </script>
 
 <style lang="postcss">

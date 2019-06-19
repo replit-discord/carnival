@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'path';
 
 export default {
   mode: 'universal',
@@ -64,19 +64,19 @@ export default {
      */
     extend(config, ctx) {
       // sass-resource-loader goes right after postcss-loader (array positioning)
-      const sassResourceLoader = {
+      let sassResourceLoader = {
         loader: 'sass-resources-loader',
         options: {
           resources: path.join(__dirname, 'assets/open-color.css')
         }
-      }
+      };
 
       // 6 corresponds to the test for /\.p(ost)?css$/i
-      const css = config.module.rules[6]
+      let css = config.module.rules[6];
 
       css.oneOf.forEach(item => {
-        item.use.push(sassResourceLoader)
-      })
+        item.use.push(sassResourceLoader);
+      });
     }
   }
-}
+};

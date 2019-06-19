@@ -16,7 +16,7 @@ export default {
       default: () => '/unresolved-link'
     }
   }
-}
+};
 </script>
 
 <style lang="postcss" scoped>

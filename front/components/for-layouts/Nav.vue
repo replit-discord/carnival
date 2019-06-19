@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NavItem from '~/components/for-layouts/NavItem'
+import NavItem from '~/components/for-layouts/NavItem';
 
 export default {
   components: {
@@ -35,9 +35,9 @@ export default {
           to: '/about'
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
