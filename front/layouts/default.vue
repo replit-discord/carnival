@@ -48,6 +48,7 @@ html {
   grid-template-areas:
     'header header'
     'navigation nuxt';
+  height: 100vh;
 }
 
 .heading {
@@ -60,5 +61,6 @@ html {
 
 .nuxt {
   grid-area: nuxt;
+  margin-right: 10px;
 }
 </style>

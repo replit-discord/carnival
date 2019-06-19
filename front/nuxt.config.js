@@ -1,4 +1,4 @@
-let path = require('path')
+import path from 'path'
 
 export default {
   mode: 'universal',
@@ -57,16 +57,14 @@ export default {
           grid: false
         }
       },
-      loaderOptions: {
-
-      }
+      loaderOptions: {}
     },
     /*
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // sass-resource-loader goes right after (array positioning) 
-      let sassResourceLoader = {
+      // sass-resource-loader goes right after postcss-loader (array positioning)
+      const sassResourceLoader = {
         loader: 'sass-resources-loader',
         options: {
           resources: path.join(__dirname, 'assets/open-color.css')
@@ -74,10 +72,10 @@ export default {
       }
 
       // 6 corresponds to the test for /\.p(ost)?css$/i
-      let css = config.module.rules[6]
+      const css = config.module.rules[6]
 
       css.oneOf.forEach(item => {
-        item.use.push(sassResourceLoader);
+        item.use.push(sassResourceLoader)
       })
     }
   }
