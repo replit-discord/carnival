@@ -9,7 +9,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $oc-red-3;
+  background-color: $oc-gray-3;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 h1 {

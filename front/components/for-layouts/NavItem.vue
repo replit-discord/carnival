@@ -33,13 +33,12 @@ a {
   border-radius: 5px;
   text-decoration: none;
 
-  /* TODO: Update Colors */
-  color: #3b8070;
-  border: 1px solid #3b8070;
+  color: $oc-gray-9;
+  background-color: $oc-gray-3;
 }
 
 a:hover {
-  background-color: #3b8070;
-  color: #fff;
+  background-color: $oc-gray-9;
+  color: $oc-gray-3;
 }
 </style>
