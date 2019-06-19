@@ -1,6 +1,6 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
-const { Pool } = require("pg");
+const { Pool } = require('pg');
 const dbPool = new Pool({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
@@ -10,10 +10,10 @@ dbPool.connect().catch(e => {
 });
 
 /* GET users listing. */
-router.get("/isAuthorized", function(req, res, next) {
-  if (req.cookies["userIn"]) {
+router.get('/isAuthorized', function(req, res, next) {
+  if (req.cookies['userIn']) {
     dbPool
-      .query(`SELECT * FROM users where user_email='${req.cookies["userIn"]}';`)
+      .query(`SELECT * FROM users where user_email='${req.cookies['userIn']}';`)
       .then(result => {
         if (result.rowCount > 0) {
           res.send(result.rows[0]);
