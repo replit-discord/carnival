@@ -29,4 +29,18 @@ router.get('/isAuthorized', function(req, res, next) {
   }
 });
 
+router.get('/check/:username', function(req, res) {
+  dbPool
+    .query(
+      `SELECT user_email FROM users WHERE user_name='${
+        req.params['username']
+      }';`
+    )
+    .then(result => {
+      if (result.rowCount > 0) res.send('true');
+      else res.send('false');
+    })
+    .catch(console.error);
+});
+
 module.exports = router;

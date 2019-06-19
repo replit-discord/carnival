@@ -19,7 +19,7 @@ There will be no required registration for carnival itself. People will be able 
 2. GitHub
 3. Google
 
-Their will be no limits on the usernames, multiple people may have the same username. Users will be allowed to change their usernames in the future as well. Each user will be identified using their unique IDs. In the website, they will be recognized by their usernames but in the backend (behind the curtains), they will be identified by their IDs.
+In the website, they will be recognized by their usernames but in the backend (behind the curtains), they will be identified by their email IDs.
 
 Their data such as their preferred settings and their scores in the various games will be stored in the repl.it database. The entire DB structure will be provided below.
 
@@ -34,8 +34,8 @@ So the database structure is given below
 CARNIVAL_DB
 
     - USERS TABLE
-        - user_id               -- A unique number assigned to each user. (15 digit in length)
-        - user_name             -- The username by which the user will be identified in the community
+        - user_name             -- The username by which the user will be identified in the community.
+                                -- The user will be allowed to set it when they register and no modifications will be allowed in the future.
         - user_email            -- The user's email ID by which the user will be identified in the backend
         - user_games            -- An array of JSON objects which will hold the user's game data
                                 -- The format for the JSON object provided below
@@ -43,7 +43,7 @@ CARNIVAL_DB
                                 -- Format given below
 
     - GAMES TABLE
-        - game_id               -- A unique number assigned to each game. (10 digit in length)
+        - game_id               -- A unique ID generated for the game.
         - game_name             -- The game's name
         - game_owner            -- The email ID of the game owner
         - game_scores           -- An array of JSON Objects containing the scores of the gamers (for leaderboard)
@@ -56,7 +56,7 @@ CARNIVAL_DB
 {
   // The following three fields are compulsory
 
-  "player_id": "NUMBER", // The player's unique ID (The auto-incremented integer)
+  "player_id": "NUMBER", // The player's unique ID
   "player_name": "STRING", // The player's username
   "high_score": "NUMBER", // The player's highest score
 
