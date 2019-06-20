@@ -1,16 +1,16 @@
+dist/
+.nuxt
+
 node_modules/
 
-dist/
-
-.nuxt/
-
-.idea/
-.vscode/
+*.log
 
 .env
 .env.test
 
-*.log
+.idea/
+.vscode/
+>>>>>>> dev
 
 # temp
 public/
