@@ -63,19 +63,26 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // sass-resource-loader goes right after postcss-loader (array positioning)
-      let sassResourceLoader = {
-        loader: 'sass-resources-loader',
-        options: {
-          resources: path.join(__dirname, 'assets/open-color.css')
-        }
-      };
-
       // 6 corresponds to the test for /\.p(ost)?css$/i
-      let css = config.module.rules[6];
-
-      css.oneOf.forEach(item => {
-        item.use.push(sassResourceLoader);
+      config.module.rules[6].oneOf.forEach(item => {
+        // sass-resource-loader goes right after postcss-loader (array positioning)
+        item.use.push({
+          loader: 'sass-resources-loader',
+          options: {
+            resources: path.join(__dirname, 'assets/open-color.css')
+          }
+        });
+      });
+    
+      //  enable auto-fix for eslint-loader
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules)/,
+        options: {
+          fix: true
+        }
       });
     }
   }
