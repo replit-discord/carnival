@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Heading</h1>
+    <h1>Carnival</h1>
   </header>
 </template>
 
