@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NavItem from '~/components/for-layouts/NavItem';
+import NavItem from '~/components/partials/NavItem';
 
 export default {
   components: {

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Heading from '~/components/for-layouts/Heading';
-import Menu from '~/components/for-layouts/Nav';
+import Heading from '~/components/partials/Heading';
+import Menu from '~/components/partials/Nav';
 
 export default {
   components: {
