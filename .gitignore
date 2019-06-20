@@ -11,3 +11,6 @@ dist/
 .env.test
 
 *.log
+
+# temp
+public/
