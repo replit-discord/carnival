@@ -6,7 +6,17 @@
       <CarnivalGame v-for="n in 10" :key="n"></CarnivalGame>
     </GridResponsive>
 
-    <h2>Action</h2>
+    <h2>Recendly Added</h2>
+    <ScrollResponsive>
+      <CarnivalGame v-for="n in 10" :key="n"></CarnivalGame>
+    </ScrollResponsive>
+
+    <h2>Most Liked</h2>
+    <ScrollResponsive>
+      <CarnivalGame v-for="n in 10" :key="n"></CarnivalGame>
+    </ScrollResponsive>
+
+    <h2>Most Active</h2>
     <ScrollResponsive>
       <CarnivalGame v-for="n in 10" :key="n"></CarnivalGame>
     </ScrollResponsive>
