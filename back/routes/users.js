@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const { Pool } = require('pg');
+
+const jwt = require('jsonwebtoken');
+const { jwtKey } = require('../config');
+
 const dbPool = new Pool({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
@@ -10,22 +14,29 @@ dbPool.connect().catch(e => {
 });
 
 /* GET users listing. */
-router.get('/isAuthorized', function(req, res, next) {
-  if (req.cookies['userIn']) {
+router.get('/is-authorized', function(req, res, next) {
+  if (req.cookies['token']) {
     dbPool
-      .query(`SELECT * FROM users where user_email='${req.cookies['userIn']}';`)
+      .query(
+        `SELECT * FROM users where secret_id='${
+          jwt.verify(req.cookies['token'], jwtKey)['secret_id']
+        }';`
+      )
       .then(result => {
         if (result.rowCount > 0) {
           res.send(result.rows[0]);
         } else {
-          res.sendStatus(404);
+          res.status(404).json({
+            user: null,
+            error: 'User not found in DB.'
+          });
         }
       })
       .catch(() => {
         res.sendStatus(500);
       });
   } else {
-    res.sendStatus(502);
+    res.sendStatus(401);
   }
 });
 

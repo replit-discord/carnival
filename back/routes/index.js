@@ -124,7 +124,7 @@ router.post('/final/submit', (req, res) => {
         }
       })
       .catch(err => {
-        res.status(502).json({
+        res.status(400).json({
           success: false,
           error: err.message,
           code: err.code
