@@ -1,7 +1,7 @@
 <template>
   <div class="carnival-app">
-    <Heading class="heading" />
-    <Menu class="navigation" />
+    <heading class="heading" />
+    <nav-bar class="navigation" />
     <nuxt class="nuxt" />
   </div>
 </template>
@@ -12,8 +12,8 @@ import Menu from '~/components/partials/Nav';
 
 export default {
   components: {
-    Heading,
-    Menu
+    'heading': Heading,
+    'nav-bar': Menu
   }
 };
 </script>

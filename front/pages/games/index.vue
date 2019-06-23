@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <carosel />
+    <Carosel />
     <h2>Popular</h2>
     <grid-responsive>
       <carnival-game v-for="n in 10" :key="n"></carnival-game>

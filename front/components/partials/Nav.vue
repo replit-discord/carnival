@@ -1,12 +1,12 @@
 <template>
   <nav>
     <ul class="nav">
-      <NavItem
+      <nav-item
         v-for="d in navigationData"
         :key="d.name"
         :name="d.name"
         :to="d.to"
-      ></NavItem>
+      ></nav-item>
     </ul>
   </nav>
 </template>
@@ -16,7 +16,7 @@ import NavItem from '~/components/partials/NavItem';
 
 export default {
   components: {
-    NavItem
+    'nav-item': NavItem
   },
   // TODO: Import some routes.js-like file or use Next API
   data() {
