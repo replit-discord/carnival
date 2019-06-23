@@ -1,19 +1,19 @@
 <template>
   <div class="carnival-app">
     <heading class="heading" />
-    <nav-bar class="navigation" />
+    <navbar class="navigation" />
     <nuxt class="nuxt" />
   </div>
 </template>
 
 <script>
 import Heading from '~/components/partials/Heading';
-import Menu from '~/components/partials/Nav';
+import Navbar from '~/components/partials/Nav';
 
 export default {
   components: {
-    'heading': Heading,
-    'nav-bar': Menu
+    heading: Heading,
+    navbar: Navbar
   }
 };
 </script>
@@ -42,8 +42,8 @@ html {
 
 .carnival-app {
   display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 200px 1fr;
   gap: 10px;
   grid-template-areas:
     'header header'
