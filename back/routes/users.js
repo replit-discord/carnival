@@ -98,7 +98,7 @@ router.post('/update-data', authorize, async (req, res) => {
       .query(
         `UPDATE users SET user_preferences='${JSON.stringify(
           req.body['userPreferences']
-        )}' WHERE user_name='${JSON.stringify(req.body['username'])}';`
+        )}'::json WHERE user_name='${JSON.stringify(req.body['username'])}';`
       )
       .catch(err => {
         res.status(500).json({
