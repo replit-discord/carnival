@@ -15,6 +15,7 @@ let defaultPreferences = {
 const dbPool = new Pool({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
+
 dbPool.connect().catch(e => {
   console.error(e);
   process.exit(5);
@@ -45,7 +46,9 @@ router.get('/login/:provider', async (req, res) => {
       let user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
         dbPool
-          .query(`SELECT secret_id FROM users WHERE user_email='${user.email}'`)
+          .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
+            user.email
+          ])
           .then(returnedUser => {
             if (!(returnedUser.rowCount > 0)) {
               res.redirect('/');
@@ -70,7 +73,9 @@ router.get('/register/:provider', async (req, res) => {
       let user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
         dbPool
-          .query(`SELECT secret_id FROM users WHERE user_email='${user.email}'`)
+          .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
+            user.email
+          ])
           .then(returnedUser => {
             if (!(returnedUser.rowCount > 0)) {
               res.cookie('email', user.email);
@@ -96,9 +101,13 @@ router.post('/final/submit', (req, res) => {
     dbPool
       .query(
         `INSERT INTO users(secret_id, user_name, user_email, user_preferences)
-                  VALUES('${newId}', '${req.body['username']}', '${
-          req.cookies['email']
-        }', '${JSON.stringify(defaultPreferences)}')`
+                  VALUES($1, $2, $3, $4)`,
+        [
+          newId,
+          req.body['username'],
+          req.cookies['email'],
+          JSON.stringify(defaultPreferences)
+        ]
       )
       .then(result => {
         if (result.rowCount > 0) {
