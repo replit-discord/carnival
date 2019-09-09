@@ -34,6 +34,7 @@ So the database structure is given below
 CARNIVAL_DB
 
     - USERS TABLE
+        - secret_id               -- The special unique user_id to for security.
         - user_name             -- The username by which the user will be identified in the community.
                                 -- The user will be allowed to set it when they register and no modifications will be allowed in the future.
         - user_email            -- The user's email ID by which the user will be identified in the backend
@@ -79,3 +80,23 @@ CARNIVAL_DB
 **GAME_SCORE OBJECT**
 
 This will be the same as `USER_GAME JSON OBJECT` with the exception of no custom_data.
+
+---
+
+## Authentication process
+
+On clicking the login/register button, the user will be redirected to the OAuth page for authorization. When their data has been fetched from any of these identity providers. Their email will be used to fetch their `secret_id` which will then be encoded and signed and finally converted to a JSON Web Token which will then be saved in a cookie named `userIn`, which will then be used for authentication while making requests to the server.
+
+---
+
+## ENV file
+
+To keep some data safe, it will be kept in a `.env` file. Before you start the backend server, be sure to create one and save the following data in it.
+
+```
+discoId=577424847202680832
+discoSecret=YH2wuqfV9_a8ckxAgtibYxZHIqMY10LT
+jwtKey=<place some random key here>
+```
+
+Obviously, you'll have to replace `<place some random key here>` with a key of your own choice but this doesn't need to be something specific so whatever you feel like without spaces. We are using specific discord ID and Secret because the ones whose ID and secret are provided is configured for proper functioning of carnival.
