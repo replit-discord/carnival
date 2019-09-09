@@ -5,6 +5,7 @@ CREATE DATABASE carnival_db;
 
 /* Create tables */
 CREATE TABLE IF NOT EXISTS users(
+    secret_id VARCHAR,
     user_name VARCHAR,
     user_email VARCHAR PRIMARY KEY,
     user_games JSON [],
