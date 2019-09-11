@@ -1,19 +1,40 @@
 <template>
-  <div class="carnival-app">
-    <heading class="heading" />
-    <navbar class="navigation" />
+  <div class="layout-default">
+    <heading
+      class="heading"
+      :heading-transform="{ 'heading-transform': isHeadingTransform }"
+    />
     <nuxt class="nuxt" />
+    <div ref="intersection" class="intersection"></div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import Heading from '~/components/partials/Heading';
-import Navbar from '~/components/partials/Nav';
 
 export default {
+  data() {
+    return {
+      isHeadingTransform: false
+    }
+  },
   components: {
-    heading: Heading,
-    navbar: Navbar
+    heading: Heading
+  },
+  mounted() {
+    const observer = new IntersectionObserver(entries => {
+      // occurs when `this.$refs.intersection` was just 100% inside the viewport, and *just left*
+      if(entries[0].intersectionRatio < 1) {
+        this.isHeadingTransform = true;
+      }
+      // occurs when `this.$refs.intersection` is 100% inside the viewport, and *just entered*
+      else {
+        this.isHeadingTransform = false;
+      }
+    }, { threshold: 1 });
+
+    observer.observe(this.$refs.intersection);
   }
 };
 </script>
@@ -40,27 +61,29 @@ html {
   border: none;
 }
 
-.carnival-app {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 200px 1fr;
-  gap: 10px;
-  grid-template-areas:
-    'header header'
-    'navigation nuxt';
-  height: 100vh;
+.layout-default {
+  position: relative;
 }
 
 .heading {
-  grid-area: header;
-}
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
-.navigation {
-  grid-area: navigation;
+  grid-area: header;
 }
 
 .nuxt {
   grid-area: nuxt;
-  margin-right: 10px;
+  margin: 10px;
+}
+
+.intersection {
+  position: absolute;
+  top: 20vh;
+
+  height: 20px;
+  width: 100%;
+  z-index: -1000;
 }
 </style>

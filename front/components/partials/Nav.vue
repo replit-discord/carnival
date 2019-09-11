@@ -31,6 +31,14 @@ export default {
           to: '/games'
         },
         {
+          name: 'Community',
+          to: '/community'
+        },
+        {
+          name: 'My Account',
+          to: '/my-account'
+        },
+        {
           name: 'About',
           to: '/about'
         }
