@@ -2,9 +2,7 @@ import path from 'path';
 
 export default {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -18,50 +16,41 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
+
+  // customize progress bar color
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
+  
+  // global css (we have no need for this since we have sass-resources-loader)
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
+
+  // plugins to load before mounting the app
   plugins: [],
-  /*
-   ** Nuxt.js modules
-   */
+
+  // nuxtjs modules
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    // docs: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module'
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  
+  // axios module config: https://axios.nuxtjs.org/options
   axios: {},
-  /*
-   ** Build configuration
-   */
+
   build: {
     postcss: {
       plugins: {
         'postcss-simple-vars': {}
       },
+      // update postcss-preset-env config
       preset: {
-        // Change the postcss-preset-env settings
         autoprefixer: {
           grid: false
         }
       },
       loaderOptions: {}
     },
-    /*
-     ** You can extend webpack config here
-     */
+
+    // extend webpack config
     extend(config, ctx) {
       // 6 corresponds to the test for /\.p(ost)?css$/i
       config.module.rules[6].oneOf.forEach(item => {

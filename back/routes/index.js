@@ -16,10 +16,11 @@ const dbPool = new Pool({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
 
-dbPool.connect().catch(e => {
-  console.error(e);
-  process.exit(5);
-});
+dbPool.connect()
+  .catch(e => {
+    console.error(e);
+    process.exit(5);
+  });
 
 discoClient.setScopes(['identify', 'email']);
 

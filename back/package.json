@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon -r esm ./bin/www",
     "lint": "eslint --ext .js --ignore-path ../.gitignore ."
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "debug": "~2.6.9",
     "disco-oauth": "^2.9.1",
     "dotenv": "^8.0.0",
+    "esm": "^3.2.25",
     "express": "~4.16.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.0",
