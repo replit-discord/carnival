@@ -1,6 +1,8 @@
 # PROJECT STRUCTURE
 
-This is what I(@TheDrone7) was thinking of for how this project would work.
+This is what I (@TheDrone7) was thinking of for how this project would work.
+
+Also read the [wiki](https://github.com/repl-it-discord/carnival/wiki) for more information.
 
 ## GAMES
 
@@ -30,11 +32,10 @@ Their data such as their preferred settings and their scores in the various game
 So the database structure is given below
 
 ```
-
 CARNIVAL_DB
 
     - USERS TABLE
-        - secret_id               -- The special unique user_id to for security.
+        - secret_id             -- The special unique user_id to for security.
         - user_name             -- The username by which the user will be identified in the community.
                                 -- The user will be allowed to set it when they register and no modifications will be allowed in the future.
         - user_email            -- The user's email ID by which the user will be identified in the backend
@@ -48,7 +49,6 @@ CARNIVAL_DB
         - game_name             -- The game's name
         - game_owner            -- The email ID of the game owner
         - game_scores           -- An array of JSON Objects containing the scores of the gamers (for leaderboard)
-
 ```
 
 **USER_GAME JSON FORMAT**
