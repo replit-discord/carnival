@@ -3,12 +3,17 @@
     <div class="title">
       <h1>Carnival</h1>
     </div>
-    <!-- <navbar class="navigation" /> -->
+    <navbar class="navigation" :heading-transform="headingTransform" />
   </header>
 </template>
 
 <script>
+import Navbar from './Nav';
+
 export default {
+  components: {
+    navbar: Navbar
+  },
   props: {
     headingTransform: {
       type: Object,
@@ -22,10 +27,8 @@ export default {
 header {
   display: inline-block;
 
-  background-color: $oc-gray-1;
+  background-color: $bg;
   box-shadow: 2px 4px 4px $oc-gray-4;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
 
   width: 100%;
 }
@@ -34,6 +37,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-family: 'Asap', sans-serif;
 
   padding: 15px;
   transition: all 150ms ease-in-out;
@@ -45,6 +50,6 @@ header.heading-transform .title {
 }
 
 h1 {
-  color: $oc-gray-9;
+  color: $text;
 }
 </style>

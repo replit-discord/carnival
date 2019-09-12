@@ -6,6 +6,7 @@
         :key="d.name"
         :name="d.name"
         :to="d.to"
+        :heading-transform="headingTransform"
       ></nav-item>
     </ul>
   </nav>
@@ -17,6 +18,12 @@ import NavItem from '~/components/partials/NavItem';
 export default {
   components: {
     'nav-item': NavItem
+  },
+  props: {
+    headingTransform: {
+      type: Object,
+      default: () => ({})
+    }
   },
   // TODO: Import some routes.js-like file or use Next API
   data() {
@@ -51,7 +58,11 @@ export default {
 <style scoped>
 .nav {
   display: grid;
-  gap: 20px;
-  padding: 10px;
+  grid-auto-flow: column;
+  grid-template-rows: 1fr;
+}
+
+.nav > * {
+  text-align: center;
 }
 </style>

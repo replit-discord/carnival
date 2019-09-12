@@ -1,18 +1,14 @@
 <template>
-  <nuxt-link tag="li" :to="to">
-    <a>
-      <p-svg></p-svg>
-      <p>{{ name }}</p>
-    </a>
-  </nuxt-link>
+  <div class="navitem">
+    <nuxt-link :to="to" :class="headingTransform">
+      {{ name }}
+    </nuxt-link>
+    <div class="color-transform"></div>
+  </div>
 </template>
 
 <script>
-import SvgPlaceholder from '~/components/SvgPlaceholder';
 export default {
-  components: {
-    'p-svg': SvgPlaceholder
-  },
   props: {
     name: {
       type: String,
@@ -21,37 +17,51 @@ export default {
     to: {
       type: String,
       default: () => '/unresolved-link'
+    },
+    headingTransform: {
+      type: Object,
+      default: () => ({})
     }
   }
 };
 </script>
 
 <style lang="postcss" scoped>
-li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.navitem {
+  position: relative;
 }
 
 a {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: inline-block;
+
   width: 100%;
-  padding: 10px 20px;
-  border-radius: 5px;
+  height: 100%;
+
+  padding: 10px;
+  text-align: center;
+
+  color: $text;
   text-decoration: none;
-
-  color: $oc-gray-9;
-  background-color: $oc-gray-3;
 }
 
-a:hover {
-  background-color: $oc-gray-9;
-  color: $oc-gray-3;
+a.heading-transform {
+  padding: 5px;
 }
 
-p {
-  margin-left: 10px;
+.color-transform {
+  position: absolute;
+  bottom: 0;
+  z-index: -90;
+
+  background-color: color-mod($bg shade(100%));
+
+  width: 100%;
+  height: 0;
+  transition: all 50ms ease-in;
+}
+
+a:hover ~ .color-transform {
+  height: 100%;
+  transition: all 50ms ease-in;
 }
 </style>

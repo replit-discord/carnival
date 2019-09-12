@@ -14,12 +14,18 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Asap&display=swap'
+      },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
   },
 
   // customize progress bar color
   loading: { color: '#fff' },
-  
+
   // global css (we have no need for this since we have sass-resources-loader)
   css: [],
 
@@ -32,14 +38,15 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module'
   ],
-  
+
   // axios module config: https://axios.nuxtjs.org/options
   axios: {},
 
   build: {
     postcss: {
       plugins: {
-        'postcss-simple-vars': {}
+        'postcss-simple-vars': {},
+        'postcss-color-mod-function': {}
       },
       // update postcss-preset-env config
       preset: {
@@ -58,11 +65,14 @@ export default {
         item.use.push({
           loader: 'sass-resources-loader',
           options: {
-            resources: path.join(__dirname, 'assets/open-color.css')
+            resources: [
+              path.join(__dirname, 'assets/open-color.css'),
+              path.join(__dirname, 'assets/custom.css')
+            ]
           }
         });
       });
-    
+
       //  enable auto-fix for eslint-loader
       config.module.rules.push({
         enforce: 'pre',

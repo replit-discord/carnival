@@ -10,29 +10,31 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Heading from '~/components/partials/Heading';
 
 export default {
-  data() {
-    return {
-      isHeadingTransform: false
-    }
-  },
   components: {
     heading: Heading
   },
+  data() {
+    return {
+      isHeadingTransform: false
+    };
+  },
   mounted() {
-    const observer = new IntersectionObserver(entries => {
-      // occurs when `this.$refs.intersection` was just 100% inside the viewport, and *just left*
-      if(entries[0].intersectionRatio < 1) {
-        this.isHeadingTransform = true;
-      }
-      // occurs when `this.$refs.intersection` is 100% inside the viewport, and *just entered*
-      else {
-        this.isHeadingTransform = false;
-      }
-    }, { threshold: 1 });
+    const observer = new IntersectionObserver(
+      entries => {
+        // occurs when `this.$refs.intersection` was just 100% inside the viewport, and *just left*
+        if (entries[0].intersectionRatio < 1) {
+          this.isHeadingTransform = true;
+        }
+        // occurs when `this.$refs.intersection` is 100% inside the viewport, and *just entered*
+        else {
+          this.isHeadingTransform = false;
+        }
+      },
+      { threshold: 1 }
+    );
 
     observer.observe(this.$refs.intersection);
   }
