@@ -1,11 +1,7 @@
 <template>
-  <div class="layout-default">
-    <heading
-      class="heading"
-      :heading-transform="{ 'heading-transform': isHeadingTransform }"
-    />
+  <div class="root-">
+    <heading />
     <nuxt class="nuxt" />
-    <div ref="intersection" class="intersection"></div>
   </div>
 </template>
 
@@ -15,28 +11,6 @@ import Heading from '~/components/partials/Heading';
 export default {
   components: {
     heading: Heading
-  },
-  data() {
-    return {
-      isHeadingTransform: false
-    };
-  },
-  mounted() {
-    const observer = new IntersectionObserver(
-      entries => {
-        // occurs when `this.$refs.intersection` was just 100% inside the viewport, and *just left*
-        if (entries[0].intersectionRatio < 1) {
-          this.isHeadingTransform = true;
-        }
-        // occurs when `this.$refs.intersection` is 100% inside the viewport, and *just entered*
-        else {
-          this.isHeadingTransform = false;
-        }
-      },
-      { threshold: 1 }
-    );
-
-    observer.observe(this.$refs.intersection);
   }
 };
 </script>
@@ -55,16 +29,12 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: none;
-}
-
-.layout-default {
-  position: relative;
 }
 
 .heading {
@@ -73,19 +43,5 @@ html {
   z-index: 100;
 
   grid-area: header;
-}
-
-.nuxt {
-  grid-area: nuxt;
-  margin: 10px;
-}
-
-.intersection {
-  position: absolute;
-  top: 20vh;
-
-  height: 20px;
-  width: 100%;
-  z-index: -1000;
 }
 </style>

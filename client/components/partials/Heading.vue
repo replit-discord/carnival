@@ -1,9 +1,9 @@
 <template>
-  <header :class="headingTransform">
+  <header>
     <div class="title">
       <h1>Carnival</h1>
     </div>
-    <navbar class="navigation" :heading-transform="headingTransform" />
+    <navbar class="navigation" />
   </header>
 </template>
 
@@ -13,12 +13,6 @@ import Navbar from './Nav';
 export default {
   components: {
     navbar: Navbar
-  },
-  props: {
-    headingTransform: {
-      type: Object,
-      default: () => ({ 'heading-transform': false })
-    }
   }
 };
 </script>

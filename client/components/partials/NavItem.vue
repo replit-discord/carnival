@@ -1,6 +1,6 @@
 <template>
   <div class="navitem">
-    <nuxt-link :to="to" :class="headingTransform">
+    <nuxt-link :to="to">
       {{ name }}
     </nuxt-link>
     <div class="color-transform"></div>
@@ -17,10 +17,6 @@ export default {
     to: {
       type: String,
       default: () => '/unresolved-link'
-    },
-    headingTransform: {
-      type: Object,
-      default: () => ({})
     }
   }
 };

@@ -6,7 +6,6 @@
         :key="d.name"
         :name="d.name"
         :to="d.to"
-        :heading-transform="headingTransform"
       ></nav-item>
     </ul>
   </nav>
@@ -19,13 +18,6 @@ export default {
   components: {
     'nav-item': NavItem
   },
-  props: {
-    headingTransform: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  // TODO: Import some routes.js-like file or use Next API
   data() {
     return {
       navigationData: [
@@ -34,24 +26,8 @@ export default {
           to: '/'
         },
         {
-          name: 'Games',
-          to: '/games'
-        },
-        {
-          name: 'Browse By Category',
-          to: '/bbc-temp'
-        },
-        {
-          name: 'Browse by Tag',
-          to: '/bbt-temp'
-        },
-        {
           name: 'Community',
           to: '/community'
-        },
-        {
-          name: 'My Account',
-          to: '/my-account'
         },
         {
           name: 'About',
