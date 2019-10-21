@@ -38,6 +38,14 @@ export default {
           to: '/games'
         },
         {
+          name: 'Browse By Category',
+          to: '/bbc-temp'
+        },
+        {
+          name: 'Browse by Tag',
+          to: '/bbt-temp'
+        },
+        {
           name: 'Community',
           to: '/community'
         },
