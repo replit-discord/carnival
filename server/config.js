@@ -1,4 +1,6 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 module.exports = {
   discoId: process.env.discoId,

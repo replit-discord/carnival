@@ -2,7 +2,6 @@ import path from 'path';
 
 export default {
   mode: 'universal',
-
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -22,25 +21,29 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
-  // customize progress bar color
-  loading: { color: '#fff' },
-
-  // global css (we have no need for this since we have sass-resources-loader)
-  css: [],
+  loading: {
+    color: '#fff'
+  },
+  server: {
+    port: 8080,
+    host: 'localhost'
+  },
 
   // plugins to load before mounting the app
   plugins: [],
 
-  // nuxtjs modules
   modules: [
-    // docs: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module'
   ],
 
-  // axios module config: https://axios.nuxtjs.org/options
-  axios: {},
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api': 'http://localhost:3000'
+  },
 
   build: {
     postcss: {

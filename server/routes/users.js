@@ -1,22 +1,29 @@
-var express = require('express');
-var router = express.Router();
-const { Pool } = require('pg');
+import express from 'express';
+import { Pool, Client } from 'pg';
+import jwt from 'jsonwebtoken';
+let { jwtKey } = require('../config');
 
-const jwt = require('jsonwebtoken');
-const { jwtKey } = require('../config');
+const router = express.Router();
 
 const dbPool = new Pool({
+  // user: 'dbuser',
+  // host: 'database.server.com',
+  // database: 'mydb',
+  // password: 'secretpassword',
+  // port: 5432,
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
-dbPool.connect().catch(e => {
-  console.error(e);
-  process.exit(5);
-});
+
+const dbClient = new Client();
+dbClient.connect()
+  .catch(err => {
+    console.error('could not connect to db', err);
+  });
 
 const authorize = (req, res, next) => {
   if (req.headers.authorization && req.body['username']) {
     if (req.headers.authorization.split(' ').shift() == 'Bearer') {
-      dbPool
+      dbClient
         .query(`SELECT user_name FROM users WHERE secret_id=$1;`, [
           jwt.verify(req.headers.authorization.split(' ').pop(), jwtKey)[
             'secret_id'
@@ -51,7 +58,7 @@ const authorize = (req, res, next) => {
 
 router.get('/is-authorized', function(req, res, next) {
   if (req.cookies['token']) {
-    dbPool
+    dbClient
       .query(`SELECT * FROM users where secret_id=$1;`, [
         jwt.verify(req.cookies['token'], jwtKey)['secret_id']
       ])
@@ -75,7 +82,7 @@ router.get('/is-authorized', function(req, res, next) {
 
 router.post('/update-data', authorize, async (req, res) => {
   if (req.body['userEmail'])
-    await dbPool
+    await dbClient
       .query(`UPDATE users SET user_email=$1 WHERE user_name=$2;`, [
         req.body['userEmail'],
         req.body['username']
@@ -89,7 +96,7 @@ router.post('/update-data', authorize, async (req, res) => {
 
   if (req.body['userPreferences']) {
     console.log(JSON.stringify(req.body['userPreferences']));
-    await dbPool
+    await dbClient
       .query(`UPDATE users SET user_preferences=$1::json WHERE user_name=$2;`, [
         JSON.stringify(req.body['userPreferences']),
         req.body['username']
@@ -108,7 +115,7 @@ router.post('/update-data', authorize, async (req, res) => {
 });
 
 router.get('/check/:username', function(req, res) {
-  dbPool
+  dbClient
     .query(`SELECT user_email FROM users WHERE user_name=$1;`, [
       req.params['username']
     ])
@@ -119,4 +126,4 @@ router.get('/check/:username', function(req, res) {
     .catch(console.error);
 });
 
-module.exports = router;
+export default router;

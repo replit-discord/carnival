@@ -1,26 +1,33 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
+import { Pool, Client } from 'pg';
 const { discoId, discoSecret, jwtKey } = require('../config');
 const discoOAuthClient = require('disco-oauth');
-const { Pool } = require('pg');
 const discoClient = new discoOAuthClient(discoId, discoSecret);
 
 const shortid = require('shortid');
 const jwt = require('jsonwebtoken');
+
+const router = express.Router();
 
 let defaultPreferences = {
   darkMode: true
 };
 
 const dbPool = new Pool({
+  // user: 'dbuser',
+  // host: 'database.server.com',
+  // database: 'mydb',
+  // password: 'secretpassword',
+  // port: 5432,
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
 
-dbPool.connect()
-  .catch(e => {
-    console.error(e);
-    process.exit(5);
+const dbClient = new Client();
+dbClient.connect()
+  .catch(err => {
+    console.error('could not connect to db', err);
   });
+
 
 discoClient.setScopes(['identify', 'email']);
 
@@ -46,7 +53,7 @@ router.get('/login/:provider', async (req, res) => {
       let k = await discoClient.getAccess(req.query.code);
       let user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
-        dbPool
+        dbClient
           .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
             user.email
           ])
@@ -73,7 +80,7 @@ router.get('/register/:provider', async (req, res) => {
       let k = await discoClient.getAccess(req.query.code);
       let user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
-        dbPool
+        dbClient
           .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
             user.email
           ])
@@ -99,7 +106,7 @@ router.post('/final/submit', (req, res) => {
     req.cookies['email']
   ) {
     var newId = shortid.generate();
-    dbPool
+    dbClient
       .query(
         `INSERT INTO users(secret_id, user_name, user_email, user_preferences)
                   VALUES($1, $2, $3, $4)`,
@@ -148,4 +155,4 @@ router.post('/final/submit', (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
