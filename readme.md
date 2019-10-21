@@ -7,16 +7,17 @@ The project is in early development. If you have a suggestion, feel free to [add
 ## Contributing
 
 ```bash
-git clone --recurse-submodules https://github.com/repl-it-discord/carnival
+git clone https://github.com/repl-it-discord/carnival
 cd front
-pnpm install
-pnpm run dev
+yarn install && yarn dev
+cd ..
+
+cd back
+yarn install && yarn dev
+cd ..
 ```
 
 ## About
-
-This repository is split in three sections.
-**NOTE :** _For now, please refer to stuff only inside the_ `back` _folder. That is the one currently under development and the content of this folder might not be up to date._
 
 ### fix
 

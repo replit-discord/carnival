@@ -1,8 +1,12 @@
+dist/
 .nuxt
 
 node_modules/
 
 *.log
+
+.env
+.env.test
 
 .idea/
 .vscode/
