@@ -16,17 +16,3 @@ cd back
 yarn install && yarn dev
 cd ..
 ```
-
-## About
-
-### fix
-
-Handles and stores user, game, etc. data
-
-### experiment
-
-Projects which may later integrate with `front` or `db`, but not fully developed.
-
-### front
-
-Frontend with Nuxt
