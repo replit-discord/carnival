@@ -36,7 +36,12 @@ html {
   border: none;
 }
 
+h1,
+h2 {
+  font-family: 'Asap', sans-serif;
+}
+
 .nuxt {
-  margin: 10px;
+  /* margin: 0 10px; */
 }
 </style>

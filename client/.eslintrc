@@ -20,6 +20,8 @@
   // add your custom rules here
   "rules": {
     "prefer-const": "off",
+    "no-console": "warn",
+    "no-unused-vars": "warn",
     "vue/no-unused-components": "off"
   }
 }

@@ -35,9 +35,6 @@ export default {
   },
   methods: {
     rotateGameView() {
-      // eslint-disable-next-line
-      console.log(this.gameView);
-
       if (this.gameView >= this.maxGameViews) {
         this.gameView = 1;
         return;
