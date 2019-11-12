@@ -29,6 +29,12 @@ export default {
     host: 'localhost'
   },
 
+  vue: {
+    config: {
+      productionTip: false
+    }
+  },
+
   // plugins to load before mounting the app
   plugins: [],
 
