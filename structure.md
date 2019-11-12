@@ -1,17 +1,16 @@
 # PROJECT STRUCTURE
 
-This is what I (@TheDrone7) was thinking of for how this project would work.
 
 Also read the [wiki](https://github.com/repl-it-discord/carnival/wiki) for more information.
 
 ## GAMES
 
-Since this a [repl.it](https://repl.it) community project, we could make it work this way: -
+Since this a [repl.it](https://repl.it) community project, we will `probaply` make it work this way: -
 
 1. Create a new [repl.it](https://repl.it) account for carnival.
-2. Whenever a user submits a game, they will need to provide a link to the repl which holds the source for the game (All the games must be open source).
-3. The developer will be provided with a unique `TOKEN` which will then be used by the developers to implement the `CARNIVAL API` (which will be a REST API I will work on soon) after which they will complete the submission.
-4. We will make sure that they implement the `CARNIVAL API` and then use their repl's output as the game if yes, otherwise, we will let the developer know if what's wrong and make them submit the game again, once they've fixed the reported issues.
+2. Whenever a user submits a game, they will need to provide a link to the repl which holds the source for the game (All games must be open source).
+3. The developer will be provided with a unique `TOKEN` which will then be used by them to implement the `CARNIVAL API` (which will be a REST API I will work on soon) after which the developer will complete the submission.
+4. We will make sure that they implement the `CARNIVAL API` and then use their repl's output as the game if the developer did follow the steps. Otherwise, we will let the developer know what's wrong and make them submit the game again, once they've fixed the reported issues.
 
 ## Accounts and signing in
 
@@ -21,7 +20,7 @@ There will be no required registration for carnival itself. People will be able 
 2. GitHub
 3. Google
 
-In the website, they will be recognized by their usernames but in the backend (behind the curtains), they will be identified by their email IDs.
+In the website, they will be recognized by their usernames but in the backend  , they will be identified by their email IDs.
 
 Their data such as their preferred settings and their scores in the various games will be stored in the repl.it database. The entire DB structure will be provided below.
 
@@ -29,7 +28,7 @@ Their data such as their preferred settings and their scores in the various game
 
 ## DB STRUCTURE
 
-So the database structure is given below
+As  mentioned above, the data structure:
 
 ```
 CARNIVAL_DB
@@ -85,7 +84,9 @@ This will be the same as `USER_GAME JSON OBJECT` with the exception of no custom
 
 ## Authentication process
 
-On clicking the login/register button, the user will be redirected to the OAuth page for authorization. When their data has been fetched from any of these identity providers. Their email will be used to fetch their `secret_id` which will then be encoded and signed and finally converted to a JSON Web Token which will then be saved in a cookie named `userIn`, which will then be used for authentication while making requests to the server.
+On clicking the login/register button, the user will be redirected to the OAuth page for authorization. 
+When their data has been fetched from any of these identity providers,their email will be used to fetch their `secret_id` which will then be encoded and signed and finally converted to a JSON Web Token which will then be saved in a cookie named `userIn`, 
+which will then be used for authentication while making requests to the server.
 
 ---
 
@@ -96,7 +97,7 @@ To keep some data safe, it will be kept in a `.env` file. Before you start the b
 ```
 discoId=577424847202680832
 discoSecret=YH2wuqfV9_a8ckxAgtibYxZHIqMY10LT
-jwtKey=<place some random key here>
+jwtKey=<place a key of your choice here>
 ```
 
-Obviously, you'll have to replace `<place some random key here>` with a key of your own choice but this doesn't need to be something specific so whatever you feel like without spaces. We are using specific discord ID and Secret because the ones whose ID and secret are provided is configured for proper functioning of carnival.
+Of course, you'll have to replace `<place some random key here>` with a key of your own choice but without spaces. We are using specific discord ID and Secret because the ones whose ID and secret are provided is configured for proper functioning of carnival.
