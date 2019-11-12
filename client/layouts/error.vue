@@ -31,10 +31,11 @@ export default {
   text-decoration: none;
   color: white;
   font-size: 2rem;
+  transition: background-color 100ms ease-in-out-quad;
 }
 
 .link:hover {
-  background-color: color-mod($bg shade(33%));
-  transition: background-color 0.1s ease-in-out;
+  background-color: color-mod($bg shade(50%));
+  transition: background-color 100ms ease-in-out-quad;
 }
 </style>

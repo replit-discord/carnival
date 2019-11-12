@@ -34,6 +34,7 @@
     "eslint-plugin-vue": "^5.2.2",
     "nodemon": "^1.18.9",
     "postcss-color-mod-function": "^3.0.3",
+    "postcss-easings": "^2.0.0",
     "postcss-simple-vars": "^5.0.2",
     "prettier": "^1.16.4",
     "sass-resources-loader": "^2.0.1"

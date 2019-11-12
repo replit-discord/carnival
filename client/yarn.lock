@@ -5636,6 +5636,14 @@ postcss-double-position-gradients@^1.0.0:
     postcss "^7.0.5"
     postcss-values-parser "^2.0.0"
 
+postcss-easings@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-easings/-/postcss-easings-2.0.0.tgz#79bde7ce71c838ef7371a59d293e08b337b1802b"
+  integrity sha512-oJUmnrPwayx47y+jrRKSofHOjRjdJCOyqNXZURQkAVEra93ShqUcN8WYIuT/pWQeGe2I/pxxFfw7mOUGBrxCRQ==
+  dependencies:
+    postcss "^7.0.2"
+    postcss-value-parser "^3.3.0"
+
 postcss-env-function@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/postcss-env-function/-/postcss-env-function-2.0.2.tgz#0f3e3d3c57f094a92c2baf4b6241f0b0da5365d7"

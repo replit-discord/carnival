@@ -1,5 +1,5 @@
 <template>
-  <div class="root-">
+  <div class="default-layout">
     <heading />
     <nuxt class="nuxt" />
   </div>
@@ -17,8 +17,7 @@ export default {
 
 <style lang="postcss">
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Source Sans Pro', system-ui;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -37,11 +36,7 @@ html {
   border: none;
 }
 
-.heading {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
-  grid-area: header;
+.nuxt {
+  margin: 10px;
 }
 </style>

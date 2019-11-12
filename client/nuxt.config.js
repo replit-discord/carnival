@@ -42,13 +42,14 @@ export default {
   },
 
   proxy: {
-    '/api': 'http://localhost:3000'
+    '/api': 'http://localhost:4000'
   },
 
   build: {
     postcss: {
       plugins: {
         'postcss-simple-vars': {},
+        'postcss-easings': {},
         'postcss-color-mod-function': {}
       },
       // update postcss-preset-env config

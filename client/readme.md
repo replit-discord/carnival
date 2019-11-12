@@ -2,21 +2,15 @@
 
 > Carnival aims to create a single website to showcase neat games made by the community
 
-## Build Setup
+## contributing
 
-``` bash
-# install dependencies
-$ yarn install
+### basic
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
-
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
+```sh
+yarn install
+yarn dev
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+### notes
+
+um, you may have to install directly from `yarn.lock` if you cannot build the nuxt server / client. there were some issues with dependencies that had to be reverted in d8bab71d1fb888c6e6a225c159142b744db48da2. fixing this is on the todo
