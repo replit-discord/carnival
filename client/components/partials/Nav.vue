@@ -1,14 +1,12 @@
 <template>
-  <nav>
-    <ul class="nav">
-      <nav-item
-        v-for="d in navigationData"
-        :key="d.name"
-        :name="d.name"
-        :to="d.to"
-      ></nav-item>
-    </ul>
-  </nav>
+  <ul class="nav">
+    <nav-item
+      v-for="d in navigationData"
+      :key="d.name"
+      :name="d.name"
+      :to="d.to"
+    ></nav-item>
+  </ul>
 </template>
 
 <script>
@@ -41,12 +39,13 @@ export default {
 
 <style scoped>
 .nav {
+  height: 100%;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: 1fr;
+  grid-auto-flow: row;
 }
 
 .nav > * {
   text-align: center;
+  margin: auto;
 }
 </style>

@@ -1,12 +1,13 @@
 <template>
-  <div class="header-wrapper-wrapper" @click="enlargeHeader">
+  <div ref="headerWrapperWrapper" class="header-wrapper-wrapper">
     <div class="header-wrapper">
-      <header class="header">
+      <header class="header" @click="growHeader">
         <h1>Carnival</h1>
       </header>
-      <header class="navigation">
-        <h1>back</h1>
-      </header>
+      <nav class="navigation">
+        <Navbar />
+        <div ref="close" class="close" @click="shrinkHeader">x</div>
+      </nav>
     </div>
   </div>
 </template>
@@ -17,14 +18,15 @@ import Navbar from './Nav';
 
 export default {
   components: {
-    navbar: Navbar
+    Navbar
   },
   beforeDestroy() {
+    anime.remove('.header-wrapper-wrapper');
     anime.remove('.header-wrapper');
   },
   methods: {
-    enlargeHeader() {
-      const margin = 10;
+    growHeader() {
+      const margin = 20;
 
       const dc = document.documentElement;
       const finalWidth = dc.clientWidth - margin * 2;
@@ -44,7 +46,25 @@ export default {
         rotateY: '180deg',
         width: finalWidth,
         height: finalHeight,
-        easing: 'spring(1, 100, 90, 3)'
+        easing: 'spring(1, 100, 90, 8)'
+      });
+    },
+    shrinkHeader() {
+      anime({
+        targets: '.header-wrapper-wrapper',
+        translateX: 10,
+        translateY: 10,
+        easing: 'spring(1, 100, 90, 10)'
+      });
+
+      anime({
+        targets: '.header-wrapper',
+        translateX: 0,
+        translateY: 0,
+        rotateY: '0deg',
+        width: 190,
+        height: 60,
+        easing: 'spring(1, 100, 90, 8)'
       });
     }
   }
@@ -56,6 +76,7 @@ export default {
   position: fixed;
   z-index: 1000;
   perspective: 5000px;
+  user-select: none;
 
   --border-radius: 5px;
   border-radius: var(--border-radius);
@@ -79,6 +100,7 @@ export default {
   width: 190px;
   height: 60px;
 
+  will-change: width, height;
   transform-style: preserve-3d;
 
   box-shadow: 2px 4px 4px $oc-gray-4;
@@ -111,19 +133,42 @@ export default {
   margin-right: 5px;
 }
 
+h1 {
+  color: $text;
+}
+
 .navigation {
-  display: grid;
   background-color: $bg;
   transform: rotateY(180deg);
 }
 
-.navigation h1 {
-  margin: auto;
-  text-align: center;
+.close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: white;
+
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $bg-light;
+
+  transition: all 0.25s ease-out-quint;
 }
 
-h1 {
-  display: inline;
-  color: $text;
+.close:hover {
+  transform: scale(1.1, 1.1);
+  transition: all 0.25s ease-out-quint;
+}
+
+.close:active {
+  transform: scale(0.9, 0.9);
+  transition: all 0.25s ease-out-quint;
 }
 </style>
