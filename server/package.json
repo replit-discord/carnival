@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon -r esm ./bin/www",
+    "build": "gulp --require esm build",
     "lint": "eslint --ext .js --ignore-path ../.gitignore ."
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
     "express": "~4.16.0",
+    "gulp": "^4.0.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.0",
     "nodemon": "^1.19.1",
