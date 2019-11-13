@@ -40,8 +40,4 @@ h1,
 h2 {
   font-family: 'Asap', sans-serif;
 }
-
-.nuxt {
-  /* margin: 0 10px; */
-}
 </style>

@@ -1,25 +1,27 @@
 <template>
   <div class="container">
     <carosel />
-    <h2>Popular</h2>
-    <grid-responsive>
-      <carnival-game v-for="n in 10" :key="n"></carnival-game>
-    </grid-responsive>
+    <div class="game-list">
+      <h2>Popular</h2>
+      <grid-responsive>
+        <carnival-game v-for="n in 10" :key="n"></carnival-game>
+      </grid-responsive>
 
-    <h2>Recendly Added</h2>
-    <scroll-responsive>
-      <carnival-game v-for="n in 10" :key="n"></carnival-game>
-    </scroll-responsive>
+      <h2>Recendly Added</h2>
+      <scroll-responsive>
+        <carnival-game v-for="n in 10" :key="n"></carnival-game>
+      </scroll-responsive>
 
-    <h2>Most Liked</h2>
-    <scroll-responsive>
-      <carnival-game v-for="n in 10" :key="n"></carnival-game>
-    </scroll-responsive>
+      <h2>Most Liked</h2>
+      <scroll-responsive>
+        <carnival-game v-for="n in 10" :key="n"></carnival-game>
+      </scroll-responsive>
 
-    <h2>Most Active</h2>
-    <scroll-responsive>
-      <carnival-game v-for="n in 10" :key="n"></carnival-game>
-    </scroll-responsive>
+      <h2>Most Active</h2>
+      <scroll-responsive>
+        <carnival-game v-for="n in 10" :key="n"></carnival-game>
+      </scroll-responsive>
+    </div>
   </div>
 </template>
 
@@ -42,6 +44,10 @@ export default {
 <style lang="postcss" scoped>
 .container {
   height: 100%;
+}
+
+.game-list {
+  margin: 0 10px;
 }
 
 h2 {
