@@ -1,13 +1,16 @@
 <template>
-  <div class="navitem">
-    <nuxt-link :to="to">
-      {{ name }}
+  <li class="navitem-wrapper">
+    <nuxt-link :to="to" class="navitem-link">
+      <div class="navitem" @click="shrinkHeader">
+        <h2>{{ name }}</h2>
+      </div>
     </nuxt-link>
-    <div class="color-transform"></div>
-  </div>
+  </li>
 </template>
 
 <script>
+import anime from 'animejs';
+
 export default {
   props: {
     name: {
@@ -18,46 +21,53 @@ export default {
       type: String,
       default: () => '/unresolved-link'
     }
+  },
+  methods: {
+    // to do - keep dry and not copy paste from Heading.vue
+    shrinkHeader() {
+      anime({
+        targets: '.header-wrapper-wrapper',
+        translateX: 10,
+        translateY: 10,
+        easing: 'spring(1, 100, 90, 10)'
+      });
+
+      anime({
+        targets: '.header-wrapper',
+        translateX: 0,
+        translateY: 0,
+        rotateY: '0deg',
+        width: 190,
+        height: 60,
+        easing: 'spring(1, 100, 90, 8)'
+      });
+    }
   }
 };
 </script>
 
 <style lang="postcss" scoped>
-.navitem {
-  position: relative;
-}
-
-a {
-  display: inline-block;
-
+.navitem-wrapper {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  padding: 10px;
-  text-align: center;
-
+.navitem-link {
+  display: block;
   color: $text;
   text-decoration: none;
 }
 
-a.heading-transform {
-  padding: 5px;
-}
+.navitem {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 
-.color-transform {
-  position: absolute;
-  bottom: 0;
-  z-index: -90;
-
-  background-color: color-mod($bg shade(100%));
-
-  width: 100%;
-  height: 0;
-  transition: all 50ms ease-in;
-}
-
-a:hover ~ .color-transform {
-  height: 100%;
-  transition: all 50ms ease-in;
+  background-color: $bg-light;
+  transition: all 0.3s ease-out;
+  list-style-type: none;
 }
 </style>
