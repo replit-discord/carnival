@@ -1,6 +1,6 @@
 import express from 'express';
 import { Pool, Client } from 'pg';
-const { discoId, discoSecret, jwtKey } = require('../config');
+const { discoId, discoSecret, jwtKey } = require('../../../../config');
 const discoOAuthClient = require('disco-oauth');
 const discoClient = new discoOAuthClient(discoId, discoSecret);
 

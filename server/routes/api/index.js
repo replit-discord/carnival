@@ -1,4 +1,5 @@
 import express from 'express';
+
 import v1Api from './v1';
 
 const router = express.Router();

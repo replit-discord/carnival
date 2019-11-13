@@ -18,3 +18,6 @@ GameModel.findByName = function(gameName) {
   });
 }
 
+GameModel.create = function() {
+  return new GameModel();
+}

@@ -3,8 +3,6 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 const logger = require('morgan');
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/api/users';
 import apiRouter from './routes/api';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -16,8 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api', apiRouter);
 
 export default app;

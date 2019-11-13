@@ -1,7 +1,7 @@
 import express from 'express';
 import { Pool, Client } from 'pg';
 import jwt from 'jsonwebtoken';
-let { jwtKey } = require('../../../config');
+let { jwtKey } = require('../../../../config');
 
 const router = express.Router();
 
