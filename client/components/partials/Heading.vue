@@ -2,8 +2,10 @@
   <div ref="headerWrapperWrapper" class="header-wrapper-wrapper">
     <div class="header-wrapper">
       <header class="header" @click="enlargeHeader">
-        <div class="menu"></div>
-        <!-- <navbar class="navigation" /> -->
+        <h1>content</h1>
+      </header>
+      <header class="header-back">
+        <h1>back</h1>
       </header>
     </div>
   </div>
@@ -22,11 +24,17 @@ export default {
   },
   methods: {
     enlargeHeader() {
-      let margin = 10;
+      const margin = 10;
 
-      let headerWrapperWrapperDomRect = this.$refs.headerWrapperWrapper.getBoundingClientRect();
-      let finalWidth = document.documentElement.clientWidth - margin * 2;
-      let finalHeight = headerWrapperWrapperDomRect.height - margin * 2;
+      const dc = document.documentElement;
+      const finalWidth = dc.clientWidth - margin * 2;
+      const finalHeight = dc.clientHeight - margin * 2;
+
+      anime({
+        targets: '.header-wrapper-wrapper',
+        translateX: 0,
+        translateY: 0
+      });
 
       anime({
         targets: '.header-wrapper',
@@ -47,31 +55,39 @@ export default {
 <style lang="postcss" scoped>
 .header-wrapper-wrapper {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
+  transform: translate(10px, 10px);
+  perspective: 5000px;
+  z-index: 1000;
 }
 
 .header-wrapper {
   position: relative;
-  display: inline-block;
+
   width: 170px;
   height: 60px;
 }
 
 .header {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  left: 10px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 
   background-color: $bg;
   box-shadow: 2px 4px 4px $oc-gray-4;
   border-radius: 5px;
   cursor: pointer;
+  z-index: 60;
+}
+
+.header-back {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 50;
 }
 
 .menu {
