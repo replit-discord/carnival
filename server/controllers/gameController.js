@@ -1,16 +1,69 @@
-import { GameModel } from '../models/game';
+import httpStatus from 'http-status-codes';
 
-export function gameController(req, res) {
-  const gameName = req.params.game;
+import { getGameByName, getGameById } from '../services/gameService';
+
+export function gameNameController(req, res) {
+  const gameName = req.params.name;
   if(gameName.length === 1 && 'abcdefghijklmnopqrstuvwxyz'.includes(gameName)) {
-    GameModel.findByName(gameName)
+    getGameByName(gameName)
       .then(game => {
         res.json(game);
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
+        res.send(httpStatus.INTERNAL_SERVER_ERROR);
       });
   } else {
-    res.send(404);
+    res.send(httpStatus.NOT_FOUND);
   }
+}
+
+export function gameIdController(req, res) {
+  const gameId = parseInt(req.params.id);
+  if(gameId > -1 && gameId < 27) {
+    getGameById(gameId)
+      .then(game => {
+        res.json(game);
+      })
+      .catch(err => {
+        console.error(err);
+        res.send(httpStatus.INTERNAL_SERVER_ERROR);
+      });
+  } else {
+    res.send(httpStatus.NOT_FOUND);
+  }
+}
+
+export function getPopularGamesController(req, res) {
+  const popularGameList = ['a', 'b', 'd', 'f', 'o', 'x'];
+  const promises = [];
+
+  popularGameList.forEach(gameName => {
+    const promise = getGameByName(gameName);
+    promises.push(promise);
+  });
+
+  Promise.all(promises)
+    .then(popularGames => {
+      res.send({
+        data: popularGames
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    })
+
+}
+
+export function getRandomGamesController(req, res) {
+  const random = Math.random() * 26 + 1;
+  getGameById(random)
+    .then(game => {
+      res.json(game);
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    });
 }
