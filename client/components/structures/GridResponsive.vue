@@ -8,6 +8,6 @@
 section {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax($img-min, 1fr));
 }
 </style>

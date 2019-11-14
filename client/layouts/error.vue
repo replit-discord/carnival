@@ -1,7 +1,7 @@
 <template>
   <div class="error">
     <span class="emoji">🤪</span>
-    <h1>oops! an error occured</h1>
+    <h1>{{ error.message || 'oops! an error occured' }}</h1>
     <nuxt-link to="/" class="link">return home</nuxt-link>
   </div>
 </template>

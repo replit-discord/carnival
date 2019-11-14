@@ -1,5 +1,7 @@
 import path from 'path';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 export default {
   mode: 'universal',
   head: {
@@ -39,17 +41,22 @@ export default {
   plugins: [],
 
   modules: [
+    '@nuxtjs/proxy',
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module'
   ],
 
   axios: {
-    proxy: true
+    proxy: true,
+    retry: {
+      retries: 1
+    },
+    debug: isDev
   },
 
   proxy: {
-    '/api': 'http://localhost:4000',
-    '/img': 'http://localhost:4000'
+    '/api/': 'http://localhost:4000',
+    '/img/': 'http://localhost:4000'
   },
 
   build: {

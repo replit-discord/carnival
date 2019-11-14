@@ -1,0 +1,32 @@
+<template>
+  <div class="games-random">
+    <h2>Random</h2>
+    <ScrollResponsive>
+      <CarnivalGame
+        v-for="game in games"
+        :key="game"
+        :game="game"
+      ></CarnivalGame>
+    </ScrollResponsive>
+  </div>
+</template>
+
+<script>
+import CarnivalGame from '~/components/CarnivalGame';
+import ScrollResponsive from '~/components/structures/ScrollResponsive';
+
+export default {
+  name: 'GamesPopular',
+  components: {
+    CarnivalGame,
+    ScrollResponsive
+  },
+  props: {
+    games: {
+      type: Object
+    }
+  }
+};
+</script>
+
+<style></style>

@@ -2,11 +2,37 @@
   <div class="carnival-game-wrapper">
     <div class="carnival-game">
       <div class="carnival-game-inner">
-        <h3>Game Title</h3>
+        <h3>{{ game.title }}</h3>
+        <p>{{ game.desc }}</p>
+        <h4>{{ game.img }}</h4>
+        <img
+          width="100px"
+          :src="game.img"
+          :alt="(() => `image of game ${game.title}`)()"
+        />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'CarnivalGame',
+  props: {
+    game: {
+      type: Object,
+      default: () => ({
+        id: 1,
+        name: 'game-name',
+        title: 'Game Title',
+        author: 'author',
+        desc: 'description',
+        img: 'image'
+      })
+    }
+  }
+};
+</script>
 
 <style lang="postcss" scoped>
 .carnival-game-wrapper {

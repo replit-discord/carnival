@@ -56,6 +56,28 @@ export function getPopularGamesController(req, res) {
 
 }
 
+export function getRandomsGamesController(req, res) {
+  const randomLength = 10;
+  const promises = [];
+
+  for(let i = 0; i < 10; i++) {
+    const random = Math.random() * 26 + 1;
+    const promise = getGameById(random);
+    promises.push(promise);
+  }
+
+  Promise.all(promises)
+    .then(randomGames => {
+      res.json({
+        data: randomGames
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    });
+}
+
 export function getRandomGamesController(req, res) {
   const random = Math.random() * 26 + 1;
   getGameById(random)
