@@ -1,4 +1,7 @@
 {
+  // genral
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
   // editorconfig.editorconfig (no settings)
 
   // esbenp.prettier-vscode (no settings)

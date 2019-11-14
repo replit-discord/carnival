@@ -1,5 +1,4 @@
 {
-  "root": true,
   "env": {
     "browser": true,
     "node": true
@@ -23,5 +22,13 @@
     "no-console": "warn",
     "no-unused-vars": "warn",
     "vue/no-unused-components": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*gulpfile*"],
+      "rules": {
+        "prettier/prettier": "warn"
+      }
+    }
+  ]
 }

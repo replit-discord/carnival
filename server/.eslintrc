@@ -1,15 +1,28 @@
 {
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "env": {
-    "node": true,
-    "es6": true
-  },
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
-  "extends": ["prettier", "plugin:prettier/recommended"]
+  "extends": [
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "overrides": [
+    // prevent prettier rules from messing up gulpfiles
+    {
+      "files": ["*gulpfile*"],
+      "rules": {
+        "prettier/prettier": "off",
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"]
+      }
+    }
+  ]
 }
