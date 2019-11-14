@@ -23,11 +23,9 @@ const dbPool = new Pool({
 });
 
 const dbClient = new Client();
-dbClient.connect()
-  .catch(err => {
-    console.error('could not connect to db', err);
-  });
-
+dbClient.connect().catch(err => {
+  console.error('could not connect to db', err);
+});
 
 discoClient.setScopes(['identify', 'email']);
 

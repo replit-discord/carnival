@@ -4,7 +4,10 @@ import { getGameByName, getGameById } from '../services/gameService';
 
 export function gameNameController(req, res) {
   const gameName = req.params.name;
-  if(gameName.length === 1 && 'abcdefghijklmnopqrstuvwxyz'.includes(gameName)) {
+  if (
+    gameName.length === 1 &&
+    'abcdefghijklmnopqrstuvwxyz'.includes(gameName)
+  ) {
     getGameByName(gameName)
       .then(game => {
         res.json(game);
@@ -20,7 +23,7 @@ export function gameNameController(req, res) {
 
 export function gameIdController(req, res) {
   const gameId = parseInt(req.params.id);
-  if(gameId > -1 && gameId < 27) {
+  if (gameId > -1 && gameId < 27) {
     getGameById(gameId)
       .then(game => {
         res.json(game);
@@ -52,14 +55,14 @@ export function getPopularGamesController(req, res) {
     .catch(err => {
       console.error(err);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
-    })
+    });
 }
 
 export function getRandomsGamesController(req, res) {
   const randomLength = 10;
   const promises = [];
 
-  for(let i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     const random = Math.random() * 26 + 1;
     const promise = getGameById(random);
     promises.push(promise);
@@ -95,7 +98,7 @@ export function getRecentlyAddedController(req, res) {
     .catch(err => {
       console.error(err);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
-    })
+    });
 }
 
 export function getMostLikedController(req, res) {
@@ -116,7 +119,7 @@ export function getMostLikedController(req, res) {
     .catch(err => {
       console.error(err);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
-    })
+    });
 }
 
 export function getMostPlayedController(req, res) {
@@ -137,7 +140,7 @@ export function getMostPlayedController(req, res) {
     .catch(err => {
       console.error(err);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
-    })
+    });
 }
 
 export function getRandomGamesController(req, res) {
@@ -152,4 +155,3 @@ export function getRandomGamesController(req, res) {
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
     });
 }
-

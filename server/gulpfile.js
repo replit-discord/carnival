@@ -13,8 +13,7 @@ async function generateAssets() {
 }
 
 async function copyAssets() {
-  src('gen/letterImages/*.jpg')
-    .pipe(dest('public/img/game-image'))
+  src('gen/letterImages/*.jpg').pipe(dest('public/img/game-image'));
 }
 
 const build = series(generateAssets, copyAssets);

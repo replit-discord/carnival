@@ -1,7 +1,5 @@
 // have no db to hit, just generate
-export function GameModel(game) {
-
-}
+export function GameModel(game) {}
 
 GameModel.findByName = function(gameName) {
   return new Promise((resolve, reject) => {
@@ -16,7 +14,7 @@ GameModel.findByName = function(gameName) {
       });
     }, 100);
   });
-}
+};
 
 GameModel.findById = function(gameId) {
   let alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -33,8 +31,8 @@ GameModel.findById = function(gameId) {
       });
     }, 100);
   });
-}
+};
 
 GameModel.create = function() {
   return new GameModel();
-}
+};
