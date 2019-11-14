@@ -71,8 +71,8 @@ export default {
 
     // extend webpack config
     extend(config, ctx) {
-      // 6 corresponds to the test for /\.p(ost)?css$/i
-      config.module.rules[6].oneOf.forEach(item => {
+      // 4 corresponds to the test for /\.p(ost)?css$/i
+      config.module.rules[4].oneOf.forEach(item => {
         // sass-resource-loader goes right after postcss-loader (array positioning)
         item.use.push({
           loader: 'sass-resources-loader',
