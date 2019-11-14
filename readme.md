@@ -1,13 +1,15 @@
 # carnival
 
-`carnival` aims to create a single website to showcase great games made by the community of `repl.it`. games span across many genres - some even have multiplayer support!
+`carnival` is a website that showcases great games made by the community of [repl.it](https://repl.it). this implies categorization and search of these games, but we also wish to offer additional capabilities such as leaderboard systems, identity management, and / or multiplayer apis.
 
-the project is in early development. if you have a suggestion, feel free to [add one](https://github.com/repl-it-discord/carnival/issues/2). this project also has a channel on the [repl.it discord server](https://repl.it/discord) if you wish to chat real time!
+the project is in early development. if you have a suggestion, feel free to [add one](https://github.com/repl-it-discord/carnival/issues/2). or, chat about this project real-time on the [repl.it discord server](https://repl.it/discord).
 
 ## contributing
 
 ```bash
 git clone https://github.com/repl-it-discord/carnival
+cd carnival
+
 cd client
 yarn install
 yarn dev
