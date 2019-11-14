@@ -1,0 +1,48 @@
+{
+  // editorconfig.editorconfig (no settings)
+
+  // esbenp.prettier-vscode (no settings)
+
+  // dbaeumer.vscode-eslint
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+  "eslint.quiet": false,
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    }
+  ],
+  "eslint.workingDirectories": [
+    {
+      "directory": "./client",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./server",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./database",
+      "changeProcessCWD": true
+    }
+  ],
+
+
+  // octref.vetur
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.styleInitialIndent": false,
+  "vetur.format.scriptInitialIndent": false
+}
