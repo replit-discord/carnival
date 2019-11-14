@@ -9,16 +9,14 @@ the project is in early development. if you have a suggestion, feel free to [add
 ```bash
 git clone https://github.com/repl-it-discord/carnival
 cd carnival
+yarn bootstrap
 
 cd client
-yarn install
-yarn dev
+yarn serve
 cd ..
 
 cd server
-yarn install
-gulp build # requires pillow to be installed (python)
-yarn start
+yarn build && yarn serve
 cd ..
 ```
 
