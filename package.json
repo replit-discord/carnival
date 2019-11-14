@@ -1,13 +1,18 @@
 {
   "name": "carnival",
   "version": "0.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:repl-it-discord/carnival.git",
+  "private": true,
   "license": "",
   "scripts": {
     "bootstrap": "lerna bootstrap"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run lint -- -c ./.eslintrc.pre-commit.json"
+    }
+  },
   "devDependencies": {
+    "husky": "^3.0.9",
     "lerna": "^3.18.4"
   }
 }

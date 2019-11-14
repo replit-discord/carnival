@@ -20,4 +20,4 @@ yarn build && yarn serve
 cd ..
 ```
 
-if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; notice we have project-specific settings in `.vscode`
+if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; we have project-specific `.vscode` settings
