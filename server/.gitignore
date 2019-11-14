@@ -1,5 +1,11 @@
+# project
+node_modules/
+
 gen/letterImages/*
 !gen/letterImages/.gitkeep
 
 public/img/game-image/*
 !public/img/game-image/.gitkeep
+
+public/nuxt/*
+!public/nuxt/.gitkeep

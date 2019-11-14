@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "nuxt",
-    "build": "nuxt build",
     "generate": "nuxt generate",
+    "build": "nuxt build",
     "start": "nuxt start",
-    "lint": "eslint --ext .js,.vue --ignore-path ../.gitignore ."
+    "gulp": "gulp --require esm",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
@@ -30,6 +31,9 @@
     "eslint-plugin-promise": ">=4.0.1",
     "eslint-plugin-standard": ">=4.0.0",
     "eslint-plugin-vue": "^5.2.2",
+    "esm": "^3.2.25",
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
     "nodemon": "^1.18.9",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-easings": "^2.0.0",

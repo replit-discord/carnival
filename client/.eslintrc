@@ -16,7 +16,6 @@
   "plugins": [
     "prettier"
   ],
-  // add your custom rules here
   "rules": {
     "prefer-const": "off",
     "no-console": "warn",
@@ -24,10 +23,14 @@
     "vue/no-unused-components": "warn"
   },
   "overrides": [
+    // prevent prettier rules from messing up gulpfiles
     {
       "files": ["*gulpfile*"],
       "rules": {
-        "prettier/prettier": "warn"
+        "prettier/prettier": "off",
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "require-await": "off"
       }
     }
   ]

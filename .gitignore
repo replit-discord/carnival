@@ -1,5 +1,5 @@
-# npm
-node_modules/
+# project
+node_modules
 
 # ide
 .idea/
