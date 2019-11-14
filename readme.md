@@ -9,7 +9,7 @@ the project is in early development. if you have a suggestion, feel free to [add
 ```bash
 git clone https://github.com/repl-it-discord/carnival
 cd carnival
-yarn bootstrap
+yarn install && yarn bootstrap
 
 cd client
 yarn serve
