@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 
 import {
   gameNameController,
@@ -11,7 +11,7 @@ import {
   getRandomGamesController
 } from '../../../../controllers/gameController';
 
-const gameRouter = express.Router();
+const gameRouter = Router();
 
 gameRouter.get('/name/:name', gameNameController);
 gameRouter.get('/id/:id', gameIdController);
