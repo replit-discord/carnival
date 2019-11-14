@@ -4,7 +4,7 @@ import plumber from 'gulp-plumber';
 async function copyBuildFiles() {
   src('dist/**/*')
     .pipe(plumber())
-    .pipe(dest('../public/nuxt/'));
+    .pipe(dest('../server/public/nuxt/'));
 }
 
 export { copyBuildFiles };
