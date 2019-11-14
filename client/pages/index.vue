@@ -1,71 +1,62 @@
 <template>
   <div class="container">
-    <carosel />
+    <Carosel />
     <div class="game-list">
-      <GamesPopular :games="popular" />
-
-      <GamesRandom :games="random" />
-
-      <h2>Recendly Added</h2>
-      <scroll-responsive>
-        <carnival-game v-for="n in 10" :key="n"></carnival-game>
-      </scroll-responsive>
-
-      <h2>Most Liked</h2>
-      <scroll-responsive>
-        <carnival-game v-for="n in 10" :key="n"></carnival-game>
-      </scroll-responsive>
-
-      <h2>Most Active</h2>
-      <scroll-responsive>
-        <carnival-game v-for="n in 10" :key="n"></carnival-game>
-      </scroll-responsive>
+      <GamesGridResponsive section-title="Popular" :games="popular" />
+      <GamesScrollResponsive section-title="Random" :games="random" />
+      <GamesScrollResponsive
+        section-title="Recently Added"
+        :games="recentlyAdded"
+      />
+      <GamesScrollResponsive section-title="Most Liked" :games="mostLiked" />
+      <GamesScrollResponsive section-title="Most Played" :games="mostPlayed" />
     </div>
   </div>
 </template>
 
 <script>
-import GridResponsive from '~/components/structures/GridResponsive';
-import ScrollResponsive from '~/components/structures/ScrollResponsive';
 import CarnivalGame from '~/components/CarnivalGame';
 import Carosel from '~/components/Carosel';
-import GamesPopular from '~/components/collections/GamesPopular';
-import GamesRandom from '~/components/collections/GamesRandom';
+import GamesGridResponsive from '~/components/collections/GamesGridResponsive';
+import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
 
 export default {
   components: {
-    GamesPopular,
-    GamesRandom,
-    'grid-responsive': GridResponsive,
-    'scroll-responsive': ScrollResponsive,
-    'carnival-game': CarnivalGame,
-    'carosel': Carosel
+    GamesGridResponsive,
+    GamesScrollResponsive,
+    Carosel
   },
   asyncData({ params, app, error }) {
-    const p1 = app.$axios
-      .get('/api/v1/game/popular/')
-      .then(({ data: { data } }) => data)
-      .catch(err => {
-        console.error(err);
-        error({
-          statusCode: 500,
-          message: 'oops! there was some error with asyncData'
+    const promises = [];
+    const routes = [
+      'popular',
+      'randoms',
+      'recently-added',
+      'most-liked',
+      'most-played'
+    ];
+    routes.forEach(route => {
+      const p = app.$axios
+        .get(`/api/v1/game/${route}`)
+        .then(({ data: { data } }) => data)
+        .catch(err => {
+          console.error(err);
+          error({
+            statusCode: 500,
+            message: `oops! there was some error with asyncData and ${route}`
+          });
         });
-      });
-    const p2 = app.$axios
-      .get('/api/v1/game/randoms/')
-      .then(({ data: { data } }) => data)
-      .catch(err => {
-        console.error(err);
-        error({
-          statusCode: 500,
-          message: 'oops! there was some error with asyncDatas'
-        });
-      });
-    return Promise.all([p1, p2]).then(([popular, random]) => ({
-      popular,
-      random
-    }));
+      promises.push(p);
+    });
+    return Promise.all(promises).then(
+      ([popular, random, recentlyAdded, mostLiked, mostPlayed]) => ({
+        popular,
+        random,
+        recentlyAdded,
+        mostLiked,
+        mostPlayed
+      })
+    );
   }
 };
 </script>

@@ -53,7 +53,6 @@ export function getPopularGamesController(req, res) {
       console.error(err);
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
     })
-
 }
 
 export function getRandomsGamesController(req, res) {
@@ -78,6 +77,69 @@ export function getRandomsGamesController(req, res) {
     });
 }
 
+export function getRecentlyAddedController(req, res) {
+  const popularGameList = ['p', 'a', 'f', 'a', 'q', 'i'];
+  const promises = [];
+
+  popularGameList.forEach(gameName => {
+    const promise = getGameByName(gameName);
+    promises.push(promise);
+  });
+
+  Promise.all(promises)
+    .then(popularGames => {
+      res.send({
+        data: popularGames
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    })
+}
+
+export function getMostLikedController(req, res) {
+  const popularGameList = ['b', 'e', 'x', 'x', 'y', 'z'];
+  const promises = [];
+
+  popularGameList.forEach(gameName => {
+    const promise = getGameByName(gameName);
+    promises.push(promise);
+  });
+
+  Promise.all(promises)
+    .then(popularGames => {
+      res.send({
+        data: popularGames
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    })
+}
+
+export function getMostPlayedController(req, res) {
+  const popularGameList = ['p', 'g', 'e', 'e', 'a', 'x'];
+  const promises = [];
+
+  popularGameList.forEach(gameName => {
+    const promise = getGameByName(gameName);
+    promises.push(promise);
+  });
+
+  Promise.all(promises)
+    .then(popularGames => {
+      res.send({
+        data: popularGames
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(httpStatus.INTERNAL_SERVER_ERROR);
+    })
+}
+
 export function getRandomGamesController(req, res) {
   const random = Math.random() * 26 + 1;
   getGameById(random)
@@ -89,3 +151,4 @@ export function getRandomGamesController(req, res) {
       res.send(httpStatus.INTERNAL_SERVER_ERROR);
     });
 }
+
