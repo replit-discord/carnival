@@ -1,17 +1,10 @@
-dist/
-.nuxt
-
+# npm
 node_modules/
 
-*.log
+# ide
+.idea/
 
+# misc
 .env
 .env.test
-
-.idea/
-.vscode/
-
-*.env
-
-# temp
-public/
+*.log
