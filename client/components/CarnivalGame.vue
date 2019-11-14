@@ -6,9 +6,9 @@
         <p>{{ game.desc }}</p>
         <h4>{{ game.img }}</h4>
         <img
-          width="100px"
           :src="game.img"
           :alt="(() => `image of game ${game.title}`)()"
+          width="100px"
         />
       </div>
     </div>

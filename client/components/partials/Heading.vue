@@ -1,12 +1,12 @@
 <template>
   <div ref="headerWrapperWrapper" class="header-wrapper-wrapper">
     <div class="header-wrapper">
-      <header class="header" @click="growHeader">
+      <header @click="growHeader" class="header">
         <h1>Carnival</h1>
       </header>
       <nav class="navigation">
         <Navbar />
-        <div ref="close" class="close" @click="shrinkHeader">x</div>
+        <div ref="close" @click="shrinkHeader" class="close">x</div>
       </nav>
     </div>
   </div>

@@ -2,14 +2,14 @@
   <div class="container">
     <FeaturedGame />
     <div class="game-list">
-      <GamesGridResponsive section-title="Popular" :games="popular" />
-      <GamesScrollResponsive section-title="Random" :games="random" />
+      <GamesGridResponsive :games="popular" section-title="Popular" />
+      <GamesScrollResponsive :games="random" section-title="Random" />
       <GamesScrollResponsive
-        section-title="Recently Added"
         :games="recentlyAdded"
+        section-title="Recently Added"
       />
-      <GamesScrollResponsive section-title="Most Liked" :games="mostLiked" />
-      <GamesScrollResponsive section-title="Most Played" :games="mostPlayed" />
+      <GamesScrollResponsive :games="mostLiked" section-title="Most Liked" />
+      <GamesScrollResponsive :games="mostPlayed" section-title="Most Played" />
     </div>
   </div>
 </template>

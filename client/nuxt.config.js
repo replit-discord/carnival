@@ -43,7 +43,7 @@ export default {
   axios: {
     proxy: true,
     retry: {
-      retries: 1
+      retries: 0
     },
     debug: false
   },

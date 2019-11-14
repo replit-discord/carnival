@@ -1,7 +1,7 @@
 <template>
   <li class="navitem-wrapper">
     <nuxt-link :to="to" class="navitem-link">
-      <div class="navitem" @click="shrinkHeader">
+      <div @click="shrinkHeader" class="navitem">
         <h2>{{ name }}</h2>
       </div>
     </nuxt-link>
