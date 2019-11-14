@@ -1,14 +1,29 @@
 <template>
   <div class="error">
     <span class="emoji">🤪</span>
-    <h1>{{ error.message || 'oops! an error occured' }}</h1>
+    <h1>{{ errorMessage }}</h1>
     <nuxt-link to="/" class="link">return home</nuxt-link>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['error']
+  props: {
+    error: {
+      type: Object,
+      default: () => ({
+        message: 'error'
+      })
+    }
+  },
+  data() {
+    return {
+      errorMessage:
+        this.error.message === 'This page could not be found'
+          ? 'oops! this page cannot be found'
+          : this.error.message
+    };
+  }
 };
 </script>
 

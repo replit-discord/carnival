@@ -78,7 +78,7 @@ export function getRandomsGamesController(req, res) {
 }
 
 export function getRecentlyAddedController(req, res) {
-  const popularGameList = ['p', 'a', 'f', 'a', 'q', 'i'];
+  const popularGameList = ['p', 'a', 'f', 'k', 'q', 'i'];
   const promises = [];
 
   popularGameList.forEach(gameName => {
@@ -99,7 +99,7 @@ export function getRecentlyAddedController(req, res) {
 }
 
 export function getMostLikedController(req, res) {
-  const popularGameList = ['b', 'e', 'x', 'x', 'y', 'z'];
+  const popularGameList = ['b', 'e', 'x', 'l', 'y', 'z'];
   const promises = [];
 
   popularGameList.forEach(gameName => {
@@ -141,6 +141,7 @@ export function getMostPlayedController(req, res) {
 }
 
 export function getRandomGamesController(req, res) {
+  // this results in duplicate keys when rendering vue v-for directive
   const random = Math.random() * 26 + 1;
   getGameById(random)
     .then(game => {

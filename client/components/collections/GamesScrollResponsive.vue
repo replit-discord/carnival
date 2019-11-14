@@ -4,7 +4,7 @@
     <ScrollResponsive>
       <CarnivalGame
         v-for="game in games"
-        :key="game"
+        :key="game.id"
         :game="game"
       ></CarnivalGame>
     </ScrollResponsive>
@@ -23,8 +23,8 @@ export default {
   },
   props: {
     games: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: () => []
     },
     sectionTitle: {
       type: String,

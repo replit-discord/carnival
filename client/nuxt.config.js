@@ -51,7 +51,7 @@ export default {
     retry: {
       retries: 1
     },
-    debug: isDev
+    debug: false
   },
 
   proxy: {

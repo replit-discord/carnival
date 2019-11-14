@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Carosel />
+    <FeaturedGame />
     <div class="game-list">
       <GamesGridResponsive section-title="Popular" :games="popular" />
       <GamesScrollResponsive section-title="Random" :games="random" />
@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import CarnivalGame from '~/components/CarnivalGame';
-import Carosel from '~/components/Carosel';
+import FeaturedGame from '~/components/FeaturedGame';
 import GamesGridResponsive from '~/components/collections/GamesGridResponsive';
 import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
 
@@ -24,7 +23,7 @@ export default {
   components: {
     GamesGridResponsive,
     GamesScrollResponsive,
-    Carosel
+    FeaturedGame
   },
   asyncData({ params, app, error }) {
     const promises = [];
@@ -40,11 +39,11 @@ export default {
         .get(`/api/v1/game/${route}`)
         .then(({ data: { data } }) => data)
         .catch(err => {
-          console.error(err);
           error({
             statusCode: 500,
             message: `oops! there was some error with asyncData and ${route}`
           });
+          throw new Error(err);
         });
       promises.push(p);
     });

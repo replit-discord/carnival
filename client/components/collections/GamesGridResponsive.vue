@@ -1,10 +1,10 @@
 <template>
   <div class="games-popular">
-    <h2>Popular</h2>
+    <h2>{{ sectionTitle }}</h2>
     <GridResponsive>
       <CarnivalGame
         v-for="game in games"
-        :key="game"
+        :key="game.id"
         :game="game"
       ></CarnivalGame>
     </GridResponsive>
@@ -23,7 +23,12 @@ export default {
   },
   props: {
     games: {
-      type: Object
+      type: Array,
+      default: () => []
+    },
+    sectionTitle: {
+      type: String,
+      default: () => 'Generic Section Title'
     }
   }
 };
