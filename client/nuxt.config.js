@@ -40,11 +40,7 @@ export default {
   // plugins to load before mounting the app
   plugins: [],
 
-  modules: [
-    '@nuxtjs/proxy',
-    '@nuxtjs/axios',
-    '@nuxtjs/eslint-module'
-  ],
+  modules: ['@nuxtjs/proxy', '@nuxtjs/axios', '@nuxtjs/eslint-module'],
 
   axios: {
     proxy: true,

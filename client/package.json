@@ -1,16 +1,13 @@
 {
   "name": "carnival",
-  "version": "1.0.0",
-  "description": "Carnival aims to create a single website to showcase neat games made by the community",
-  "author": "carnival contributors",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "serve": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path ../.gitignore .",
-    "precommit": "yarn run lint"
+    "start": "nuxt start",
+    "lint": "eslint --ext .js,.vue --ignore-path ../.gitignore ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",

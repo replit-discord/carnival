@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -r esm ./bin/www",
+    "serve": "nodemon -r esm ./bin/www",
     "build": "gulp --require esm build",
+    "start": "node -r esm ./bin/www",
     "lint": "eslint --ext .js --ignore-path ../.gitignore ."
   },
   "dependencies": {
