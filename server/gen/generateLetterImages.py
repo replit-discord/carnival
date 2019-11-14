@@ -16,4 +16,4 @@ for i, l in enumerate(list(string.ascii_uppercase)):
   draw.text(xy = (left, top), text = l, fill = (0, 0, 0), font = font)
 
   filename = os.path.join('gen/letterImages', string.ascii_lowercase[i] + '.jpg')
-  img.save(filename);
+  img.save(filename)
