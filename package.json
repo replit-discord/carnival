@@ -13,6 +13,10 @@
   },
   "devDependencies": {
     "husky": "^3.0.9",
-    "lerna": "^3.18.4"
+    "lerna": "^3.18.4",
+    "postcss-easing-gradients": "^3.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-momentum-scrolling": "^1.9.15",
+    "postcss-normalize": "^8.0.1"
   }
 }

@@ -57,14 +57,19 @@ export default {
     postcss: {
       syntax: 'postcss-scss',
       plugins: {
+        'postcss-import': {},
+        'postcss-normalize': {},
         'postcss-strip-inline-comments': {},
         'postcss-simple-extend': {},
         'postcss-simple-vars': {},
+        'postcss-momentum-scrolling': {},
         'postcss-easings': {},
+        'postcss-easing-gradients': {},
         'postcss-color-mod-function': {}
       },
-      // update postcss-preset-env config
+      // postcss-preset-env config options
       preset: {
+        stage: 2,
         autoprefixer: {
           grid: false
         }

@@ -36,6 +36,7 @@
     "gulp-plumber": "^1.2.1",
     "nodemon": "^1.18.9",
     "postcss-color-mod-function": "^3.0.3",
+    "postcss-easing-gradients": "^3.0.1",
     "postcss-easings": "^2.0.0",
     "postcss-scss": "^2.0.0",
     "postcss-simple-extend": "^1.0.0",
