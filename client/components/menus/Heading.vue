@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { debounce } from 'lodash';
+import { throttle, debounce } from 'lodash';
 import anime from 'animejs';
 // import Navbar from './Nav';
 
@@ -24,64 +24,92 @@ export default {
   // },
   data() {
     return {
-      previousScrollOffset: 0
+      previousScrollOffset: 0,
+      headerOffset: 0
     };
   },
   beforeMount() {
     // set the 'previous' scroll offset before component mounts
-    this.previouscrollOffset = document.documentElement.scrollTop;
+    this.previousScrollOffset = document.documentElement.scrollTop;
 
-    window.addEventListener('scroll', this.scrollEventHandler(), {
+    window.addEventListener(
+      'scroll',
+      throttle(this.prepareBounceHeader, 300, {
+        trailing: false
+      }),
+      {
+        passive: true
+      }
+    );
+
+    window.addEventListener('scroll', debounce(this.endBounceHeader, 100), {
       passive: true
     });
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.scrollEventHandler(), {
+    window.removeEventListener(
+      'scroll',
+      throttle(this.prepareBounceHeader, 300, {
+        trailing: false
+      }),
+      {
+        passive: true
+      }
+    );
+
+    window.addEventListener('scroll', debounce(this.endBounceHeader, 100), {
       passive: true
     });
   },
   methods: {
-    scrollEventHandler(e) {
-      return debounce(e => {
-        const scrollOffset = document.documentElement.scrollTop;
+    prepareBounceHeader() {
+      const scrollOffset = document.documentElement.scrollTop;
 
-        let scrollDirection;
-        if (scrollDirection === this.previousScrollOffset) {
-          scrollDirection = 'neutral';
-        } else if (scrollOffset > this.previousScrollOffset) {
-          scrollDirection = 'down';
-        } else {
-          scrollDirection = 'up';
-        }
+      let scrollDirection;
+      if (scrollDirection === this.previousScrollOffset) {
+        scrollDirection = 'neutral';
+      } else if (scrollOffset > this.previousScrollOffset) {
+        scrollDirection = 'down';
+      } else {
+        scrollDirection = 'up';
+      }
 
-        // we are done using the previous scroll value, set it to the current
-        this.previouScrollOffset = scrollOffset;
+      // we are done using the previous scroll value, set it to the current
+      this.previousScrollOffset = scrollOffset;
+      let translateBy;
+      switch (scrollDirection) {
+        case 'up':
+          translateBy = '+=3';
+          this.headerOffset += 3;
+          break;
+        case 'down':
+          translateBy = '-=3';
+          this.headerOffset -= 3;
+          break;
+        case 'neutral':
+          translateBy = 0;
+          break;
+        default:
+          translateBy = 0;
+      }
 
-        // let translateBy;
-        // switch (scrollDirection) {
-        //   case 'up':
-        //     translateBy = '+=20';
-        //     break;
-        //   case 'down':
-        //     translateBy = '-=20';
-        //     break;
-        //   case 'neutral':
-        //     translateBy = 0;
-        //     break;
-        //   default:
-        //     translateBy = 0;
-        // }
+      // maximixe the header offset to 20
+      if (Math.abs(this.headerOffset) > 7.9)
+        translateBy = Math.sign(this.headerOffset) === 1 ? 8 : -8;
 
-        // 'bounce' the header, dependent on how large the previou bounce was
-        const scrollOffsetDifference = scrollOffset - this.previouscrollOffset;
-        this.bounceHeader(scrollDirection, scrollOffsetDifference);
-      }, 100);
-    },
-    bounceHeader(scrollDirection, scrollOffsetDifference) {
       anime({
         targets: this.$refs.headerWrapper,
-        translateY: '0',
+        translateY: translateBy,
+        // the spring velocity (2.8) is fine tuned to the value we change this.headerOffset by (3) and our debounce (200)
         easing: 'spring(1, 100, 10, 3)'
+      });
+    },
+    endBounceHeader() {
+      this.headerOffset = 0;
+      anime({
+        targets: this.$refs.headerWrapper,
+        translateY: 0,
+        easing: 'spring(1, 100, 10, 0)'
       });
     }
   }
@@ -134,6 +162,7 @@ $headerBorderRadius: 5px;
   align-items: center;
   justify-content: center;
   background-color: $bg;
+  @extend shadow-large;
   cursor: pointer;
 }
 

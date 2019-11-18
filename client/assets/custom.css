@@ -1,5 +1,14 @@
+/* these are injected into every component */
+
 $bg: color-mod($oc-gray-9 shade(25%));
 $bg-light: color-mod($oc-gray-9 tint(10%));
 $text: color-mod($oc-gray-5 shade(10%));
 
 $img-min: 256px;
+
+@define-placeholder shadow-large {
+  box-shadow:
+    0 10px 5px -5px rgba(207, 210, 223, 0.5),
+    0 20px 10px -10px rgba(207, 210, 223, 0.4),
+    0 30px 15px -15px rgba(198, 203, 221, 0.3);
+}
