@@ -4,11 +4,15 @@
   "private": true,
   "license": "",
   "scripts": {
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "test": "yarn test",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "lerna run lint:js",
+    "lint:css": "lerna run lint:css"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run lint -- -c .eslintrc.pre-commit.json"
+      "pre-commit": "lerna run lint"
     }
   },
   "devDependencies": {

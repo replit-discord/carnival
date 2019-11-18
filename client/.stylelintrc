@@ -1,0 +1,65 @@
+{
+  "processors": [
+    "@mapbox/stylelint-processor-arbitrary-tags"
+  ],
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-value-no-unknown-custom-properties",
+    "stylelint-images",
+    "stylelint-high-performance-animation",
+    "stylelint-selector-tag-no-without-class",
+    "stylelint-z-index-value-constraint",
+    "stylelint-selector-no-empty",
+    "stylelint-no-indistinguishable-colors",
+    "stylelint-a11y"
+  ],
+  "defaultSeverity": "error",
+  "rules": {
+    "font-family-name-quotes": "always-where-recommended",
+    "function-url-quotes": "always",
+    "selector-attribute-quotes": "always",
+    "string-quotes": "single",
+    "value-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "max-nesting-depth": 1,
+    "selector-max-compound-selectors": 3,
+    "max-line-length": 70,
+    "indentation": "tab",
+
+    "csstools/value-no-unknown-custom-properties": [ true, {
+      "importFrom": [
+        "./assets/custom.css"
+      ]
+    }],
+    "images/broken": true,
+    "images/prefer-data-uri": 128,
+    "plugin/no-low-performance-animation-properties": true,
+    "plugin/selector-tag-no-without-class": [
+      "div",
+      "span"
+    ],
+    "plugin/z-index-value-constraint": {
+      "max": 1000
+    },
+    "plugin/stylelint-selector-no-empty": true,
+    "plugin/stylelint-no-indistinguishable-colors": [ true, {
+      "threshold": 5,
+      "allowEquivalentNotation": false
+    }],
+    "a11y/content-property-no-static-value": true,
+    "a11y/font-size-is-readable": true,
+    "a11y/line-height-is-vertical-rhythmed": true,
+    "a11y/media-prefers-reduced-motion": true,
+    "a11y/media-prefers-color-scheme": null,
+    "a11y/no-display-none": true,
+    "a11y/no-obsolete-attribute": true,
+    "a11y/no-obsolete-element": true,
+    "a11y/no-outline-none": true,
+    "a11y/no-text-align-justify": true,
+    "a11y/selector-pseudo-class-focus": true
+  }
+}

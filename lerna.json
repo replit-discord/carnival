@@ -7,5 +7,10 @@
   ],
   "bootstrap": {
     "npmClientArgs": ["--no-package-lock"]
+  },
+  "command": {
+    "run": {
+      "npmClient": "yarn"
+    }
   }
 }

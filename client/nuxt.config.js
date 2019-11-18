@@ -1,4 +1,5 @@
 import path from 'path';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 export default {
   mode: 'universal',
@@ -38,7 +39,12 @@ export default {
   // plugins to load before mounting the app
   plugins: [],
 
-  modules: ['@nuxtjs/proxy', '@nuxtjs/axios', '@nuxtjs/eslint-module'],
+  modules: [
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
+  ],
 
   axios: {
     proxy: true,
@@ -73,15 +79,27 @@ export default {
         autoprefixer: {
           grid: false
         }
-      },
-      loaderOptions: {}
+      }
     },
 
     // extend webpack config
+    plugins: [
+      new StyleLintPlugin({
+        files: '**/*.*{css,vue}',
+        configOverrides: {
+          defaultSeverity: 'warning'
+        },
+        failOnError: false,
+        failOnWarning: false
+      })
+    ],
+
+    // style-resources-module did not seem to work; use
+    // sass-resource-loader as a workaround
     extend(config, ctx) {
       // 4 corresponds to the test for /\.p(ost)?css$/i
+      // sass-resource-loader goes right after postcss-loader (array positioning)
       config.module.rules[4].oneOf.forEach(item => {
-        // sass-resource-loader goes right after postcss-loader (array positioning)
         item.use.push({
           loader: 'sass-resources-loader',
           options: {
@@ -93,14 +111,18 @@ export default {
         });
       });
 
-      //  enable auto-fix for eslint-loader
+      // enable auto-fix for eslint-loader
       config.module.rules.push({
-        enforce: 'pre',
+        enforce: 'pre', // checks source files not modified by other loaders (ex. bable-loader)
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         options: {
-          fix: true
+          fix: true,
+          emitError: false,
+          emitWarning: true,
+          failOnError: false,
+          failOnWarning: false
         }
       });
     }

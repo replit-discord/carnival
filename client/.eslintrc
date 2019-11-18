@@ -7,20 +7,20 @@
     "parser": "babel-eslint"
   },
   "extends": [
-    "@nuxtjs",
-    "plugin:nuxt/recommended",
-    "plugin:prettier/recommended",
+    "@nuxtjs", // extends 'standard', 'plugin:vue/recommended'; plugins 'vue'
+    "plugin:nuxt/base", // nuxt base *rules*
+    "plugin:nuxt/recommended", // nuxt recommended *rules*
+    "eslint-config-prettier",
     "prettier",
     "prettier/vue"
   ],
   "plugins": [
+    "nuxt",
     "prettier"
   ],
   "rules": {
-    "prefer-const": "off",
-    "no-console": "warn",
-    "no-unused-vars": "warn",
-    "vue/no-unused-components": "warn"
+    "prettier/prettier": "error",
+    "prefer-const": "off"
   },
   "overrides": [
     // prevent prettier rules from messing up gulpfiles
