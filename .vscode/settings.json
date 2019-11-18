@@ -2,9 +2,11 @@
   // genral
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  // editorconfig.editorconfig (no settings)
+  // editorconfig.editorconfig (no modified settings)
 
-  // esbenp.prettier-vscode (no settings)
+  // esbenp.prettier-vscode (no modified settings)
+
+  // shinnn.stylelint (no modified settings)
 
   // dbaeumer.vscode-eslint
   "eslint.enable": true,
