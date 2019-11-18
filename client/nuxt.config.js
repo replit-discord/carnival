@@ -1,4 +1,5 @@
 import path from 'path';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 export default {
   mode: 'universal',
@@ -73,6 +74,17 @@ export default {
     },
 
     // extend webpack config
+    plugins: [
+      new StyleLintPlugin({
+        files: '**/*.*{css,vue}',
+        configOverrides: {
+          defaultSeverity: 'warning'
+        },
+        failOnError: false,
+        failOnWarning: false
+      })
+    ],
+
     extend(config, ctx) {
       // 4 corresponds to the test for /\.p(ost)?css$/i
       config.module.rules[4].oneOf.forEach(item => {

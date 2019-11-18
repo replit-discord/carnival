@@ -11,7 +11,7 @@
 <style lang="postcss" scoped>
 .scroll-responsive-wrapper {
   position: relative;
-  // TODO: fix this also
+  /* TODO: fix this also */
   height: 140px;
 }
 
