@@ -6,7 +6,8 @@
     "serve": "nodemon -r esm ./bin/www",
     "build": "gulp --require esm build",
     "start": "node -r esm ./bin/www",
-    "lint": "eslint --ext .js --ignore-path .gitignore ."
+    "lint": "yarn lint:js",
+    "lint:js": "eslint --ext .js --ignore-path .gitignore ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

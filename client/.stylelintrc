@@ -14,6 +14,7 @@
     "stylelint-no-indistinguishable-colors",
     "stylelint-a11y"
   ],
+  "defaultSeverity": "error",
   "rules": {
     "font-family-name-quotes": "always-where-recommended",
     "function-url-quotes": "always",

@@ -1,7 +1,0 @@
-{
-  "rules": {
-    "no-console": "error",
-    "no-unused-vars": "error",
-    "vue/no-unused-components": "error"
-  }
-}

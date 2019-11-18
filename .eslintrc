@@ -7,12 +7,16 @@
     "sourceType": "module"
   },
   "extends": [
-    "plugin:prettier/recommended",
+    "eslint-config-prettier",
     "prettier"
   ],
   "plugins": [
+    "eslint-plugin-prettier",
     "prettier"
   ],
+  "rules": {
+    "prettier/prettier": "error"
+  },
   "overrides": [
     // prevent prettier rules from messing up gulpfiles
     {

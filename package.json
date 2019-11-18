@@ -12,7 +12,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run lint -- -c .eslintrc.pre-commit.json"
+      "pre-commit": "lerna run lint"
     }
   },
   "devDependencies": {
