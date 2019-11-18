@@ -38,7 +38,7 @@ export default {
 .carnival-game-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 9 by 16 aspect ratio */
+  padding-bottom: 56.25%; // 9 by 16 aspect ratio
 }
 
 .carnival-game {

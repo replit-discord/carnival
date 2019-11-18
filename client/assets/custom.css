@@ -1,4 +1,4 @@
-/* these are injected into every component */
+// these are injected into every component
 
 $bg: color-mod($oc-gray-9 shade(25%));
 $bg-light: color-mod($oc-gray-9 tint(10%));

@@ -11,7 +11,7 @@
 <style lang="postcss" scoped>
 .scroll-responsive-wrapper {
   position: relative;
-  /* TODO: fix this also */
+  // TODO: fix this also
   height: 140px;
 }
 
@@ -23,7 +23,7 @@
   overflow: scroll;
 }
 
-/* TODO: Fix this */
+// TODO: Fix this
 .scroll-responsive-inner {
   display: grid;
   grid-gap: 10px;
