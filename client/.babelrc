@@ -1,7 +1,5 @@
 {
-  "presets": [
-
-  ],
+  "presets": [],
   "env": {
     "test": {
       "presets": [

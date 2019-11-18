@@ -46,6 +46,5 @@
   "vetur.format.defaultFormatter.postcss": "prettier",
   "vetur.format.defaultFormatter.js": "prettier-eslint",
   "vetur.format.styleInitialIndent": false,
-  "vetur.format.scriptInitialIndent": false,
-  "git.ignoreLimitWarning": true
+  "vetur.format.scriptInitialIndent": false
 }

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import NavItem from '~/components/partials/NavItem';
+import NavItem from '~/components/menus/NavItem';
 
 export default {
   components: {

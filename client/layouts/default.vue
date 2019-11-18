@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Heading from '~/components/partials/Heading';
+import Heading from '~/components/menus/Heading';
 
 export default {
   components: {

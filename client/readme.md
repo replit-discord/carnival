@@ -1,16 +1,11 @@
-# carnival
-
-> Carnival aims to create a single website to showcase neat games made by the community
+# client
 
 ## contributing
 
-### basic
+configuration should have been bootstrapped from the [main readme](../readme.md##contributing)'s `yarn bootstrap`
 
-```sh
-yarn install
-yarn dev
-```
+### linting and formatting
 
-### notes
+since you are (hopefully) using the `eslint` and `prettier` vscode extensions, they will automatically format your code when your document saves.
 
-um, you may have to install directly from `yarn.lock` if you cannot build the nuxt server / client. there were some issues with dependencies that had to be reverted in d8bab71d1fb888c6e6a225c159142b744db48da2. fixing this is on the todo
+note the eslint warnings. you must fix these or else the pre-commit check will fail. during development, we manually set some 'error' rules to 'warnings' for faster development. see `.eslintrc.pre-commit.json` for a full list of rules.
