@@ -55,7 +55,10 @@ export default {
 
   build: {
     postcss: {
+      syntax: 'postcss-scss',
       plugins: {
+        'postcss-strip-inline-comments': {},
+        'postcss-simple-extend': {},
         'postcss-simple-vars': {},
         'postcss-easings': {},
         'postcss-color-mod-function': {}
