@@ -52,12 +52,12 @@ export default {
 .carnival-game-inner {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
   background: $oc-gray-3;
+  border-radius: 5px;
 }
 
 h3 {
-  color: $oc-gray-9;
   padding: 5px;
+  color: $oc-gray-9;
 }
 </style>

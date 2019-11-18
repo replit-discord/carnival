@@ -70,8 +70,8 @@ export default {
 }
 
 h2 {
-  color: $oc-gray-9;
-  font-size: 2em;
   padding: 0 0 5px;
+  font-size: 2em;
+  color: $oc-gray-9;
 }
 </style>

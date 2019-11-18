@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrapper-wrapper">
     <div ref="headerWrapper" class="header-wrapper">
-      <header class="header">
+      <header class="header" aria-label="😏">
         <h1>Carnival</h1>
       </header>
       <!-- <nav class="navigation">
@@ -124,12 +124,10 @@ $headerBorderRadius: 5px;
 .header-wrapper-wrapper {
   position: fixed;
   z-index: 1000;
+  width: calc(100% - $headerMargin * 2);
   user-select: none;
   perspective: 5000px;
   border-radius: $headerBorderRadius;
-
-  width: calc(100% - $headerMargin * 2);
-
   transform: translateX($headerMargin) translateY($headerMargin);
 }
 
@@ -137,12 +135,10 @@ $headerBorderRadius: 5px;
   position: relative;
   display: block;
   height: $headerHeight;
-
   will-change: width, height;
   transform-style: preserve-3d;
-
-  box-shadow: 2px 4px 4px $oc-gray-4;
   border-radius: $headerBorderRadius;
+  box-shadow: 2px 4px 4px $oc-gray-4;
 }
 
 .header,
@@ -152,31 +148,29 @@ $headerBorderRadius: 5px;
   right: 0;
   bottom: 0;
   left: 0;
-
   backface-visibility: hidden;
   border-radius: $headerBorderRadius;
 }
 
 .header {
+  @extend shadow-large;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $bg;
-  @extend shadow-large;
   cursor: pointer;
+  background-color: $bg;
 }
 
 .header::before {
-  content: '😏';
-  font-size: 2rem;
   margin-right: 5px;
+  font-size: 2rem;
+  content: attr(aria-label);
 }
 
 .mouse-enter {
   position: absolute;
   width: calc(100% + $headerMargin * 2);
   height: 100px;
-
   transform: translateX(-$headerMargin) translateY($headerMargin);
 }
 

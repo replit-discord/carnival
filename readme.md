@@ -9,16 +9,12 @@ the project is in early development. if you have a suggestion, feel free to [add
 ```bash
 git clone https://github.com/repl-it-discord/carnival
 cd carnival
-yarn install && yarn bootstrap
-
-cd client
-yarn serve
-cd ..
-
-cd server
-yarn build && yarn serve
-cd ..
+yarn install
+yarn bootstrap
+yarn dev
 ```
+
+note that `yarn bootstrap` and `yarn dev` uses lerna, so you may want to run `yarn dev` for `./client` and `./server` in different windows for less messy output
 
 if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [stylelint](https://github.com/shinnn/vscode-stylelint), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; we have project-specific [`.vscode`](./.vscode/settings.json) settings
 

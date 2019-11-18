@@ -41,15 +41,16 @@ export default {
   display: inline-block;
   padding: 10px;
   margin: 20px;
-  border-radius: 5px;
-  background-color: $bg;
-  text-decoration: none;
-  color: white;
   font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  background-color: $bg;
+  border-radius: 5px;
   transition: background-color 100ms ease-in-out-quad;
 }
 
-.link:hover {
+.link:hover,
+.link:focus {
   background-color: color-mod($bg shade(50%));
   transition: background-color 100ms ease-in-out-quad;
 }

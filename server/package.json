@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "serve": "nodemon -r esm ./bin/www",
+    "dev": "nodemon -r esm ./bin/www",
     "build": "gulp --require esm build",
     "start": "node -r esm ./bin/www",
     "lint": "yarn lint:js",

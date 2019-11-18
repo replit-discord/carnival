@@ -68,9 +68,8 @@ export default {
         'postcss-strip-inline-comments': {},
         'postcss-simple-extend': {},
         'postcss-simple-vars': {},
-        // 'postcss-momentum-scrolling': {},
         'postcss-easings': {},
-        // 'postcss-easing-gradients': {},
+        'postcss-easing-gradients': {},
         'postcss-color-mod-function': {}
       },
       // postcss-preset-env config options
@@ -89,6 +88,9 @@ export default {
         configOverrides: {
           defaultSeverity: 'warning'
         },
+        fix: false,
+        emitError: false,
+        emitWarning: true,
         failOnError: false,
         failOnWarning: false
       })
@@ -113,7 +115,7 @@ export default {
 
       // enable auto-fix for eslint-loader
       config.module.rules.push({
-        enforce: 'pre', // checks source files not modified by other loaders (ex. bable-loader)
+        enforce: 'pre', // checks source files not modified by other loaders (ex. babel-loader)
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/,

@@ -5,10 +5,12 @@
   "license": "",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "dev": "lerna run dev --stream",
+    "build": "lerna run build --stream",
     "test": "yarn test",
-    "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "lerna run lint:js",
-    "lint:css": "lerna run lint:css"
+    "lint": "run-s lint:js lint:css",
+    "lint:js": "lerna run lint:js --streams",
+    "lint:css": "lerna run lint:css --stream"
   },
   "husky": {
     "hooks": {
@@ -18,9 +20,6 @@
   "devDependencies": {
     "husky": "^3.0.9",
     "lerna": "^3.18.4",
-    "postcss-easing-gradients": "^3.0.1",
-    "postcss-import": "^12.0.1",
-    "postcss-momentum-scrolling": "^1.9.15",
-    "postcss-normalize": "^8.0.1"
+    "npm-run-all": "^4.1.5"
   }
 }

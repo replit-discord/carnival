@@ -3,7 +3,10 @@
   "processors": [
     "@mapbox/stylelint-processor-arbitrary-tags"
   ],
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
   "plugins": [
     "stylelint-scss",
     "stylelint-value-no-unknown-custom-properties",
@@ -16,7 +19,13 @@
     "stylelint-a11y"
   ],
   "rules": {
-    "font-family-name-quotes": "always-where-recommended",
+    "no-empty-source": null,
+    "declaration-empty-line-before": "never",
+    "comment-empty-line-before": [ "always", {
+      "except": [ "first-nested" ],
+      "ignore": [ "stylelint-commands" ]
+    }],
+    "font-family-name-quotes": "always-unless-keyword",
     "function-url-quotes": "always",
     "selector-attribute-quotes": "always",
     "string-quotes": "single",
@@ -25,10 +34,15 @@
     "property-no-vendor-prefix": true,
     "media-feature-name-no-vendor-prefix": true,
     "at-rule-no-vendor-prefix": true,
+    "at-rule-no-unknown": [ true, {
+      "ignoreAtRules": [
+        "extend"
+      ]
+    }],
     "max-nesting-depth": 1,
     "selector-max-compound-selectors": 3,
     "max-line-length": 70,
-    "indentation": "tab",
+    "indentation": 2,
 
     "csstools/value-no-unknown-custom-properties": [ true, {
       "importFrom": [
@@ -37,7 +51,12 @@
     }],
     "images/broken": true,
     "images/prefer-data-uri": 128,
-    "plugin/no-low-performance-animation-properties": true,
+    "plugin/no-low-performance-animation-properties": [ true, {
+      "ignoreProperties": [
+        "background-color",
+        "color"
+      ]
+    }],
     "plugin/selector-tag-no-without-class": [
       "div",
       "span"
@@ -53,7 +72,7 @@
     "a11y/content-property-no-static-value": true,
     "a11y/font-size-is-readable": true,
     "a11y/line-height-is-vertical-rhythmed": true,
-    "a11y/media-prefers-reduced-motion": true,
+    "a11y/media-prefers-reduced-motion": null,
     "a11y/media-prefers-color-scheme": null,
     "a11y/no-display-none": true,
     "a11y/no-obsolete-attribute": true,

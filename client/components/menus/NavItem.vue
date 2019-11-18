@@ -48,11 +48,11 @@ export default {
 
 <style lang="postcss" scoped>
 .navitem-wrapper {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .navitem-link {
@@ -63,11 +63,10 @@ export default {
 
 .navitem {
   padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-
-  background-color: $bg-light;
-  transition: all 0.3s ease-out;
   list-style-type: none;
+  cursor: pointer;
+  background-color: $bg-light;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-out;
 }
 </style>

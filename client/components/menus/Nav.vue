@@ -39,13 +39,13 @@ export default {
 
 <style scoped>
 .nav {
-  height: 100%;
   display: grid;
   grid-auto-flow: row;
+  height: 100%;
 }
 
 .nav > * {
-  text-align: center;
   margin: auto;
+  text-align: center;
 }
 </style>
