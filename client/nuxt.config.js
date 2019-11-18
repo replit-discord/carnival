@@ -68,9 +68,9 @@ export default {
         'postcss-strip-inline-comments': {},
         'postcss-simple-extend': {},
         'postcss-simple-vars': {},
-        'postcss-momentum-scrolling': {},
+        // 'postcss-momentum-scrolling': {},
         'postcss-easings': {},
-        'postcss-easing-gradients': {},
+        // 'postcss-easing-gradients': {},
         'postcss-color-mod-function': {}
       },
       // postcss-preset-env config options

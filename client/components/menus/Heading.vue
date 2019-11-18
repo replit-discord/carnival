@@ -118,7 +118,7 @@ export default {
 
 <style lang="postcss" scoped>
 $headerHeight: 40px;
-$headerMargin: 7px; // the margin on left, top, and right of header
+$headerMargin: 7px; /* the margin on left, top, and right of header */
 $headerBorderRadius: 5px;
 
 .header-wrapper-wrapper {
