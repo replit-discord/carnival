@@ -1,4 +1,6 @@
-$oc-black: #000000;
+/* stylelint-disable plugin/stylelint-no-indistinguishable-colors */
+
+$oc-black: #000;
 
 $oc-gray-0: #f8f9fa;
 $oc-gray-1: #f1f3f5;

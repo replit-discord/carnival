@@ -1,7 +1,9 @@
 {
   "defaultSeverity": "error",
   "processors": [
-    "@mapbox/stylelint-processor-arbitrary-tags"
+    [ "@mapbox/stylelint-processor-arbitrary-tags", {
+      "fileFilterRegex": [ "\\.vue$" ]
+    }]
   ],
   "extends": [
     "stylelint-config-standard",
@@ -36,6 +38,7 @@
     "at-rule-no-vendor-prefix": true,
     "at-rule-no-unknown": [ true, {
       "ignoreAtRules": [
+        "define-placeholder",
         "extend"
       ]
     }],
@@ -66,7 +69,7 @@
     },
     "plugin/stylelint-selector-no-empty": true,
     "plugin/stylelint-no-indistinguishable-colors": [ true, {
-      "threshold": 5,
+      "threshold": 3,
       "allowEquivalentNotation": false
     }],
     "a11y/content-property-no-static-value": true,

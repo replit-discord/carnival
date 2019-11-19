@@ -32,10 +32,6 @@ cd server && yarn dev
 
 - if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [stylelint](https://github.com/shinnn/vscode-stylelint), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; we have project-specific [`.vscode`](./.vscode/settings.json) settings
 
-### linting
-
-wherever you work on the project, there will be linting errors. you *must* fix these or else the pre-commit check will fail. please do not bypass unless you have a solid reason to do so.
-
 ## license
 
 licensed under gnu gpl v2; see [details](https://github.com/repl-it-discord/carnival/wiki)
