@@ -6,17 +6,16 @@
   "parserOptions": {
     "parser": "babel-eslint"
   },
-  "extends": [
-    "@nuxtjs", // extends 'standard', 'plugin:vue/recommended'; plugins 'vue'
-    "plugin:nuxt/base", // nuxt base *rules*
-    "plugin:nuxt/recommended", // nuxt recommended *rules*
-    "eslint-config-prettier",
-    "prettier",
-    "prettier/vue"
-  ],
   "plugins": [
     "nuxt",
     "prettier"
+  ],
+  "extends": [
+    "@nuxtjs", // extends 'standard', 'plugin:vue/recommended'; plugins 'vue'
+    "plugin:nuxt/base",
+    "plugin:nuxt/recommended",
+    "prettier",
+    "prettier/vue"
   ],
   "rules": {
     "prettier/prettier": "error",

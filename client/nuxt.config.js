@@ -85,9 +85,6 @@ export default {
     plugins: [
       new StyleLintPlugin({
         files: '**/*.*{css,vue}',
-        configOverrides: {
-          defaultSeverity: 'warning'
-        },
         fix: false,
         emitError: false,
         emitWarning: true,

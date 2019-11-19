@@ -3,15 +3,17 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "extends": [
-    "eslint-config-prettier",
+  "plugins": [
+    "node",
+    "import",
+    "promise",
     "prettier"
   ],
-  "plugins": [
-    "eslint-plugin-prettier",
+  "extends": [
+    "standard",
     "prettier"
   ],
   "rules": {
