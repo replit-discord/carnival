@@ -7,7 +7,6 @@
     "generate": "nuxt generate",
     "build": "nuxt build",
     "start": "nuxt start",
-    "gulp": "gulp --require esm",
     "lint": "run-s lint:js lint:css",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:css": "stylelint -s scss '**/*.{vue,css}'"

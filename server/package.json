@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "nodemon -r esm ./bin/www",
-    "build": "gulp --require esm build",
     "start": "node -r esm ./bin/www",
     "lint": "yarn lint:js",
     "lint:js": "eslint --ext .js --ignore-path .gitignore ."

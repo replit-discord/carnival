@@ -10,6 +10,7 @@ async function generateAssets() {
     })
     .catch(err => {
       console.error(err);
+      process.exitCode = err.code;
     });
 }
 
@@ -19,5 +20,4 @@ async function copyAssets() {
     .pipe(dest('public/img/game-image'));
 }
 
-const build = series(generateAssets, copyAssets);
-export { build };
+export { generateAssets, copyAssets };
