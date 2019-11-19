@@ -1,11 +1,10 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-const logger = require('morgan');
 
 import apiRouter from './routes/api';
+const logger = require('morgan');
 
-const isDev = process.env.NODE_ENV === 'development';
 const app = express();
 
 app.use(logger('dev'));

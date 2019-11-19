@@ -1,6 +1,6 @@
 import { promisify } from 'util';
 import { exec } from 'child_process';
-import { src, dest, series } from 'gulp';
+import { src, dest } from 'gulp';
 import plumber from 'gulp-plumber';
 
 async function generateAssets() {

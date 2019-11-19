@@ -1,11 +1,12 @@
 import express from 'express';
 import { Pool, Client } from 'pg';
 import jwt from 'jsonwebtoken';
-let { jwtKey } = require('../../../../config');
+const { jwtKey } = require('../../../../config');
 
 const router = express.Router();
 
-const dbPool = new Pool({
+// eslint-disable-next-line no-new
+new Pool({
   // user: 'dbuser',
   // host: 'database.server.com',
   // database: 'mydb',
@@ -20,17 +21,16 @@ dbClient.connect().catch(err => {
 });
 
 const authorize = (req, res, next) => {
-  if (req.headers.authorization && req.body['username']) {
-    if (req.headers.authorization.split(' ').shift() == 'Bearer') {
+  if (req.headers.authorization && req.body.username) {
+    if (req.headers.authorization.split(' ').shift() === 'Bearer') {
       dbClient
         .query(`SELECT user_name FROM users WHERE secret_id=$1;`, [
-          jwt.verify(req.headers.authorization.split(' ').pop(), jwtKey)[
-            'secret_id'
-          ]
+          jwt.verify(req.headers.authorization.split(' ').pop(), jwtKey)
+            .secret_id
         ])
         .then(result => {
           if (result.rowCount > 0) {
-            if (result.rows[0]['user_name'] == req.body['username']) {
+            if (result.rows[0].user_name === req.body.username) {
               next();
             } else {
               res.status(404).json({ error: 'Invalid credentials provided.' });
@@ -56,10 +56,10 @@ const authorize = (req, res, next) => {
 };
 
 router.get('/is-authorized', function(req, res, next) {
-  if (req.cookies['token']) {
+  if (req.cookies.token) {
     dbClient
       .query(`SELECT * FROM users where secret_id=$1;`, [
-        jwt.verify(req.cookies['token'], jwtKey)['secret_id']
+        jwt.verify(req.cookies.token, jwtKey).secret_id
       ])
       .then(result => {
         if (result.rowCount > 0) {
@@ -80,11 +80,11 @@ router.get('/is-authorized', function(req, res, next) {
 });
 
 router.post('/update-data', authorize, async (req, res) => {
-  if (req.body['userEmail'])
+  if (req.body.userEmail)
     await dbClient
       .query(`UPDATE users SET user_email=$1 WHERE user_name=$2;`, [
-        req.body['userEmail'],
-        req.body['username']
+        req.body.userEmail,
+        req.body.username
       ])
       .catch(err => {
         res.status(500).json({
@@ -93,12 +93,12 @@ router.post('/update-data', authorize, async (req, res) => {
         });
       });
 
-  if (req.body['userPreferences']) {
-    console.log(JSON.stringify(req.body['userPreferences']));
+  if (req.body.userPreferences) {
+    console.log(JSON.stringify(req.body.userPreferences));
     await dbClient
       .query(`UPDATE users SET user_preferences=$1::json WHERE user_name=$2;`, [
-        JSON.stringify(req.body['userPreferences']),
-        req.body['username']
+        JSON.stringify(req.body.userPreferences),
+        req.body.username
       ])
       .catch(err => {
         res.status(500).json({
@@ -116,7 +116,7 @@ router.post('/update-data', authorize, async (req, res) => {
 router.get('/check/:username', function(req, res) {
   dbClient
     .query(`SELECT user_email FROM users WHERE user_name=$1;`, [
-      req.params['username']
+      req.params.username
     ])
     .then(result => {
       if (result.rowCount > 0) res.send('true');

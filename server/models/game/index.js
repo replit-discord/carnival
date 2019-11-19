@@ -17,8 +17,8 @@ GameModel.findByName = function(gameName) {
 };
 
 GameModel.findById = function(gameId) {
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  let gameName = alphabet.charAt(gameId - 1);
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const gameName = alphabet.charAt(gameId - 1);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({

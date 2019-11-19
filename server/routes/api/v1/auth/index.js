@@ -1,19 +1,20 @@
 import express from 'express';
 import { Pool, Client } from 'pg';
 const { discoId, discoSecret, jwtKey } = require('../../../../config');
-const discoOAuthClient = require('disco-oauth');
-const discoClient = new discoOAuthClient(discoId, discoSecret);
+const DiscoOauthClient = require('disco-oauth');
+const discoClient = new DiscoOauthClient(discoId, discoSecret);
 
 const shortid = require('shortid');
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
-let defaultPreferences = {
+const defaultPreferences = {
   darkMode: true
 };
 
-const dbPool = new Pool({
+// eslint-disable-next-line no-new
+new Pool({
   // user: 'dbuser',
   // host: 'database.server.com',
   // database: 'mydb',
@@ -35,9 +36,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/auth/:action/:provider', (req, res) => {
-  switch (req.params['provider'].toLowerCase()) {
+  switch (req.params.provider.toLowerCase()) {
     case 'discord':
-      if (req.params['action'] == 'register')
+      if (req.params.action === 'register')
         discoClient.setRedirect('http://localhost:3000/register/discord');
       else discoClient.setRedirect('http://localhost:3000/login/discord');
       res.redirect(discoClient.getAuthCodeLink());
@@ -46,10 +47,13 @@ router.get('/auth/:action/:provider', (req, res) => {
 });
 
 router.get('/login/:provider', async (req, res) => {
-  switch (req.params['provider'].toLowerCase()) {
+  let k;
+  let user;
+
+  switch (req.params.provider.toLowerCase()) {
     case 'discord':
-      let k = await discoClient.getAccess(req.query.code);
-      let user = await discoClient.getAuthorizedUser(k);
+      k = await discoClient.getAccess(req.query.code);
+      user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
         dbClient
           .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
@@ -73,10 +77,13 @@ router.get('/login/:provider', async (req, res) => {
 });
 
 router.get('/register/:provider', async (req, res) => {
-  switch (req.params['provider'].toLowerCase()) {
+  let k;
+  let user;
+
+  switch (req.params.provider.toLowerCase()) {
     case 'discord':
-      let k = await discoClient.getAccess(req.query.code);
-      let user = await discoClient.getAuthorizedUser(k);
+      k = await discoClient.getAccess(req.query.code);
+      user = await discoClient.getAuthorizedUser(k);
       if (user.email) {
         dbClient
           .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
@@ -98,11 +105,7 @@ router.get('/register/:provider', async (req, res) => {
 });
 
 router.post('/final/submit', (req, res) => {
-  if (
-    req.body['username'] &&
-    req.body['username'] !== '' &&
-    req.cookies['email']
-  ) {
+  if (req.body.username && req.body.username !== '' && req.cookies.email) {
     var newId = shortid.generate();
     dbClient
       .query(
@@ -110,8 +113,8 @@ router.post('/final/submit', (req, res) => {
                   VALUES($1, $2, $3, $4)`,
         [
           newId,
-          req.body['username'],
-          req.cookies['email'],
+          req.body.username,
+          req.cookies.email,
           JSON.stringify(defaultPreferences)
         ]
       )
