@@ -16,7 +16,7 @@ yarn install
 # lerna bootstrap
 yarn bootstrap
 
-# install pillow (used by `yarn setup`)
+# install pillow (used by `make setup`)
 pip install --user Pillow
 
 # create and build assets required for the server to start
@@ -26,7 +26,7 @@ make setup
 yarn dev
 
 # as an alternative to `yarn dev`, you can build and serve the frontend statically. only do this if you are not yourself making code changes to the client and you want to save on system resources.
-make setup-alternate
+make setup-additional
 cd server && yarn dev
 ```
 

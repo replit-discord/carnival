@@ -18,16 +18,5 @@
   ],
   "rules": {
     "prettier/prettier": "error"
-  },
-  "overrides": [
-    // prevent prettier rules from messing up gulpfiles
-    {
-      "files": ["*gulpfile*"],
-      "rules": {
-        "prettier/prettier": "off",
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"]
-      }
-    }
-  ]
+  }
 }
