@@ -1,4 +1,4 @@
-.PHONY: setup setup-alternate
+.PHONY: setup setup-additional
 
 # setup
 # 1. uses pillow to generate mock assets (images for games)

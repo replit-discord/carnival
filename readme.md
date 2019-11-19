@@ -6,17 +6,35 @@ the project is in early development. if you have a suggestion, feel free to [add
 
 ## contributing
 
+### installation
+
 ```bash
 git clone https://github.com/repl-it-discord/carnival
 cd carnival
 yarn install
+
+# lerna bootstrap
 yarn bootstrap
+
+# install pillow (used by `yarn setup`)
+pip install --user Pillow
+
+# create and build assets required for the server to start
+make setup
+
+# runs `yarn dev` in for both `./client` and `./server` folders
 yarn dev
+
+# as an alternative to `yarn dev`, you can build and serve the frontend statically. only do this if you are not yourself making code changes to the client and you want to save on system resources.
+make setup-alternate
+cd server && yarn dev
 ```
 
-note that `yarn bootstrap` and `yarn dev` uses lerna, so you may want to run `yarn dev` for `./client` and `./server` in different windows for less messy output
+- if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [stylelint](https://github.com/shinnn/vscode-stylelint), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; we have project-specific [`.vscode`](./.vscode/settings.json) settings
 
-if you are using vscode, ensure you have the [editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [stylelint](https://github.com/shinnn/vscode-stylelint), [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), and [vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extensions; we have project-specific [`.vscode`](./.vscode/settings.json) settings
+### linting
+
+wherever you work on the project, there will be linting errors. you *must* fix these or else the pre-commit check will fail. please do not bypass unless you have a solid reason to do so.
 
 ## license
 
