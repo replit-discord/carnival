@@ -84,6 +84,7 @@ export default {
     // extend webpack config
     plugins: [
       new StyleLintPlugin({
+        syntax: 'scss',
         files: '**/*.*{css,vue}',
         fix: false,
         emitError: false,
