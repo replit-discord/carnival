@@ -9,7 +9,7 @@
         <div ref="close" @click="shrinkHeader" class="close">x</div>
       </nav> -->
     </div>
-    <div class="mouse-enter"></div>
+    <div class="mouse-enter" />
   </div>
 </template>
 
@@ -94,8 +94,9 @@ export default {
       }
 
       // maximixe the header offset to 20
-      if (Math.abs(this.headerOffset) > 7.9)
+      if (Math.abs(this.headerOffset) > 7.9) {
         translateBy = Math.sign(this.headerOffset) === 1 ? 8 : -8;
+      }
 
       anime({
         targets: this.$refs.headerWrapper,

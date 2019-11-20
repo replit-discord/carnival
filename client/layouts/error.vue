@@ -2,7 +2,9 @@
   <div class="error">
     <span class="emoji">🤪</span>
     <h1>{{ errorMessage }}</h1>
-    <nuxt-link to="/" class="link">return home</nuxt-link>
+    <nuxt-link to="/" class="link">
+      return home
+    </nuxt-link>
   </div>
 </template>
 

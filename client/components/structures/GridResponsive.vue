@@ -1,6 +1,6 @@
 <template>
   <section>
-    <slot></slot>
+    <slot />
   </section>
 </template>
 

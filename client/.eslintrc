@@ -4,7 +4,10 @@
     "node": true
   },
   "parserOptions": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
   },
   "plugins": [
     "nuxt",
@@ -18,8 +21,7 @@
     "prettier/vue"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "prefer-const": "off"
+    "prettier/prettier": "error"
   },
   "overrides": [
     // prevent prettier rules from messing up gulpfiles

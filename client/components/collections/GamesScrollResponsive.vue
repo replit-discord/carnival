@@ -2,11 +2,7 @@
   <div class="games-random">
     <h2>{{ sectionTitle }}</h2>
     <ScrollResponsive>
-      <CarnivalGame
-        v-for="game in games"
-        :key="game.id"
-        :game="game"
-      ></CarnivalGame>
+      <CarnivalGame v-for="game in games" :key="game.id" :game="game" />
     </ScrollResponsive>
   </div>
 </template>

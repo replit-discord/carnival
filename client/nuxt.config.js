@@ -110,21 +110,28 @@ export default {
           }
         });
       });
-
       // enable auto-fix for eslint-loader
-      config.module.rules.push({
-        enforce: 'pre', // checks source files not modified by other loaders (ex. babel-loader)
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/,
-        options: {
-          fix: true,
-          emitError: false,
-          emitWarning: true,
-          failOnError: false,
-          failOnWarning: false
-        }
-      });
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre', // checks source files not modified by other loaders (ex. babel-loader)
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/,
+          options: {
+            fix: true,
+            emitError: false,
+            emitWarning: true,
+            failOnError: false,
+            failOnWarning: false,
+            // eslint options (https://github.com/nuxt/eslint-config/blob/33a724d6bc0058e3048b41bde1f026f8760d9fb6/packages/eslint-config/index.js#L48 is somehow noe being uesd)
+            // overriding these rules is a workaround
+            rules: {
+              'no-console': 'warn',
+              'no-debugger': 'warn'
+            }
+          }
+        });
+      }
     }
   }
 };

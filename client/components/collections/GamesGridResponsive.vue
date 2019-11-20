@@ -2,11 +2,7 @@
   <div class="games-popular">
     <h2>{{ sectionTitle }}</h2>
     <GridResponsive>
-      <CarnivalGame
-        v-for="game in games"
-        :key="game.id"
-        :game="game"
-      ></CarnivalGame>
+      <CarnivalGame v-for="game in games" :key="game.id" :game="game" />
     </GridResponsive>
   </div>
 </template>

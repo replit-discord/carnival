@@ -2,7 +2,7 @@
   <section class="scroll-responsive-wrapper">
     <div class="scroll-responsive">
       <div class="scroll-responsive-inner">
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </section>
