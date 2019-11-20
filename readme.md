@@ -25,7 +25,9 @@ make setup
 # runs `yarn dev` in for both `./client` and `./server` folders
 yarn dev
 
-# as an alternative to `yarn dev`, you can build and serve the frontend statically. only do this if you are not yourself making code changes to the client and you want to save on system resources.
+# as an alternative to `yarn dev`, you can build and serve the frontendstatically
+# only do this if you are not yourself making code changes to the client and you
+# want to save on system resources.
 make setup-additional
 cd server && yarn dev
 ```
