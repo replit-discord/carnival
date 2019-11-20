@@ -21,6 +21,7 @@
     "stylelint-a11y"
   ],
   "rules": {
+    "unicode-bom": "never",
     "no-empty-source": null,
     "declaration-empty-line-before": "never",
     "comment-empty-line-before": [ "always", {
@@ -47,11 +48,19 @@
     "max-line-length": 70,
     "indentation": 2,
 
-    "csstools/value-no-unknown-custom-properties": [ true, {
-      "importFrom": [
-        "./assets/custom.css"
+    "scss/dollar-variable-colon-space-after": "always",
+    "scss/dollar-variable-no-missing-interpolation": true,
+    "scss/double-slash-comment-empty-line-before": [ "always", {
+      "except": [
+        "first-nested"
+      ],
+      "ignore": [
+        "between-comments",
+        "stylelint-commands"
       ]
     }],
+    "scss/no-duplicate-dollar-variables": true,
+    "csstools/value-no-unknown-custom-properties": true,
     "images/broken": true,
     "images/prefer-data-uri": 128,
     "plugin/no-low-performance-animation-properties": [ true, {
@@ -75,8 +84,6 @@
     "a11y/content-property-no-static-value": true,
     "a11y/font-size-is-readable": true,
     "a11y/line-height-is-vertical-rhythmed": true,
-    "a11y/media-prefers-reduced-motion": null,
-    "a11y/media-prefers-color-scheme": null,
     "a11y/no-display-none": true,
     "a11y/no-obsolete-attribute": true,
     "a11y/no-obsolete-element": true,
