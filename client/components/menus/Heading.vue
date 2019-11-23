@@ -1,13 +1,12 @@
 <template>
-  <div class="header-wrapper-wrapper">
-    <div ref="headerWrapper" class="header-wrapper">
-      <header class="header" aria-label="😏">
-        <h1>Carnival</h1>
-      </header>
-      <!-- <nav class="navigation">
+  <div class="header-wrapper">
+    <div ref="header" class="header">
+      <div class="combination-mark">
+        <h1 class="wordmark">Carnival</h1>
+      </div>
+      <nav class="navigation">
         <Navbar />
-        <div ref="close" @click="shrinkHeader" class="close">x</div>
-      </nav> -->
+      </nav>
     </div>
     <div class="mouse-enter" />
   </div>
@@ -16,12 +15,12 @@
 <script>
 import { throttle, debounce } from 'lodash';
 import anime from 'animejs';
-// import Navbar from './Nav';
+import Navbar from './Nav';
 
 export default {
-  // components: {
-  //   Navbar
-  // },
+  components: {
+    Navbar
+  },
   data() {
     return {
       previousScrollOffset: 0,
@@ -99,7 +98,7 @@ export default {
       }
 
       anime({
-        targets: this.$refs.headerWrapper,
+        targets: this.$refs.header,
         translateY: translateBy,
         // the spring velocity (2.8) is fine tuned to the value we change this.headerOffset by (3) and our debounce (200)
         easing: 'spring(1, 100, 10, 3)'
@@ -108,7 +107,7 @@ export default {
     endBounceHeader() {
       this.headerOffset = 0;
       anime({
-        targets: this.$refs.headerWrapper,
+        targets: this.$refs.header,
         translateY: 0,
         easing: 'spring(1, 100, 10, 0)'
       });
@@ -118,11 +117,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-$headerHeight: 40px;
 $headerMargin: 7px; /* the margin on left, top, and right of header */
 $headerBorderRadius: 5px;
 
-.header-wrapper-wrapper {
+.header-wrapper {
   position: fixed;
   z-index: 1000;
   width: calc(100% - $headerMargin * 2);
@@ -132,40 +130,30 @@ $headerBorderRadius: 5px;
   transform: translateX($headerMargin) translateY($headerMargin);
 }
 
-.header-wrapper {
-  position: relative;
-  display: block;
-  height: $headerHeight;
-  will-change: width, height;
-  transform-style: preserve-3d;
+.header {
+  display: flex;
   border-radius: $headerBorderRadius;
   box-shadow: 2px 4px 4px $oc-gray-4;
 }
 
-.header,
-.navigation {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  backface-visibility: hidden;
-  border-radius: $headerBorderRadius;
-}
-
-.header {
+.combination-mark {
   @extend shadow-large;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2px;
+  margin: 4px;
   cursor: pointer;
   background-color: $bg;
+  border-radius: 3px;
 }
 
-.header::before {
-  margin-right: 5px;
-  font-size: 2rem;
-  content: attr(aria-label);
+.wordmark {
+  color: $text;
+}
+
+.navigation {
+  /* margin: 7px 10px; */
 }
 
 .mouse-enter {
@@ -173,9 +161,5 @@ $headerBorderRadius: 5px;
   width: calc(100% + $headerMargin * 2);
   height: 100px;
   transform: translateX(-$headerMargin) translateY($headerMargin);
-}
-
-h1 {
-  color: $text;
 }
 </style>

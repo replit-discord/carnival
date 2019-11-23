@@ -1,7 +1,7 @@
 <template>
   <li class="navitem-wrapper">
     <nuxt-link :to="to" class="navitem-link">
-      <div @click="shrinkHeader" class="navitem">
+      <div class="navitem">
         <h2>{{ name }}</h2>
       </div>
     </nuxt-link>
@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import anime from 'animejs';
-
 export default {
   props: {
     name: {
@@ -20,27 +18,6 @@ export default {
     to: {
       type: String,
       default: () => '/unresolved-link'
-    }
-  },
-  methods: {
-    // to do - keep dry and not copy paste from Heading.vue
-    shrinkHeader() {
-      anime({
-        targets: '.header-wrapper-wrapper',
-        translateX: 10,
-        translateY: 10,
-        easing: 'spring(1, 100, 90, 10)'
-      });
-
-      anime({
-        targets: '.header-wrapper',
-        translateX: 0,
-        translateY: 0,
-        rotateY: '0deg',
-        width: 190,
-        height: 60,
-        easing: 'spring(1, 100, 90, 8)'
-      });
     }
   }
 };
@@ -53,6 +30,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
+  margin: 0 5px;
 }
 
 .navitem-link {
@@ -62,7 +40,7 @@ export default {
 }
 
 .navitem {
-  padding: 10px 20px;
+  padding: 5px;
   list-style-type: none;
   cursor: pointer;
   background-color: $bg-light;

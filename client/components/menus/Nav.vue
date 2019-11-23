@@ -1,11 +1,11 @@
 <template>
   <ul class="nav">
-    <nav-item
+    <NavItem
       v-for="d in navigationData"
       :key="d.name"
       :name="d.name"
       :to="d.to"
-    ></nav-item>
+    ></NavItem>
   </ul>
 </template>
 
@@ -14,7 +14,7 @@ import NavItem from '~/components/menus/NavItem';
 
 export default {
   components: {
-    'nav-item': NavItem
+    NavItem
   },
   data() {
     return {
@@ -39,13 +39,8 @@ export default {
 
 <style scoped>
 .nav {
-  display: grid;
-  grid-auto-flow: row;
+  display: flex;
+  align-items: center;
   height: 100%;
-}
-
-.nav > * {
-  margin: auto;
-  text-align: center;
 }
 </style>
