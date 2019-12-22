@@ -1,6 +1,9 @@
 {
   // genral
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 
   // editorconfig.editorconfig (no modified settings)
 
@@ -11,21 +14,11 @@
   // dbaeumer.vscode-eslint
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
-  "eslint.autoFixOnSave": true,
   "eslint.quiet": false,
   "eslint.validate": [
-    {
-      "language": "vue",
-      "autoFix": true
-    },
-    {
-      "language": "html",
-      "autoFix": true
-    },
-    {
-      "language": "javascript",
-      "autoFix": true
-    }
+    "vue",
+    "html",
+    "javacsript"
   ],
   "eslint.workingDirectories": [
     {
