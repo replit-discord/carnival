@@ -1,5 +1,5 @@
 {
-  // genral
+  // general
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -15,11 +15,7 @@
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.quiet": false,
-  "eslint.validate": [
-    "vue",
-    "html",
-    "javacsript"
-  ],
+  "eslint.validate": ["vue", "html", "javacsript"],
   "eslint.workingDirectories": [
     {
       "directory": "./client",
