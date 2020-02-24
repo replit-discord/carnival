@@ -9,7 +9,8 @@
     "start": "nuxt start",
     "lint": "run-s lint:js lint:css",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint:css": "stylelint -s scss '**/*.{vue,css}'"
+    "lint:css": "stylelint '**/*.{vue,css}'",
+    "lint:css:fix": "stylelint --fix '**/*.{vue,css}'"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
