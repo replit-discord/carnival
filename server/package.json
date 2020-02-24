@@ -6,7 +6,9 @@
     "dev": "nodemon -r esm ./bin/www",
     "start": "node -r esm ./bin/www",
     "lint": "yarn lint:js",
-    "lint:js": "eslint --ext .js --ignore-path .gitignore ."
+    "lint:fix": "yarn lint:js:fix",
+    "lint:js": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:js:fix": "eslint --ext .js --ignore-path .gitignore --fix ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

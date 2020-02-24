@@ -7,6 +7,7 @@
     "dev": "lerna run dev --stream",
     "build": "lerna run build --stream",
     "lint": "run-s lint:js lint:css",
+    "lint:fix": "lerna run lint:fix",
     "lint:js": "lerna run lint:js --stream",
     "lint:css": "lerna run lint:css --stream"
   },
