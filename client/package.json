@@ -8,7 +8,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "lint": "run-s lint:js lint:css",
+    "lint:fix": "run-s lint:js:fix lint:css:fix",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint:js:fix": "eslint --ext .js,.vue --ignore-path .gitignore --fix .",
     "lint:css": "stylelint '**/*.{vue,css}'",
     "lint:css:fix": "stylelint --fix '**/*.{vue,css}'"
   },
