@@ -9,7 +9,7 @@ GameModel.findByName = function(gameName) {
         name: gameName, // hyphen case
         title: `the ${gameName}`, // name with spaces
         author: `author ${gameName}`,
-        desc: `description of game ${gameName}`,
+        desc: `Fairly long description of the game ${gameName}, which gives a brief overview of things`,
         img: `/img/game-image/${gameName}.jpg`
       });
     }, 100);
@@ -26,7 +26,7 @@ GameModel.findById = function(gameId) {
         name: gameName, // hyphen case
         title: `the ${gameName}`, // name with spaces
         author: `author ${gameName}`,
-        desc: `description of game ${gameName}`,
+        desc: `Fairly long description of the game ${gameName}, which gives a brief overview of things`,
         img: `/img/game-image/${gameName}.jpg`
       });
     }, 100);

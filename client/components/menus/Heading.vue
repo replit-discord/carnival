@@ -1,9 +1,9 @@
 <template>
   <div class="header-wrapper">
     <div ref="header" class="header">
-      <div class="combination-mark">
+      <!-- <div class="combination-mark">
         <h1 class="wordmark">Carnival</h1>
-      </div>
+      </div> -->
       <nav class="navigation">
         <Navbar />
       </nav>
@@ -15,7 +15,7 @@
 <script>
 import { throttle, debounce } from 'lodash';
 import anime from 'animejs';
-import Navbar from './Nav';
+import Navbar from './Navbar';
 
 export default {
   components: {
@@ -125,15 +125,17 @@ $headerBorderRadius: 5px;
   z-index: 1000;
   width: calc(100% - $headerMargin * 2);
   user-select: none;
-  perspective: 5000px;
   border-radius: $headerBorderRadius;
   transform: translateX($headerMargin) translateY($headerMargin);
+  perspective: 5000px;
 }
 
 .header {
   display: flex;
+  background: linear-gradient(to left, #e66465, #9198e5);
   border-radius: $headerBorderRadius;
-  box-shadow: 2px 4px 4px $oc-gray-4;
+
+  /* box-shadow: 2px 4px 4px $oc-gray-4; */
 }
 
 .combination-mark {

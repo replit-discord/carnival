@@ -2,7 +2,7 @@
   <li class="navitem-wrapper">
     <nuxt-link :to="to" class="navitem-link">
       <div class="navitem">
-        <h2>{{ name }}</h2>
+        <h1>{{ name }}</h1>
       </div>
     </nuxt-link>
   </li>
@@ -41,10 +41,15 @@ export default {
 
 .navitem {
   padding: 5px;
+  margin: 5px 0;
   list-style-type: none;
   cursor: pointer;
   background-color: $bg-light;
   border-radius: 5px;
   transition: background-color 0.3s ease-out;
+}
+
+h1 {
+  color: $oc-gray-4;
 }
 </style>

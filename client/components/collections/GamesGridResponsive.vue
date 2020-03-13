@@ -1,5 +1,5 @@
 <template>
-  <div class="games-popular">
+  <div class="games-grid-responsive">
     <h2>{{ sectionTitle }}</h2>
     <GridResponsive>
       <CarnivalGame v-for="game in games" :key="game.id" :game="game" />
@@ -29,3 +29,9 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+.games-grid-responsive {
+  margin-bottom: 15px;
+}
+</style>

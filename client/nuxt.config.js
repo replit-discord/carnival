@@ -85,7 +85,7 @@ export default {
     plugins: [
       new StyleLintPlugin({
         files: '**/*.*{css,vue}',
-        fix: false,
+        fix: true,
         emitError: false,
         emitWarning: true,
         failOnError: false,
@@ -118,15 +118,14 @@ export default {
           exclude: /node_modules/,
           options: {
             fix: true,
-            emitError: false,
+            emitError: true,
             emitWarning: true,
-            failOnError: false,
-            failOnWarning: false,
+            cache: true,
             // eslint options (https://github.com/nuxt/eslint-config/blob/33a724d6bc0058e3048b41bde1f026f8760d9fb6/packages/eslint-config/index.js#L48 is somehow noe being uesd)
             // overriding these rules is a workaround
             rules: {
-              'no-console': 'warn',
-              'no-debugger': 'warn'
+              'no-console': 'off',
+              'no-debugger': 'off'
             }
           }
         });

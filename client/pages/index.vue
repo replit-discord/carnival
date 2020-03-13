@@ -68,10 +68,4 @@ export default {
 .game-list {
   margin: 0 10px;
 }
-
-h2 {
-  padding: 0 0 5px;
-  font-size: 2em;
-  color: $oc-gray-9;
-}
 </style>

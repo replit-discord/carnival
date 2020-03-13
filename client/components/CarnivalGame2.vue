@@ -24,10 +24,6 @@ export default {
         desc: 'description',
         img: 'image'
       })
-    },
-    heightOverride: {
-      type: String,
-      default: () => '500px'
     }
   }
 };
