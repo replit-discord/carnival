@@ -9,9 +9,6 @@
 </template>
 
 <style lang="postcss" scoped>
-.scroll-responsive-wrapper {
-}
-
 .scroll-responsive {
   display: grid;
   grid-auto-rows: 200px;
