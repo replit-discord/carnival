@@ -5,12 +5,6 @@
     "source.fixAll.eslint": true
   },
 
-  // editorconfig.editorconfig (no modified settings)
-
-  // esbenp.prettier-vscode (no modified settings)
-
-  // shinnn.stylelint (no modified settings)
-
   // dbaeumer.vscode-eslint
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
