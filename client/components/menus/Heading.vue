@@ -2,7 +2,7 @@
   <div class="header-wrapper">
     <div ref="header" class="header">
       <!-- <div class="combination-mark">
-        <h1 class="wordmark">Carnival</h1>
+        <Title class="wordmark">Carnival</Title>
       </div> -->
       <nav class="navigation">
         <Navbar />
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+// import Title from '~/components/text/Title'
 import { throttle, debounce } from 'lodash';
 import anime from 'animejs';
 import Navbar from './Navbar';

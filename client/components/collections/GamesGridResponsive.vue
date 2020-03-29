@@ -1,6 +1,6 @@
 <template>
   <div class="games-grid-responsive">
-    <h2>{{ sectionTitle }}</h2>
+    <Subheading>{{ sectionTitle }}</Subheading>
     <GridResponsive>
       <CarnivalGame v-for="game in games" :key="game.id" :game="game" />
     </GridResponsive>
@@ -8,12 +8,15 @@
 </template>
 
 <script>
+import Subheading from '~/components/text/Subheading';
+
 import CarnivalGame from '~/components/CarnivalGame';
 import GridResponsive from '~/components/structures/GridResponsive';
 
 export default {
   name: 'GamesPopular',
   components: {
+    Subheading,
     CarnivalGame,
     GridResponsive
   },

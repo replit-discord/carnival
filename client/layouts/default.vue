@@ -48,24 +48,4 @@ h5,
 h6 {
   font-family: 'Asap', sans-serif;
 }
-
-h2 {
-  margin: 5px 0;
-  font-size: 36px;
-}
-
-h3 {
-  margin: 5px 0;
-  font-size: 28px;
-}
-
-h4 {
-  margin: 3px 0;
-  font-size: 26px;
-}
-
-h5 {
-  margin: 2px 0;
-  font-size: 24px;
-}
 </style>

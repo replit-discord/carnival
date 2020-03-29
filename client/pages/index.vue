@@ -2,6 +2,8 @@
   <div class="container">
     <FeaturedGame />
     <div class="game-list">
+      <Subheading>Popular</Subheading>
+      <GridResponsive> </GridResponsive>
       <GamesGridResponsive :games="popular" section-title="Popular" />
       <GamesScrollResponsive :games="random" section-title="Random" />
       <GamesScrollResponsive
@@ -15,12 +17,16 @@
 </template>
 
 <script>
+import Subheading from '~/components/text/Subheading';
 import FeaturedGame from '~/components/FeaturedGame';
+import GridResponsive from '~/components/structures/ScrollResponsive';
 import GamesGridResponsive from '~/components/collections/GamesGridResponsive';
 import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
 
 export default {
   components: {
+    Subheading,
+    GridResponsive,
     GamesGridResponsive,
     GamesScrollResponsive,
     FeaturedGame

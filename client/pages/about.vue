@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="gradient"></div>
-    <h1>about</h1>
+    <Heading>About</Heading>
     <p>
       Carnival aims to create a single website to showcase neat games made by
       the community. Games span across many genres - some even have multiplayer
@@ -9,6 +9,16 @@
     </p>
   </div>
 </template>
+
+<script>
+import Heading from '~/components/text/Heading';
+
+export default {
+  components: {
+    Heading
+  }
+};
+</script>
 
 <style lang="postcss" scoped>
 .gradient {

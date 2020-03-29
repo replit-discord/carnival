@@ -1,7 +1,7 @@
 <template>
   <div class="error">
     <span class="emoji">🤪</span>
-    <h1>{{ errorMessage }}</h1>
+    <Title>{{ errorMessage }}</Title>
     <nuxt-link to="/" class="link">
       return home
     </nuxt-link>
@@ -9,7 +9,12 @@
 </template>
 
 <script>
+import Title from '~/components/text/Title';
+
 export default {
+  components: {
+    Title
+  },
   props: {
     error: {
       type: Object,
