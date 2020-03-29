@@ -11,30 +11,30 @@
     "lint:js:fix": "eslint --ext .js --ignore-path .gitignore --fix ."
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
+    "cookie-parser": "~1.4.5",
+    "debug": "~4.1.1",
     "disco-oauth": "^2.9.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "express": "~4.16.0",
+    "express": "~4.17.1",
     "http-status-codes": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
-    "morgan": "~1.9.0",
-    "nodemon": "^1.19.1",
-    "pg": "^7.11.0",
-    "shortid": "^2.2.14"
+    "morgan": "~1.10.0",
+    "nodemon": "^2.0.2",
+    "pg": "^7.18.2",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-plumber": "^1.2.1",
-    "prettier": "^1.18.2"
+    "prettier": "^2.0.2"
   }
 }

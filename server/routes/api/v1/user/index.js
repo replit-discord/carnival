@@ -55,7 +55,7 @@ const authorize = (req, res, next) => {
   }
 };
 
-router.get('/is-authorized', function(req, res, next) {
+router.get('/is-authorized', function (req, res, next) {
   if (req.cookies.token) {
     dbClient
       .query(`SELECT * FROM users where secret_id=$1;`, [
@@ -113,7 +113,7 @@ router.post('/update-data', authorize, async (req, res) => {
   });
 });
 
-router.get('/check/:username', function(req, res) {
+router.get('/check/:username', function (req, res) {
   dbClient
     .query(`SELECT user_email FROM users WHERE user_name=$1;`, [
       req.params.username
