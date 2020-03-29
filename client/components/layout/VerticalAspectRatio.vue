@@ -2,7 +2,7 @@
   <div class="vertical-aspect-ratio-wrapper">
     <img
       class="aspect-ratio"
-      src="https://picsum.photos/1280/720"
+      src="/img/aspect-ratio.jpg"
       width="1280"
       height="720"
     />
