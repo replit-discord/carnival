@@ -51,6 +51,7 @@ export default {
 
 .foreground {
   z-index: 300;
+  overflow: hidden;
   border: 1px solid #868e96;
 }
 
