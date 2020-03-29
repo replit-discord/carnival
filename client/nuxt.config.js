@@ -71,6 +71,7 @@ export default {
   },
 
   proxy: {
+    '/public/': 'http://localhost:4000',
     '/api/': 'http://localhost:4000',
     '/img/': 'http://localhost:4000'
   },

@@ -1,0 +1,136 @@
+{
+  "data": {
+    "games": [
+      {
+        "id": 1,
+        "name": "brute-force-password-cracker",
+        "title": "Brute Force Password Cracker",
+        "desc": "I built the Brute Force Password Cracker as a fun program to test out passwords, and to test my knowledge of Python 3 and its libraries",
+        "talk_url": "https://repl.it/talk/share/Brute-Force-Password-Cracker/4336",
+        "author": "CyanCoding",
+        "repl": "Brute-Force-Password-Cracker",
+        "votes": 812
+      },
+      {
+        "id": 2,
+        "name": "webgl-rolling-sky",
+        "title": "WebGL Rolling Sky",
+        "desc": "One of my older projects. Used the Three.js library. 100% made by me! How to play: Click or touch the screen to start",
+        "talk_url": "https://repl.it/talk/share/New-levels-WebGL-Rolling-Sky/3791",
+        "author": "JSer",
+        "repl": "rolling-sky--jser",
+        "votes": 712
+      },
+      {
+        "id": 3,
+        "name": "shakespearean-insult-generator",
+        "title": "Shakespearean Insult Generator",
+        "desc": "Shakespearean Insult Generator",
+        "talk_url": "https://repl.it/talk/share/Shakespearean-Insult-Generator/3382",
+        "author": "JJCTPMS",
+        "repl": "Shakespearean-Insult-Generator",
+        "votes": 556
+      },
+      {
+        "id": 4,
+        "name": "tic-tac-toe",
+        "title": "Tic-Tac-Toe",
+        "desc": "As a fun side project, I built this awesome Tic-Tac-Toe game (with three AI levels) in May 2017",
+        "talk_url": "https://repl.it/talk/share/Tic-Tac-Toe/4341",
+        "author": "CyanCoding",
+        "repl": "Tic-Tac-Toe",
+        "votes": 356
+      },
+      {
+        "id": 5,
+        "name": "gold-hunt",
+        "title": "Gold Hunt",
+        "desc": "Hunt the golden ball and avoid the dangerous obstacles that can damage your score!",
+        "talk_url": "https://repl.it/talk/share/Gold-Hunt/3463",
+        "author": "dosmaster4life",
+        "repl": "gold-hunt",
+        "votes": 320
+      },
+      {
+        "id": 6,
+        "name": "the-fishing-game",
+        "title": "The Fishing Game",
+        "desc": "Explore your way through the different regions by catching the rarest fish you can. Catch em all to fill up your fishedex!",
+        "talk_url": "https://repl.it/talk/share/The-Fishing-Game/12016",
+        "author": "AmeliaBlackwell",
+        "repl": "the-fishing-game",
+        "votes": 261
+      },
+      {
+        "id": 7,
+        "name": "kars",
+        "title": "Kars",
+        "desc": "A survival driving game. Use arrow keys to move, avoid the trees, and collect fuel!",
+        "talk_url": "https://repl.it/talk/share/Kars/3911",
+        "author": "ALVINWAN1",
+        "repl": "Kars",
+        "votes": 256
+      },
+      {
+        "id": 8,
+        "name": "the-dark-forst",
+        "title": "The Dark Forest",
+        "desc": "You are lost in the forest and you are trying to get out of it and find your way back to civilization. (Hopefully) You will find a dog. Try to tame it",
+        "talk_url": "https://repl.it/talk/share/The-Dark-Forest/20827",
+        "author": "DJWang",
+        "repl": "The-Dark-Dark-Forest",
+        "votes": 220
+      },
+      {
+        "id": 9,
+        "name": "minecraft-webgl-project-core",
+        "title": "Minecraft WebGL Project Core",
+        "desc": "This is the final version of my WebCraft and MC-Engine projects. I merged them into one, and added a menu",
+        "talk_url": "https://repl.it/talk/share/Minecraft-WebGL-Project-Core/29550",
+        "author": "HENRYMARTIN4",
+        "repl": "minecraft",
+        "votes": 192
+      },
+      {
+        "id": 10,
+        "name": "adventure-game",
+        "title": "Adventure Game",
+        "desc": "It was for one of my school projects, but i still thought it was good",
+        "talk_url": "https://repl.it/talk/share/Adventure-Game/4293",
+        "author": "AidanMott",
+        "repl": "Adventure-Game",
+        "votes": 186
+      },
+      {
+        "id": 11,
+        "name": "three-ways",
+        "title": "Three Ways",
+        "desc": "This is my three ways game. You can move the ball with k, l, and m or arrows. Press enter to play and retry. It's better to play in a new tab. I hope you will enjoy it",
+        "talk_url": "https://repl.it/talk/share/Three-Ways/12058",
+        "author": "Equation",
+        "repl": "Three-Ways-Game",
+        "votes": 171
+      },
+      {
+        "id": 12,
+        "name": "3d-online-multiplayer-shooter",
+        "title": "3D Online Multiplayer Shooter",
+        "desc": "Featured in the Repl.it Newsletter. Made with pure JS (Node.js for server-side). Used the Three.js and Socket.io libraries",
+        "talk_url": "https://repl.it/talk/share/3D-Online-Multiplayer-Shooter/5323",
+        "author": "JSer",
+        "repl": "3D",
+        "votes": 171
+      },
+      {
+        "id": 13,
+        "name": "krossy-road",
+        "title": "Krossy Road",
+        "desc": "This game was developed for educational purposes for Bit By Bit (http://littlebitbybit.org). Worldwide high scores aren't available yet, but based on my personal experience of watching other people play, the current record is 429. Have fun!",
+        "talk_url": "https://repl.it/talk/share/Krossy-Road/3088",
+        "author": "derekwan",
+        "repl": "KrossyRoad",
+        "votes": 167
+      }
+    ]
+  }
+}
