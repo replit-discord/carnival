@@ -72,7 +72,8 @@ export default {
 
   proxy: {
     '/public/': 'http://localhost:4000',
-    '/api/': 'http://localhost:4000'
+    '/api/': 'http://localhost:4000',
+    '/graphql/': 'http://localhost:4000'
   },
 
   build: {
