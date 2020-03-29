@@ -3,8 +3,12 @@
     <FeaturedGame />
     <div class="game-list">
       <Subheading>Popular</Subheading>
-      <GridResponsive> </GridResponsive>
-      <GamesGridResponsive :games="popular" section-title="Popular" />
+      <GridResponsive>
+        <HorizontalAspectRatio v-for="game in popular" :key="game.id">
+          <CarnivalGame :game="game" />
+        </HorizontalAspectRatio>
+      </GridResponsive>
+
       <GamesScrollResponsive :games="random" section-title="Random" />
       <GamesScrollResponsive
         :games="recentlyAdded"
@@ -19,17 +23,19 @@
 <script>
 import Subheading from '~/components/text/Subheading';
 import FeaturedGame from '~/components/FeaturedGame';
-import GridResponsive from '~/components/layout/ScrollResponsive';
-import GamesGridResponsive from '~/components/collections/GamesGridResponsive';
+import GridResponsive from '~/components/layout/GridResponsive';
 import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
+import HorizontalAspectRatio from '~/components/layout/HorizontalAspectRatio';
+import CarnivalGame from '~/components/CarnivalGame';
 
 export default {
   components: {
     Subheading,
     GridResponsive,
-    GamesGridResponsive,
     GamesScrollResponsive,
-    FeaturedGame
+    FeaturedGame,
+    HorizontalAspectRatio,
+    CarnivalGame
   },
   asyncData({ params, app, error }) {
     const promises = [];
