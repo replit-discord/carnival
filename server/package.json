@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon -r esm ./bin/www",
-    "start": "node -r esm ./bin/www",
+    "dev": "nodemon -r esm server",
+    "start": "node -r esm server",
     "lint": "yarn lint:js",
     "lint:fix": "yarn lint:js:fix",
     "lint:js": "eslint --ext .js --ignore-path .gitignore .",

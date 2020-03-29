@@ -18,5 +18,13 @@
   ],
   "rules": {
     "prettier/prettier": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*"],
+      "rules": {
+        "prefer-const": "off"
+      }
+    }
+  ]
 }

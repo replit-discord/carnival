@@ -1,10 +1,9 @@
-#!/usr/bin/env node
-
 import dd from 'debug';
 import http from 'http';
-import app from '../app';
 
-const debug = dd("carnival:server")
+import app from './app';
+
+const debug = dd('carnival:server');
 
 // store port in express
 let port = process.env.PORT || '4000';
@@ -31,11 +30,9 @@ function onError(error) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges');
       process.exit(1);
-      break;
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
       process.exit(1);
-      break;
     default:
       throw error;
   }
