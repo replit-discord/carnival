@@ -9,13 +9,26 @@
         </HorizontalAspectRatio>
       </GridResponsive>
 
-      <GamesScrollResponsive :games="random" section-title="Random" />
-      <GamesScrollResponsive
-        :games="recentlyAdded"
-        section-title="Recently Added"
-      />
-      <GamesScrollResponsive :games="mostLiked" section-title="Most Liked" />
-      <GamesScrollResponsive :games="mostPlayed" section-title="Most Played" />
+      <Subheading>Random</Subheading>
+      <ScrollResponsive>
+        <VerticalAspectRatio v-for="game in random" :key="game.id">
+          <CarnivalGame :game="game" />
+        </VerticalAspectRatio>
+      </ScrollResponsive>
+
+      <Subheading>Most Liked</Subheading>
+      <ScrollResponsive>
+        <VerticalAspectRatio v-for="game in mostLiked" :key="game.id">
+          <CarnivalGame :game="game" />
+        </VerticalAspectRatio>
+      </ScrollResponsive>
+
+      <Subheading>Most Played</Subheading>
+      <ScrollResponsive>
+        <VerticalAspectRatio v-for="game in mostPlayed" :key="game.id">
+          <CarnivalGame :game="game" />
+        </VerticalAspectRatio>
+      </ScrollResponsive>
     </div>
   </div>
 </template>
@@ -24,17 +37,19 @@
 import Subheading from '~/components/text/Subheading';
 import FeaturedGame from '~/components/FeaturedGame';
 import GridResponsive from '~/components/layout/GridResponsive';
-import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
+import ScrollResponsive from '~/components/layout/ScrollResponsive';
 import HorizontalAspectRatio from '~/components/layout/HorizontalAspectRatio';
+import VerticalAspectRatio from '~/components/layout/VerticalAspectRatio';
 import CarnivalGame from '~/components/CarnivalGame';
 
 export default {
   components: {
     Subheading,
     GridResponsive,
-    GamesScrollResponsive,
+    ScrollResponsive,
     FeaturedGame,
     HorizontalAspectRatio,
+    VerticalAspectRatio,
     CarnivalGame
   },
   asyncData({ params, app, error }) {

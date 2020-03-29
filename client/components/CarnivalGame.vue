@@ -56,6 +56,7 @@ export default {
 
 .background {
   z-index: 100;
+  overflow: hidden;
 }
 
 .title {
@@ -68,7 +69,6 @@ export default {
 
 img {
   width: 100%;
-  height: 100%;
   filter: blur(7px) brightness(80%);
 }
 </style>
