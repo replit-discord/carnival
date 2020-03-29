@@ -2,19 +2,19 @@
   <div class="games-scroll-responsive">
     <h3>{{ sectionTitle }}</h3>
     <ScrollResponsive>
-      <CarnivalGame v-for="game in games" :key="game.id" :game="game" />
+      <CarnivalGame2 v-for="game in games" :key="game.id" :game="game" />
     </ScrollResponsive>
   </div>
 </template>
 
 <script>
-import CarnivalGame from '~/components/CarnivalGame';
+import CarnivalGame2 from '~/components/CarnivalGame2';
 import ScrollResponsive from '~/components/structures/ScrollResponsive';
 
 export default {
   name: 'GamesPopular',
   components: {
-    CarnivalGame,
+    CarnivalGame2,
     ScrollResponsive
   },
   props: {

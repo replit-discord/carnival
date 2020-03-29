@@ -1,11 +1,17 @@
 <template>
   <div class="carnival-game-wrapper">
+    <img
+      class="aspect-ratio"
+      src="https://picsum.photos/1280/720"
+      width="1280"
+      height="720"
+    />
     <div class="carnival-game">
-      <div class="carnival-game-inner">
+      <div class="foreground">
         <h5 class="title">{{ game.title }}</h5>
         <p class="desc">{{ game.desc }}</p>
       </div>
-      <img :src="game.img" :alt="(() => `image of game ${game.title}`)()" />
+      <div class="background"></div>
     </div>
   </div>
 </template>
@@ -32,26 +38,29 @@ export default {
 <style lang="postcss" scoped>
 .carnival-game-wrapper {
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 9 by 16 aspect ratio */
+}
+
+.aspect-ratio {
+  display: block;
+  width: auto;
+  height: 100%;
 }
 
 .carnival-game {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  border: 1px solid $oc-gray-5;
+  z-index: 1;
 }
 
-.carnival-game-inner {
-  width: 100%;
-  height: 100%;
-
-  /* background: $oc-gray-3; */
-  border-radius: 5px;
+.foreground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  padding: 0 0 10px 10px;
 }
 
 .title {
@@ -60,16 +69,5 @@ export default {
 
 .desc {
   margin: 2px 0 0 5px;
-}
-
-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -10;
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: blur(7px) brightness(80%);
 }
 </style>

@@ -1,17 +1,15 @@
 <template>
-  <section class="scroll-responsive-wrapper">
-    <div class="scroll-responsive">
-      <!-- <div class="scroll-responsive-inner"> -->
-      <slot heightOverride="500" />
-      <!-- </div> -->
-    </div>
+  <section class="scroll-responsive">
+    <slot />
   </section>
 </template>
 
 <style lang="postcss" scoped>
 .scroll-responsive {
-  display: grid;
-  grid-auto-rows: 200px;
-  grid-gap: 10px;
+  display: flex;
+  width: 100%;
+  height: 210px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 </style>
