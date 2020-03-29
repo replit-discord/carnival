@@ -9,10 +9,7 @@
       "impliedStrict": true
     }
   },
-  "plugins": [
-    "nuxt",
-    "prettier"
-  ],
+  "plugins": ["nuxt", "prettier"],
   "extends": [
     "@nuxtjs", // extends 'standard', 'plugin:vue/recommended'; plugins 'vue'
     "plugin:nuxt/base",

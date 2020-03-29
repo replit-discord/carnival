@@ -39,10 +39,26 @@ export default {
   // plugins to load before mounting the app
   plugins: [],
 
-  modules: [
+  buildModules: [
     '@nuxtjs/proxy',
     '@nuxtjs/axios',
-    '@nuxtjs/eslint-module',
+    // [
+    //   '@nuxtjs/eslint-module',
+    //   {
+    //     fix: true,
+    //     failOnError: false,
+    //     failOnWarning: false,
+    //     emitError: true,
+    //     emitWarning: true,
+    //     cache: true
+    //     // eslint options (https://github.com/nuxt/eslint-config/blob/33a724d6bc0058e3048b41bde1f026f8760d9fb6/packages/eslint-config/index.js#L48 is somehow noe being uesd)
+    //     // overriding these rules is a workaround
+    //     // rules: {
+    //     //   'no-console': 'off',
+    //     //   'no-debugger': 'off'
+    //     // }
+    //   }
+    // ],
     '@nuxtjs/style-resources'
   ],
 
@@ -118,6 +134,8 @@ export default {
           exclude: /node_modules/,
           options: {
             fix: true,
+            failOnError: false,
+            failOnWarning: false,
             emitError: true,
             emitWarning: true,
             cache: true,

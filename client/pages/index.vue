@@ -41,6 +41,7 @@ import ScrollResponsive from '~/components/layout/ScrollResponsive';
 import HorizontalAspectRatio from '~/components/layout/HorizontalAspectRatio';
 import VerticalAspectRatio from '~/components/layout/VerticalAspectRatio';
 import CarnivalGame from '~/components/CarnivalGame';
+// import Heading from '~/components/text/Heading';
 
 export default {
   components: {

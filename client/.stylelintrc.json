@@ -1,9 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-recess-order"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
   "plugins": [
     "stylelint-scss",
     "stylelint-value-no-unknown-custom-properties",
@@ -19,10 +16,13 @@
     "unicode-bom": "never",
     "no-empty-source": null,
     "declaration-empty-line-before": "never",
-    "comment-empty-line-before": [ "always", {
-      "except": [ "first-nested" ],
-      "ignore": [ "stylelint-commands" ]
-    }],
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["stylelint-commands"]
+      }
+    ],
     "font-family-name-quotes": "always-unless-keyword",
     "function-url-quotes": "always",
     "selector-attribute-quotes": "always",
@@ -32,12 +32,12 @@
     "property-no-vendor-prefix": true,
     "media-feature-name-no-vendor-prefix": true,
     "at-rule-no-vendor-prefix": true,
-    "at-rule-no-unknown": [ true, {
-      "ignoreAtRules": [
-        "define-placeholder",
-        "extend"
-      ]
-    }],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["define-placeholder", "extend"]
+      }
+    ],
     "max-nesting-depth": 1,
     "selector-max-compound-selectors": 3,
     "max-line-length": 70,
@@ -45,37 +45,35 @@
 
     "scss/dollar-variable-colon-space-after": "always",
     "scss/dollar-variable-no-missing-interpolation": true,
-    "scss/double-slash-comment-empty-line-before": [ "always", {
-      "except": [
-        "first-nested"
-      ],
-      "ignore": [
-        "between-comments",
-        "stylelint-commands"
-      ]
-    }],
+    "scss/double-slash-comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["between-comments", "stylelint-commands"]
+      }
+    ],
     "scss/no-duplicate-dollar-variables": true,
     "csstools/value-no-unknown-custom-properties": true,
     "images/broken": true,
     "images/prefer-data-uri": 128,
-    "plugin/no-low-performance-animation-properties": [ true, {
-      "ignoreProperties": [
-        "background-color",
-        "color"
-      ]
-    }],
-    "plugin/selector-tag-no-without-class": [
-      "div",
-      "span"
+    "plugin/no-low-performance-animation-properties": [
+      true,
+      {
+        "ignoreProperties": ["background-color", "color"]
+      }
     ],
+    "plugin/selector-tag-no-without-class": ["div", "span"],
     "plugin/z-index-value-constraint": {
       "max": 1000
     },
     "plugin/stylelint-selector-no-empty": true,
-    "plugin/stylelint-no-indistinguishable-colors": [ true, {
-      "threshold": 3,
-      "allowEquivalentNotation": false
-    }],
+    "plugin/stylelint-no-indistinguishable-colors": [
+      true,
+      {
+        "threshold": 3,
+        "allowEquivalentNotation": false
+      }
+    ],
     "a11y/content-property-no-static-value": true,
     "a11y/font-size-is-readable": true,
     "a11y/line-height-is-vertical-rhythmed": true,
