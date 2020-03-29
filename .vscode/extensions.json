@@ -2,7 +2,7 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "shinnn.stylelint",
+    "stylelint.vscode-stylelint",
     "dbaeumer.vscode-eslint",
     "octref.vetur"
   ]

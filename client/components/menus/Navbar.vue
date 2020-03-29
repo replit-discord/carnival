@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .nav {
   display: flex;
   align-items: center;

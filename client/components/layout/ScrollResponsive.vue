@@ -10,7 +10,5 @@
   width: 100%;
   height: 210px;
   overflow-x: auto;
-
-  /* white-space: nowrap; */
 }
 </style>
