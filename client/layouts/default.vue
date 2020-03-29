@@ -1,16 +1,16 @@
 <template>
   <div class="default-layout">
-    <heading />
+    <Header />
     <nuxt class="nuxt" />
   </div>
 </template>
 
 <script>
-import Heading from '~/components/menus/Heading';
+import Header from '~/components/menus/Header';
 
 export default {
   components: {
-    heading: Heading
+    Header
   }
 };
 </script>
