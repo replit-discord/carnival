@@ -2,7 +2,7 @@
   <div class="carosel-wrapper">
     <div class="carosel">
       <div class="carosel-inner">
-        <!-- <img width="100%" src="/img/the-game.png" alt="the game" /> -->
+        <!-- <img width="100%" src="public/img/the-game.png" alt="the game" /> -->
         <div class="gradient"></div>
       </div>
     </div>

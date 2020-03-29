@@ -5,7 +5,10 @@
       <p class="desc">{{ game.desc }}</p>
     </div>
     <div class="background">
-      <img src="/img/z.jpg" :alt="(() => `image of game ${game.title}`)()" />
+      <img
+        src="/public/img/z.jpg"
+        :alt="(() => `image of game ${game.title}`)()"
+      />
     </div>
   </div>
 </template>
