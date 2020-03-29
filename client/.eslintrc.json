@@ -30,6 +30,12 @@
         "quotes": ["error", "single"],
         "require-await": "off"
       }
+    },
+    {
+      "files": ["*"],
+      "rules": {
+        "prefer-const": "off"
+      }
     }
   ]
 }

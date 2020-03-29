@@ -1,6 +1,7 @@
 <template>
   <div class="carnival-game">
     <div class="foreground">
+      <nuxt-link :to="gameLink">{{ game.title }}</nuxt-link>
       <h5 class="title">{{ game.title }}</h5>
       <p class="desc">{{ game.desc }}</p>
     </div>
@@ -31,6 +32,11 @@ export default {
     heightOverride: {
       type: String,
       default: () => '500px'
+    }
+  },
+  computed: {
+    gameLink() {
+      return `${this.game.author}/${this.game.id}`;
     }
   }
 };
