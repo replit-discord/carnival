@@ -9,7 +9,7 @@
 
 <script>
 import CarnivalGame2 from '~/components/CarnivalGame2';
-import ScrollResponsive from '~/components/structures/ScrollResponsive';
+import ScrollResponsive from '~/components/layout/ScrollResponsive';
 
 export default {
   name: 'GamesPopular',

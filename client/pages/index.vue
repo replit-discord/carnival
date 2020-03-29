@@ -19,7 +19,7 @@
 <script>
 import Subheading from '~/components/text/Subheading';
 import FeaturedGame from '~/components/FeaturedGame';
-import GridResponsive from '~/components/structures/ScrollResponsive';
+import GridResponsive from '~/components/layout/ScrollResponsive';
 import GamesGridResponsive from '~/components/collections/GamesGridResponsive';
 import GamesScrollResponsive from '~/components/collections/GamesScrollResponsive';
 

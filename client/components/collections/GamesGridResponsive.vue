@@ -11,7 +11,7 @@
 import Subheading from '~/components/text/Subheading';
 
 import CarnivalGame from '~/components/CarnivalGame';
-import GridResponsive from '~/components/structures/GridResponsive';
+import GridResponsive from '~/components/layout/GridResponsive';
 
 export default {
   name: 'GamesPopular',
