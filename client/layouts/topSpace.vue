@@ -27,6 +27,6 @@ export default {
 
 <style lang="postcss" scoped>
 .top-space {
-  height: 55px;
+  height: 61px;
 }
 </style>
