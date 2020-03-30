@@ -17,35 +17,11 @@ export default {
   components: {
     Heading
   },
-  // TODO: optimize
-  // async fetch() {
-  //   const res = await this.$axios.get('/public/json/games.json');
+  async asyncData({ route, params, query, redirect, error, $axios }) {
+    const res = await $axios.get('/public/json/games.json');
 
-  //   const username = this.$route.params.username;
-  //   const gameId = this.$route.params.gameId;
-
-  //   let gameName;
-  //   for (const game of res.data.data.games) {
-  //     // eslint-disable-next-line eqeqeq
-  //     if (game.id == gameId) {
-  //       gameName = game.name;
-  //       break;
-  //     }
-  //   }
-
-  //   console.log(`/${username}/${gameName}/${gameId}`);
-  //   this.$router.push(`/${username}/${gameName}/${gameId}`);
-  // },
-  data() {
-    return {
-      game: null
-    };
-  },
-  async mounted() {
-    const res = await this.$axios.get('/public/json/games.json');
-
-    const username = this.$route.params.username;
-    const gameId = this.$route.params.gameId;
+    const username = route.params.username;
+    const gameId = route.params.gameId;
 
     let gameName;
     for (let game of res.data.data.games) {
@@ -56,7 +32,12 @@ export default {
       }
     }
 
-    this.$router.push(`/${username}/${gameName}/${gameId}`);
+    redirect(`/${username}/${gameName}/${gameId}`);
+  },
+  data() {
+    return {
+      game: null
+    };
   }
 };
 </script>
