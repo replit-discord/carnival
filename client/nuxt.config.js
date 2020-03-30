@@ -39,6 +39,8 @@ export default {
     }
   },
 
+  css: ['~/assets/global.css'],
+
   // plugins to load before mounting the app
   plugins: [],
 
@@ -122,18 +124,25 @@ export default {
     // @nuxtjs/style-resources module did not seem to work; use
     // sass-resource-loader as a workaround
     extend(config, ctx) {
+      const sassResourceLoader = {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [
+            path.join(__dirname, 'assets/open-color.css'),
+            path.join(__dirname, 'assets/custom.css')
+          ]
+        }
+      };
       // 4 corresponds to the test for /\.p(ost)?css$/i
       // sass-resource-loader goes right after postcss-loader (array positioning)
       config.module.rules[4].oneOf.forEach(item => {
-        item.use.push({
-          loader: 'sass-resources-loader',
-          options: {
-            resources: [
-              path.join(__dirname, 'assets/open-color.css'),
-              path.join(__dirname, 'assets/custom.css')
-            ]
-          }
-        });
+        item.use.push(sassResourceLoader);
+      });
+
+      // 3 corresponds to the test for /\.css$/i
+      // sass-resource-loader goes right after postcss-loader (array positioning
+      config.module.rules[3].oneOf.forEach(item => {
+        item.use.push(sassResourceLoader);
       });
     }
   }
