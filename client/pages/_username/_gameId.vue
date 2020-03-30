@@ -4,9 +4,7 @@
 
 <template>
   <div class="redirect">
-    <br />
-    <br />
-    <Heading>you are being redirected</Heading>
+    <Heading class="heading">You are being Redirected...</Heading>
   </div>
 </template>
 
@@ -15,6 +13,7 @@
 import Heading from '~/components/text/Heading';
 
 export default {
+  layout: 'blank',
   components: {
     Heading
   },
@@ -57,8 +56,16 @@ export default {
       }
     }
 
-    // console.log(`/${username}/${gameName}/${gameId}`);
     this.$router.push(`/${username}/${gameName}/${gameId}`);
   }
 };
 </script>
+
+<style lang="postcss" scoped>
+.redirect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+</style>
