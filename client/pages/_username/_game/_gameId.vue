@@ -1,11 +1,5 @@
 <template>
   <div class="game-view">
-    <!-- TODO: deal with navbar -->
-
-    <br />
-    <br />
-    <br />
-    <br />
     <template v-if="loading === 'isLoading'">
       <div>
         <p>is loading</p>
@@ -37,6 +31,7 @@ import Title from '~/components/text/Title';
 // /:user/:gameId is the permalink
 // /:user/:gameName displays page telling user to visit /:user to see games
 export default {
+  layout: 'topSpace',
   components: {
     Heading,
     Subheading,
