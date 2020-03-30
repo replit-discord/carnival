@@ -1,6 +1,8 @@
 import path from 'path';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 export default {
   mode: 'universal',
 
@@ -39,7 +41,7 @@ export default {
     }
   },
 
-  css: ['~/assets/global.css'],
+  css: ['~/assets/global.css', ...(isDev ? ['~/assets/dev.css'] : [])],
 
   // plugins to load before mounting the app
   plugins: [],

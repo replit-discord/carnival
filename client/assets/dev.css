@@ -1,0 +1,15 @@
+/*
+  in our global css, we use the wildcard / universal selector
+  and apply `color` styling to that. this overwrites webpack's
+  clientOverlay that shows errors with hot module replacement
+  these fixes only apply during development (see nuxt.config.js)
+*/
+#webpack-hot-middleware-clientOverlay > * {
+  color: unset !important;
+}
+
+/* stylelint-disable max-line-length */
+/* stylelint-disable selector-max-compound-selectors, plugin/selector-tag-no-without-class */
+#webpack-hot-middleware-clientOverlay > div > span > * {
+  color: unset !important;
+}
