@@ -1,10 +1,6 @@
 <!--
   identical to `defualt.vue`, but with top spacing, so
-  content does not dispaly underneat navbar (since it is floating)
--->
-<!--
-  identical to `defualt.vue`, but with top spacing, so
-  content does not dispaly underneat navbar (since it is floating)
+  content does not display underneath navbar (since it is floating)
 -->
 
 <template>

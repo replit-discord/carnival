@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// TODO: ensure that menu navbar does nots show on this route
 import Heading from '~/components/text/Heading';
 
 export default {
@@ -33,11 +32,6 @@ export default {
     }
 
     redirect(`/${username}/${gameName}/${gameId}`);
-  },
-  data() {
-    return {
-      game: null
-    };
   }
 };
 </script>
