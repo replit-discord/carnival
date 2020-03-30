@@ -12,7 +12,7 @@ export default {
 
 <style lang="postcss" scoped>
 h3 {
-  margin: 5px 0;
+  margin: 0;
   font-size: 28px;
 }
 </style>

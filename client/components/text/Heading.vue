@@ -10,7 +10,7 @@ export default {
 
 <style lang="postcss" scoped>
 h2 {
-  margin: 5px 0;
+  margin: 0;
   font-size: 36px;
 }
 </style>
