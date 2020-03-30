@@ -3,6 +3,7 @@ import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 export default {
   mode: 'universal',
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -22,9 +23,11 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   loading: {
     color: '#fff'
   },
+
   server: {
     port: 8080,
     host: 'localhost'
@@ -40,8 +43,22 @@ export default {
   plugins: [],
 
   buildModules: [
-    '@nuxtjs/proxy',
-    '@nuxtjs/axios',
+    [
+      '@nuxtjs/proxy',
+      {
+        axios: {
+          proxy: true,
+          retry: {
+            retries: 0
+          },
+          debug: false
+        }
+      }
+    ],
+    '@nuxtjs/axios'
+    // eslint-module seems to ignore the failOnError and
+    // failOnWarning keys. because build fails on simple
+    // rules, we are disabling this until issue has been fixed
     // [
     //   '@nuxtjs/eslint-module',
     //   {
@@ -58,18 +75,10 @@ export default {
     //     //   'no-debugger': 'off'
     //     // }
     //   }
-    // ],
-    '@nuxtjs/style-resources'
+    // ]
   ],
 
-  axios: {
-    proxy: true,
-    retry: {
-      retries: 0
-    },
-    debug: false
-  },
-
+  // TODO: move to under buildModules
   proxy: {
     '/public/': 'http://localhost:4000',
     '/api/': 'http://localhost:4000',
@@ -110,7 +119,7 @@ export default {
       })
     ],
 
-    // style-resources-module did not seem to work; use
+    // @nuxtjs/style-resources module did not seem to work; use
     // sass-resource-loader as a workaround
     extend(config, ctx) {
       // 4 corresponds to the test for /\.p(ost)?css$/i
@@ -126,29 +135,6 @@ export default {
           }
         });
       });
-      // enable auto-fix for eslint-loader
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre', // checks source files not modified by other loaders (ex. babel-loader)
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/,
-          options: {
-            fix: true,
-            failOnError: false,
-            failOnWarning: false,
-            emitError: true,
-            emitWarning: true,
-            cache: true,
-            // eslint options (https://github.com/nuxt/eslint-config/blob/33a724d6bc0058e3048b41bde1f026f8760d9fb6/packages/eslint-config/index.js#L48 is somehow noe being uesd)
-            // overriding these rules is a workaround
-            rules: {
-              'no-console': 'off',
-              'no-debugger': 'off'
-            }
-          }
-        });
-      }
     }
   }
 };

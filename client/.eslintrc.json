@@ -1,41 +1,67 @@
 {
-  "env": {
-    "browser": true,
-    "node": true
-  },
+  "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "babel-eslint",
+    "sourceType": "module",
+    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "impliedStrict": true
     }
   },
-  "plugins": ["nuxt", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true,
+    "cypress/globals": true
+  },
+  "plugins": [
+    "babel",
+    "simple-import-sort",
+    "no-use-extend-native",
+    "no-secrets",
+    "prettier"
+  ],
   "extends": [
-    "@nuxtjs", // extends 'standard', 'plugin:vue/recommended'; plugins 'vue'
+    "eslint:recommended",
+    "standard",
+    "plugin:promise/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:vue/base",
+    "plugin:vue/recommended",
+    "plugin:vue-scoped-css/recommended",
     "plugin:nuxt/base",
     "plugin:nuxt/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:cypress/recommended",
+    "plugin:chai-friendly/recommended",
     "prettier",
     "prettier/vue"
   ],
   "rules": {
-    "prettier/prettier": "error"
-  },
-  "overrides": [
-    // prevent prettier rules from messing up gulpfiles
-    {
-      "files": ["*gulpfile*"],
-      "rules": {
-        "prettier/prettier": "off",
-        "semi": ["error", "always"],
-        "quotes": ["error", "single"],
-        "require-await": "off"
+    // simple-import-sort
+    "simple-import-sort/sort": "error",
+    "sort-imports": "off",
+    "import/order": "off",
+
+    // no-use-extend-native
+    "no-use-extend-native/no-use-extend-native": "error",
+
+    // no-secrets
+    "no-secrets/no-secrets": [
+      "error",
+      {
+        "tolerance": 4
       }
-    },
-    {
-      "files": ["*"],
-      "rules": {
-        "prefer-const": "off"
-      }
-    }
-  ]
+    ],
+
+    // prettier
+    "prettier/prettier": "error",
+
+    // overwrites
+    "prefer-const": "off",
+    "import/no-unresolved": "off", // temporary
+    "vue-scoped-css/require-selector-used-inside": "off" // temporary
+  }
 }

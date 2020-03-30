@@ -19,19 +19,19 @@ export default {
   name: 'CarnivalGame',
   props: {
     game: {
-      type: Object,
       default: () => ({
-        id: 1,
-        name: 'game-name',
-        title: 'Game Title',
         author: 'author',
         desc: 'description',
-        img: 'image'
-      })
+        id: 1,
+        img: 'image',
+        name: 'game-name',
+        title: 'Game Title'
+      }),
+      type: Object
     },
     heightOverride: {
-      type: String,
-      default: () => '500px'
+      default: () => '500px',
+      type: String
     }
   },
   computed: {

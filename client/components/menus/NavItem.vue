@@ -12,12 +12,12 @@
 export default {
   props: {
     name: {
-      type: String,
-      default: () => 'Link Name'
+      default: () => 'Link Name',
+      type: String
     },
     to: {
-      type: String,
-      default: () => '/unresolved-link'
+      default: () => '/unresolved-link',
+      type: String
     }
   }
 };

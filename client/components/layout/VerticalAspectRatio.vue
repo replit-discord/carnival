@@ -13,6 +13,8 @@
 </template>
 
 <script>
+console.log('foo');
+
 export default {
   name: 'VerticalAspectRatio'
 };

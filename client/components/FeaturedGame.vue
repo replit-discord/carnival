@@ -10,9 +10,9 @@
 </template>
 
 <style lang="postcss" scoped>
-img {
+/* img {
   display: block;
-}
+} */
 
 .gradient {
   width: 100%;

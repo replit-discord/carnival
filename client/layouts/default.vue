@@ -15,6 +15,7 @@ export default {
 };
 </script>
 
+<!-- eslint-disable-next-line vue-scoped-css/require-scoped -->
 <style lang="postcss">
 html {
   font-family: 'Source Sans Pro', system-ui;

@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import Title from '~/components/text/Title';
 import Heading from '~/components/text/Heading';
 import Subheading from '~/components/text/Subheading';
+import Title from '~/components/text/Title';
 
 // for now, this is empty
 // later, this will be the main page that displays a game
@@ -38,9 +38,9 @@ import Subheading from '~/components/text/Subheading';
 // /:user/:gameName displays page telling user to visit /:user to see games
 export default {
   components: {
-    Title,
     Heading,
-    Subheading
+    Subheading,
+    Title
   },
   async fetch() {
     const res = await this.$axios.get('/public/json/games.json');
@@ -64,5 +64,3 @@ export default {
   }
 };
 </script>
-
-<style style="postcss" scoped></style>

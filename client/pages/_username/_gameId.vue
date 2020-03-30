@@ -57,10 +57,8 @@ export default {
       }
     }
 
-    console.log(`/${username}/${gameName}/${gameId}`);
+    // console.log(`/${username}/${gameName}/${gameId}`);
     this.$router.push(`/${username}/${gameName}/${gameId}`);
   }
 };
 </script>
-
-<style style="postcss" scoped></style>

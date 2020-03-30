@@ -14,8 +14,9 @@
 
 <script>
 // import Title from '~/components/text/Title'
-import { throttle, debounce } from 'lodash';
 import anime from 'animejs';
+import { debounce, throttle } from 'lodash';
+
 import Navbar from './Navbar';
 
 export default {
@@ -24,8 +25,8 @@ export default {
   },
   data() {
     return {
-      previousScrollOffset: 0,
-      headerOffset: 0
+      headerOffset: 0,
+      previousScrollOffset: 0
     };
   },
   beforeMount() {
@@ -62,6 +63,14 @@ export default {
     });
   },
   methods: {
+    endBounceHeader() {
+      this.headerOffset = 0;
+      anime({
+        easing: 'spring(1, 100, 10, 0)',
+        targets: this.$refs.header,
+        translateY: 0
+      });
+    },
     prepareBounceHeader() {
       const scrollOffset = document.documentElement.scrollTop;
 
@@ -99,18 +108,10 @@ export default {
       }
 
       anime({
+        easing: 'spring(1, 100, 10, 3)',
         targets: this.$refs.header,
-        translateY: translateBy,
         // the spring velocity (2.8) is fine tuned to the value we change this.headerOffset by (3) and our debounce (200)
-        easing: 'spring(1, 100, 10, 3)'
-      });
-    },
-    endBounceHeader() {
-      this.headerOffset = 0;
-      anime({
-        targets: this.$refs.header,
-        translateY: 0,
-        easing: 'spring(1, 100, 10, 0)'
+        translateY: translateBy
       });
     }
   }
@@ -139,7 +140,7 @@ $headerBorderRadius: 5px;
   /* box-shadow: 2px 4px 4px $oc-gray-4; */
 }
 
-.combination-mark {
+/* .combination-mark {
   @extend shadow-large;
   display: flex;
   align-items: center;
@@ -153,7 +154,7 @@ $headerBorderRadius: 5px;
 
 .wordmark {
   color: $text;
-}
+} */
 
 .navigation {
   /* margin: 7px 10px; */

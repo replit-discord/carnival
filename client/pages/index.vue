@@ -34,13 +34,13 @@
 </template>
 
 <script>
-import Subheading from '~/components/text/Subheading';
+import CarnivalGame from '~/components/CarnivalGame';
 import FeaturedGame from '~/components/FeaturedGame';
 import GridResponsive from '~/components/layout/GridResponsive';
-import ScrollResponsive from '~/components/layout/ScrollResponsive';
 import HorizontalAspectRatio from '~/components/layout/HorizontalAspectRatio';
+import ScrollResponsive from '~/components/layout/ScrollResponsive';
 import VerticalAspectRatio from '~/components/layout/VerticalAspectRatio';
-import CarnivalGame from '~/components/CarnivalGame';
+import Subheading from '~/components/text/Subheading';
 
 export default {
   components: {
@@ -67,7 +67,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.gamesRaw);
+    // console.log(this.gamesRaw);
   }
 };
 </script>
