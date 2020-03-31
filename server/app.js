@@ -3,6 +3,7 @@ import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
+import './core/init';
 import apiRouter from './routes/api';
 const logger = require('morgan');
 
