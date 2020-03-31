@@ -1,39 +1,35 @@
 import express from 'express';
-import { Client } from 'pg';
-const { discoId, discoSecret, jwtKey } = require('../../../../config');
-const DiscoOauthClient = require('disco-oauth');
-const discoClient = new DiscoOauthClient(discoId, discoSecret);
+import DiscoOauthClient from 'disco-oauth';
+import { discoId, discoSecret, jwtKey } from '../../../../config';
+import { users } from '../../../../models/index';
+import shortid from 'shortid';
+import jwt from 'jsonwebtoken';
 
-const shortid = require('shortid');
-const jwt = require('jsonwebtoken');
+const discoClient = new DiscoOauthClient(discoId, discoSecret);
 
 const router = express.Router();
 
-const defaultPreferences = {
-  darkMode: true
-};
+const defaultPreferences = { darkMode: true };
 
-const dbClient = new Client({
-  connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
-});
-dbClient.connect().catch(err => {
-  console.error('could not connect to db', err);
-});
-
-discoClient.setScopes(['identify', 'email']);
+discoClient.setScopes('identify', 'email');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', { title: 'Express' });
+  res.send('Authend');
 });
 
 router.get('/auth/:action/:provider', (req, res) => {
   switch (req.params.provider.toLowerCase()) {
     case 'discord':
       if (req.params.action === 'register')
-        discoClient.setRedirect('http://localhost:3000/register/discord');
-      else discoClient.setRedirect('http://localhost:3000/login/discord');
-      res.redirect(discoClient.getAuthCodeLink());
+        discoClient.setRedirect(
+          'http://localhost:4000/api/v1/auth/register/discord'
+        );
+      else
+        discoClient.setRedirect(
+          'http://localhost:4000/api/v1/auth/login/discord'
+        );
+      res.redirect(discoClient.authCodeLink);
       break;
   }
 });
@@ -44,23 +40,21 @@ router.get('/login/:provider', async (req, res) => {
 
   switch (req.params.provider.toLowerCase()) {
     case 'discord':
+      if (!req.query.code)
+        return res.status(400).json({ error: 'Bad request' });
       k = await discoClient.getAccess(req.query.code);
-      user = await discoClient.getAuthorizedUser(k);
-      if (user.email) {
-        dbClient
-          .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
-            user.email
-          ])
-          .then(returnedUser => {
-            if (!(returnedUser.rowCount > 0)) {
-              res.redirect('/');
-            } else {
-              jwt.sign(returnedUser.rows[0], jwtKey, (err, token) => {
-                if (!err) res.cookie('token', token);
-                res.redirect('/');
-              });
-            }
+      user = await discoClient.getUser(k);
+      if (user.emailId) {
+        let result = await users.findOne({
+          where: { user_email: user.emailId }
+        });
+        if (result === null) res.redirect('/');
+        else {
+          jwt.sign(result.toJSON(), jwtKey, (err, token) => {
+            if (!err) res.cookie('token', token);
+            res.redirect('/');
           });
+        }
       } else {
         res.redirect('/');
       }
@@ -75,71 +69,61 @@ router.get('/register/:provider', async (req, res) => {
   switch (req.params.provider.toLowerCase()) {
     case 'discord':
       k = await discoClient.getAccess(req.query.code);
-      user = await discoClient.getAuthorizedUser(k);
-      if (user.email) {
-        dbClient
-          .query(`SELECT secret_id FROM users WHERE user_email=$1`, [
-            user.email
-          ])
-          .then(returnedUser => {
-            if (!(returnedUser.rowCount > 0)) {
-              res.cookie('email', user.email);
-              res.redirect('/final/');
-            } else {
-              res.redirect('/');
-            }
-          });
-      } else {
-        res.redirect('/');
-      }
+      user = await discoClient.getUser(k);
+      if (user.emailId) {
+        let result = await users.findOne({
+          where: { user_email: user.emailId }
+        });
+
+        if (result === null) {
+          res.cookie('email', user.emailId);
+          res.redirect('/final/');
+        } else res.redirect('/');
+      } else res.redirect('/');
+
       break;
   }
 });
 
-router.post('/final/submit', (req, res) => {
+router.post('/final/submit', async (req, res) => {
   if (req.body.username && req.body.username !== '' && req.cookies.email) {
     let newId = shortid.generate();
-    dbClient
-      .query(
-        `INSERT INTO users(secret_id, user_name, user_email, user_preferences)
-                  VALUES($1, $2, $3, $4)`,
-        [
-          newId,
-          req.body.username,
-          req.cookies.email,
-          JSON.stringify(defaultPreferences)
-        ]
-      )
-      .then(result => {
-        if (result.rowCount > 0) {
-          jwt.sign({ secret_id: newId }, jwtKey, (err, token) => {
-            if (!err) {
-              console.log(token.length);
-              res.cookie('token', token);
-              res.status(201).json({
-                success: true
-              });
-            } else {
-              res.status(500).json({
-                success: false,
-                error: 'Unable to sign the secret.'
-              });
-            }
+    let result;
+    console.log(JSON.stringify(defaultPreferences));
+    try {
+      result = await users.create({
+        secret_id: newId,
+        user_name: req.body.username,
+        user_email: req.cookies.email,
+        user_preferences: defaultPreferences
+      });
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        error: 'User already registered.'
+      });
+    }
+    if (result !== null) {
+      jwt.sign({ secret_id: newId }, jwtKey, (err, token) => {
+        if (!err) {
+          console.log(token.length);
+          res.cookie('token', token);
+          res.status(201).json({
+            success: true
           });
         } else {
           res.status(500).json({
             success: false,
-            error: 'Unable to insert into DB.'
+            error: 'Unable to sign the secret.'
           });
         }
-      })
-      .catch(err => {
-        res.status(400).json({
-          success: false,
-          error: err.message,
-          code: err.code
-        });
       });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: 'Unable to insert into DB.'
+      });
+    }
   } else {
     res.status(405).json({
       success: false,

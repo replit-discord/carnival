@@ -1,9 +1,8 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
+let discoId = '694174608156262431';
+let discoSecret = 'DK8bVTvB_NNaobMHsrgrqoOIvHNePbJQ';
+let jwtKey = 'mySuperSecretKey';
 
-module.exports = {
-  discoId: process.env.discoId,
-  discoSecret: process.env.discoSecret,
-  jwtKey: process.env.jwtKey
-};
+export { discoId, discoSecret, jwtKey };
