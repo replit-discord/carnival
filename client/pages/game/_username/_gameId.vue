@@ -31,7 +31,9 @@ export default {
       }
     }
 
-    redirect(`/${username}/${gameName}/${gameId}`);
+    if (username && gameName && gameId) {
+      redirect(`/game/${username}/${gameName}/${gameId}`);
+    }
   }
 };
 </script>
