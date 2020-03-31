@@ -11,10 +11,10 @@
     "lint:fix": "run-s lint:js:fix lint:css:fix lint:misc:fix",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:js:fix": "eslint --ext .js,.vue --fix .",
-    "lint:css": "stylelint '**/*.{vue,css}'",
-    "lint:css:fix": "stylelint --fix '**/*.{vue,css}'",
-    "lint:misc": "prettier --check '**/*.{json,md,yaml,yml}'",
-    "lint:misc:fix": "prettier --write '**/*.{json,md,yaml,yml}'"
+    "lint:css": "stylelint \"**/*.{vue,css}\"",
+    "lint:css:fix": "stylelint --fix \"**/*.{vue,css}\"",
+    "lint:misc": "prettier --check \"**/*.{json,md,yaml,yml}\"",
+    "lint:misc:fix": "prettier --write \"**/*.{json,md,yaml,yml}\""
   },
   "engines": {
     "node": ">=12.10.0"
