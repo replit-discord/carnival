@@ -1,5 +1,5 @@
 import express from 'express';
-import { Pool, Client } from 'pg';
+import { Client } from 'pg';
 const { discoId, discoSecret, jwtKey } = require('../../../../config');
 const DiscoOauthClient = require('disco-oauth');
 const discoClient = new DiscoOauthClient(discoId, discoSecret);
@@ -13,17 +13,9 @@ const defaultPreferences = {
   darkMode: true
 };
 
-// eslint-disable-next-line no-new
-new Pool({
-  // user: 'dbuser',
-  // host: 'database.server.com',
-  // database: 'mydb',
-  // password: 'secretpassword',
-  // port: 5432,
+const dbClient = new Client({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
-
-const dbClient = new Client();
 dbClient.connect().catch(err => {
   console.error('could not connect to db', err);
 });
@@ -31,7 +23,7 @@ dbClient.connect().catch(err => {
 discoClient.setScopes(['identify', 'email']);
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   res.render('index', { title: 'Express' });
 });
 
@@ -106,7 +98,7 @@ router.get('/register/:provider', async (req, res) => {
 
 router.post('/final/submit', (req, res) => {
   if (req.body.username && req.body.username !== '' && req.cookies.email) {
-    var newId = shortid.generate();
+    let newId = shortid.generate();
     dbClient
       .query(
         `INSERT INTO users(secret_id, user_name, user_email, user_preferences)

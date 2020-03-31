@@ -1,21 +1,13 @@
 import express from 'express';
-import { Pool, Client } from 'pg';
+import { Client } from 'pg';
 import jwt from 'jsonwebtoken';
 const { jwtKey } = require('../../../../config');
 
 const router = express.Router();
 
-// eslint-disable-next-line no-new
-new Pool({
-  // user: 'dbuser',
-  // host: 'database.server.com',
-  // database: 'mydb',
-  // password: 'secretpassword',
-  // port: 5432,
+const dbClient = new Client({
   connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
 });
-
-const dbClient = new Client();
 dbClient.connect().catch(err => {
   console.error('could not connect to db', err);
 });
