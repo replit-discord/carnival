@@ -36,7 +36,9 @@ export default {
   },
   computed: {
     gameLink() {
-      return `${this.game.author}/${this.game.id}`;
+      // TODO: return non-hyperlink (full url) so we don't have
+      // to do an internal server redirect
+      return `/game/${this.game.author}/${this.game.id}`;
     }
   }
 };
