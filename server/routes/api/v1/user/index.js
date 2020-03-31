@@ -1,42 +1,33 @@
 import express from 'express';
-import { Client } from 'pg';
+import { users } from '../../../../models/index';
 import jwt from 'jsonwebtoken';
 const { jwtKey } = require('../../../../config');
 
 const router = express.Router();
 
-const dbClient = new Client({
-  connectionString: `postgres://postgres:root@localhost:5432/carnival_db`
-});
-dbClient.connect().catch(err => {
-  console.error('could not connect to db', err);
-});
-
-const authorize = (req, res, next) => {
+const authorize = async (req, res, next) => {
   if (req.headers.authorization && req.body.username) {
     if (req.headers.authorization.split(' ').shift() === 'Bearer') {
-      dbClient
-        .query(`SELECT user_name FROM users WHERE secret_id=$1;`, [
-          jwt.verify(req.headers.authorization.split(' ').pop(), jwtKey)
-            .secret_id
-        ])
-        .then(result => {
-          if (result.rowCount > 0) {
-            if (result.rows[0].user_name === req.body.username) {
-              next();
-            } else {
-              res.status(404).json({ error: 'Invalid credentials provided.' });
-            }
-          } else {
-            res.status(404).json({ error: 'Invalid token was passed.' });
+      try {
+        let result = await users.findOne({
+          where: {
+            secret_id: jwt.verify(
+              req.headers.authorization.split(' ').pop(),
+              jwtKey
+            ).secret_id
           }
-        })
-        .catch(err => {
-          res.status(500).json({
-            error: err.message,
-            code: err.code
-          });
         });
+        if (result === null)
+          res.status(404).json({ error: 'Invalid token was passed.' });
+        else {
+          if (result.user_name === req.body.username) next();
+        }
+      } catch (err) {
+        res.status(500).json({
+          error: err.message,
+          code: err.code
+        });
+      }
     } else {
       res.status(400).json({ error: 'Invalid token type.' });
     }
@@ -47,25 +38,23 @@ const authorize = (req, res, next) => {
   }
 };
 
-router.get('/is-authorized', function (req, res, next) {
+router.get('/is-authorized', async (req, res) => {
   if (req.cookies.token) {
-    dbClient
-      .query(`SELECT * FROM users where secret_id=$1;`, [
-        jwt.verify(req.cookies.token, jwtKey).secret_id
-      ])
-      .then(result => {
-        if (result.rowCount > 0) {
-          res.send(result.rows[0]);
-        } else {
-          res.status(404).json({
-            user: null,
-            error: 'User not found in DB.'
-          });
+    try {
+      let result = await users.findOne({
+        where: {
+          secret_id: jwt.verify(req.cookies.token, jwtKey).secret_id
         }
-      })
-      .catch(() => {
-        res.sendStatus(500);
       });
+      if (result === null)
+        res.status(404).json({
+          user: null,
+          error: 'User not found in DB.'
+        });
+      else res.send(result.toJSON());
+    } catch (error) {
+      res.sendStatus(500);
+    }
   } else {
     res.sendStatus(401);
   }
@@ -73,25 +62,23 @@ router.get('/is-authorized', function (req, res, next) {
 
 router.post('/update-data', authorize, async (req, res) => {
   if (req.body.userEmail)
-    await dbClient
-      .query(`UPDATE users SET user_email=$1 WHERE user_name=$2;`, [
-        req.body.userEmail,
-        req.body.username
-      ])
+    await users
+      .update(
+        { user_email: req.body.userEmail },
+        { where: { user_name: req.body.username } }
+      )
       .catch(err => {
         res.status(500).json({
-          error: err.message,
-          code: err.code
+          error: err.message
         });
       });
 
   if (req.body.userPreferences) {
-    console.log(JSON.stringify(req.body.userPreferences));
-    await dbClient
-      .query(`UPDATE users SET user_preferences=$1::json WHERE user_name=$2;`, [
-        JSON.stringify(req.body.userPreferences),
-        req.body.username
-      ])
+    await users
+      .update(
+        { user_preferences: req.body.userPreferences },
+        { where: { user_name: req.body.username } }
+      )
       .catch(err => {
         res.status(500).json({
           error: err.message,
@@ -105,13 +92,11 @@ router.post('/update-data', authorize, async (req, res) => {
   });
 });
 
-router.get('/check/:username', function (req, res) {
-  dbClient
-    .query(`SELECT user_email FROM users WHERE user_name=$1;`, [
-      req.params.username
-    ])
+router.get('/check/:username', (req, res) => {
+  users
+    .findOne({ where: { user_name: req.params.username } })
     .then(result => {
-      if (result.rowCount > 0) res.send('true');
+      if (result !== null) res.send('true');
       else res.send('false');
     })
     .catch(console.error);
