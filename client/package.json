@@ -73,6 +73,7 @@
     "stylelint-scss": "^3.16.0",
     "stylelint-selector-no-empty": "^1.0.7",
     "stylelint-selector-tag-no-without-class": "^2.0.3",
+    "stylelint-use-logical": "^1.1.0",
     "stylelint-value-no-unknown-custom-properties": "^2.0.0",
     "stylelint-webpack-plugin": "^1.2.3",
     "stylelint-z-index-value-constraint": "^1.1.0",

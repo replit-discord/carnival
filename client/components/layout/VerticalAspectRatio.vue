@@ -32,8 +32,8 @@ export default {
 
 .vertical-aspect-ratio {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset-start: 0;
+  inset-inline-start: 0;
   z-index: 200;
   width: 100%;
   height: 100%;

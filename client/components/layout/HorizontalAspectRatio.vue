@@ -16,13 +16,13 @@ export default {
 .horizontal-aspect-ratio-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 9 by 16 aspect ratio */
+  padding-block-end: 56.25%; /* 9 by 16 aspect ratio */
 }
 
 .horizontal-aspect-ratio {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset-start: 0;
+  inset-inline-start: 0;
   z-index: 10;
   width: 100%;
   height: 100%;

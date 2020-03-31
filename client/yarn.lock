@@ -9849,6 +9849,11 @@ stylelint-selector-tag-no-without-class@^2.0.3:
   dependencies:
     lodash "^4.17.5"
 
+stylelint-use-logical@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-use-logical/-/stylelint-use-logical-1.1.0.tgz#f419386f48dae19fc59b024255c04f36738d879f"
+  integrity sha512-WwYAEoUNXxu4A9tZ+mPnvFSf3wKG9mY9+ZqnNjVHikfOQA4MTO6XeSC8BGCsY7LOG0GnDfmxMrRUJXFZRtaCmg==
+
 stylelint-value-no-unknown-custom-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-value-no-unknown-custom-properties/-/stylelint-value-no-unknown-custom-properties-2.0.0.tgz#0c2559061a5bda76939e7fece511c11d7faf62ed"
