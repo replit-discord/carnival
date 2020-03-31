@@ -24,8 +24,8 @@ export default {
           to: '/'
         },
         {
-          name: 'Games',
-          to: '/games'
+          name: 'Browse',
+          to: '/Browse'
         },
         {
           name: 'Community',
