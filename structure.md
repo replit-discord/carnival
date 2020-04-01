@@ -5,7 +5,7 @@ Also read the [wiki](https://github.com/repl-it-discord/carnival/wiki) for more 
 
 ## GAMES
 
-Since this a [repl.it](https://repl.it) community project, we will `probaply` make it work this way: -
+Since this a [repl.it](https://repl.it) community project, we will `probably` make it work this way: -
 
 1. Create a new [repl.it](https://repl.it) account for carnival.
 2. Whenever a user submits a game, they will need to provide a link to the repl which holds the source for the game (All games must be open source).
@@ -84,8 +84,8 @@ This will be the same as `USER_GAME JSON OBJECT` with the exception of no custom
 
 ## Authentication process
 
-On clicking the login/register button, the user will be redirected to the OAuth page for authorization. 
-When their data has been fetched from any of these identity providers,their email will be used to fetch their `secret_id` which will then be encoded and signed and finally converted to a JSON Web Token which will then be saved in a cookie named `userIn`, 
+On clicking the login/register button, the user will be redirected to the OAuth page for authorization.
+When their data has been fetched from any of these identity providers,their email will be used to fetch their `secret_id` which will then be encoded and signed and finally converted to a JSON Web Token which will then be saved in a cookie named `userIn`,
 which will then be used for authentication while making requests to the server.
 
 ---

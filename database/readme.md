@@ -10,7 +10,7 @@ install it using the default settings
 - username: `postgres`
 - password: `root`
 
-execute the queries written in the `setup.sql` file under the `/database` directory.
+execute the queries written in the `setup.sql` and then the `entries.sql` file under the `/database` directory.
 
 if you cant get the postgres db setup, thats okay, most things should work because a lot of things are mocked right now
 
