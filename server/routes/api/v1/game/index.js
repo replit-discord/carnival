@@ -46,7 +46,7 @@ router.get('/list', async (req, res) => {
     results
       .map(x => x.toJSON())
       .map(x => {
-        delete x.game_owner;
+        delete x.author;
         delete x.auth_token;
         return x;
       })
@@ -65,7 +65,7 @@ router.get('/data/:id', async (req, res) => {
   else {
     let gameData = result.toJSON();
     if (userId === undefined) {
-      delete gameData.game_owner;
+      delete gameData.author;
       delete gameData.auth_token;
     }
     res.status(200).json(gameData);

@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS games(
     game_title VARCHAR,
     game_desc VARCHAR,
     talk_url VARCHAR, -- repl talk post link (optional)
-    author VARCHAR,
-    game_owner VARCHAR,
+    author VARCHAR,  -- carnival username
+    game_owner VARCHAR, -- repl.it username
     repl VARCHAR,
     votes INTEGER,
     game_scores JSON [],
