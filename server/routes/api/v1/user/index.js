@@ -6,6 +6,7 @@ const { jwtKey } = require('../../../../config');
 const router = express.Router();
 
 const authorize = async (req, res, next) => {
+  console.log(req.headers);
   if (req.headers.authorization && req.body.username) {
     if (req.headers.authorization.split(' ').shift() === 'Bearer') {
       try {
