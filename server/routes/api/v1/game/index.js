@@ -42,7 +42,15 @@ router.get('/list', async (req, res) => {
     offset: page * 10,
     order: [['votes', 'DESC']]
   });
-  res.json(results.map(x => x.toJSON()));
+  res.json(
+    results
+      .map(x => x.toJSON())
+      .map(x => {
+        delete x.game_owner;
+        delete x.auth_token;
+        return x;
+      })
+  );
 });
 
 router.get('/data/:id', async (req, res) => {
