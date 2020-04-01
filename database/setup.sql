@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
     secret_id VARCHAR,
     user_name VARCHAR,
     user_email VARCHAR PRIMARY KEY,
-    user_games JSON [],
+    user_games VARCHAR [],
     user_preferences JSON,
     "createdAt" TIMESTAMPTZ NOT NULL,
     "updatedAt" TIMESTAMPTZ NOT NULL
@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS games(
     game_id serial PRIMARY KEY,
     game_name VARCHAR,
-    game_title VARCHAR, -- actual game title
+    game_title VARCHAR,
     game_desc VARCHAR,
     talk_url VARCHAR, -- repl talk post link (optional)
-    author VARCHAR, -- only the name of the repl
-    game_owner VARCHAR, -- userId
-    repl VARCHAR, -- replUsername
+    author VARCHAR,
+    game_owner VARCHAR,
+    repl VARCHAR,
     votes INTEGER,
     game_scores JSON [],
     auth_token VARCHAR(64), -- fixed 64 characters long

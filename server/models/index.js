@@ -14,7 +14,7 @@ const users = sequelize.define(
     secret_id: DataTypes.STRING,
     user_name: DataTypes.STRING,
     user_email: { type: DataTypes.STRING, primaryKey: true },
-    user_games: DataTypes.ARRAY(DataTypes.JSON),
+    user_games: DataTypes.ARRAY(DataTypes.STRING),
     user_preferences: DataTypes.JSON
   },
   {
