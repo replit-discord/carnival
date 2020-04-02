@@ -1,5 +1,7 @@
 import express from 'express';
 import { users, games } from '../../../../models/index';
+import uid from 'uid';
+import btoa from 'btoa';
 import jwt from 'jsonwebtoken';
 const { jwtKey } = require('../../../../config');
 
@@ -22,7 +24,7 @@ const authorize = async req => {
         if (result === null)
           return { status: 404, error: 'Invalid token was passed.' };
         else {
-          return { status: 200, id: result.secret_id };
+          return { status: 200, data: result };
         }
       } catch (err) {
         return { status: 500, error: err.message };
@@ -56,12 +58,8 @@ router.get('/list', async (req, res) => {
 router.get('/data/:id', async (req, res) => {
   if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
   else {
-    let userId;
-    if (req.headers.authorization) {
-      console.log('Authorizing!');
-      userId = await authorize(req);
-      console.log(userId);
-    }
+    let auth;
+    if (req.headers.authorization) auth = await authorize(req);
     let result = await games.findOne({
       where: {
         game_id: req.params.id
@@ -71,8 +69,8 @@ router.get('/data/:id', async (req, res) => {
     else {
       let gameData = result.toJSON();
       if (
-        userId === undefined ||
-        !(userId.status === 200 && userId.id === gameData.author)
+        auth === undefined ||
+        !(auth.status === 200 && auth.data.secret_id === gameData.author)
       ) {
         delete gameData.author;
         delete gameData.auth_token;
@@ -83,7 +81,42 @@ router.get('/data/:id', async (req, res) => {
 });
 
 router.post('/new', async (req, res) => {
-  await authorize(req);
+  let auth = await authorize(req);
+  if (auth.status !== 200) res.status(auth.status).json({ error: auth.error });
+  else {
+    if (req.body.title && req.body.desc && req.body.repl) {
+      let title = req.body.title;
+      let name = title.toLowerCase().replace(/ /g, '-');
+      let token = btoa(auth.data.secret_id + ':' + uid(36));
+      let repl = req.body.repl.split('/');
+      let replUsername = repl[-2];
+      let replName = repl[-1];
+      let result = await games.create({
+        game_name: name,
+        game_title: title,
+        game_desc: req.body.desc,
+        author: auth.data.secret_id,
+        talk_url: req.body.talkLink,
+        game_owner: replUsername,
+        repl: replName,
+        votes: 0,
+        game_scores: [],
+        auth_token: token
+      });
+      res.status(200).json(result.toJSON());
+    } else {
+      res.status(400).json({
+        error:
+          'Missing parameters - ' + req.body.title
+            ? ''
+            : 'title, ' + req.body.desc
+            ? ''
+            : 'desc, ' + req.body.repl
+            ? ''
+            : 'repl' + '.'
+      });
+    }
+  }
 });
 
 export default router;

@@ -2,7 +2,7 @@ import express from 'express';
 import DiscoOauthClient from 'disco-oauth';
 import { discoId, discoSecret, jwtKey } from '../../../../config';
 import { users } from '../../../../models/index';
-import shortid from 'shortid';
+import uid from 'uid';
 import jwt from 'jsonwebtoken';
 
 const discoClient = new DiscoOauthClient(discoId, discoSecret);
@@ -87,7 +87,7 @@ router.get('/register/:provider', async (req, res) => {
 
 router.post('/final/submit', async (req, res) => {
   if (req.body.username && req.body.username !== '' && req.cookies.email) {
-    let newId = shortid.generate();
+    let newId = uid();
     let result;
     console.log(JSON.stringify(defaultPreferences));
     try {
