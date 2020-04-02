@@ -3,6 +3,7 @@ import { users, games } from '../../../../models/index';
 import uid from 'uid';
 import btoa from 'btoa';
 import jwt from 'jsonwebtoken';
+import Fuse from 'fuse.js';
 const { jwtKey } = require('../../../../config');
 
 const router = express.Router();
@@ -126,6 +127,24 @@ router.post('/new', async (req, res) => {
       });
     }
   }
+});
+
+router.get('/search', async (req, res) => {
+  let gameList = (await games.findAll({ order: [['votes', 'DESC']] }))
+    .map(x => x.toJSON())
+    .map(x => {
+      delete x.author;
+      delete x.auth_token;
+      return x;
+    });
+  let fuse = new Fuse(gameList, {
+    minMatchCharLength: 2,
+    findAllMatches: true,
+    keys: ['game_title'],
+    threshold: 0.4,
+    distance: 200
+  });
+  res.json(fuse.search(decodeURIComponent(req.query.q)).map(x => x.item));
 });
 
 export default router;
