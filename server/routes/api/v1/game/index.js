@@ -89,21 +89,30 @@ router.post('/new', async (req, res) => {
       let name = title.toLowerCase().replace(/ /g, '-');
       let token = btoa(auth.data.secret_id + ':' + uid(36));
       let repl = req.body.repl.split('/');
-      let replUsername = repl[-2];
-      let replName = repl[-1];
-      let result = await games.create({
-        game_name: name,
-        game_title: title,
-        game_desc: req.body.desc,
-        author: auth.data.secret_id,
-        talk_url: req.body.talkLink,
-        game_owner: replUsername,
-        repl: replName,
-        votes: 0,
-        game_scores: [],
-        auth_token: token
-      });
-      res.status(200).json(result.toJSON());
+      let replUsername = repl[repl.length - 2].substr(1);
+      let replName = repl[repl.length - 1];
+      let gameId = await games.max('game_id');
+      let result;
+      try {
+        result = await games.create({
+          game_id: gameId + 1,
+          game_name: name,
+          game_title: title,
+          game_desc: req.body.desc,
+          author: auth.data.secret_id,
+          talk_url: req.body.talkLink,
+          game_owner: replUsername,
+          repl: replName,
+          votes: 0,
+          game_scores: [],
+          auth_token: token
+        });
+        res.status(200).json(result.toJSON());
+      } catch (error) {
+        res.status(500).json({
+          error: error.message
+        });
+      }
     } else {
       res.status(400).json({
         error:
