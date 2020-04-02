@@ -54,22 +54,36 @@ router.get('/list', async (req, res) => {
 });
 
 router.get('/data/:id', async (req, res) => {
-  let userId;
-  if (req.headers.authorization) userId = await authorize(req);
-  let result = await games.findOne({
-    where: {
-      game_id: req.params.id
-    }
-  });
-  if (result === null) res.status(404).json({ error: 'Game not found' });
+  if (isNaN(parseInt(req.params.id))) res.sendStatus(400);
   else {
-    let gameData = result.toJSON();
-    if (userId === undefined) {
-      delete gameData.author;
-      delete gameData.auth_token;
+    let userId;
+    if (req.headers.authorization) {
+      console.log('Authorizing!');
+      userId = await authorize(req);
+      console.log(userId);
     }
-    res.status(200).json(gameData);
+    let result = await games.findOne({
+      where: {
+        game_id: req.params.id
+      }
+    });
+    if (result === null) res.status(404).json({ error: 'Game not found' });
+    else {
+      let gameData = result.toJSON();
+      if (
+        userId === undefined ||
+        !(userId.status === 200 && userId.id === gameData.author)
+      ) {
+        delete gameData.author;
+        delete gameData.auth_token;
+      }
+      res.status(200).json(gameData);
+    }
   }
+});
+
+router.post('/new', async (req, res) => {
+  await authorize(req);
 });
 
 export default router;
