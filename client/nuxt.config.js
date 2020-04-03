@@ -104,7 +104,7 @@ export default {
       },
       // postcss-preset-env config options
       preset: {
-        stage: 2,
+        stage: 1,
         autoprefixer: {
           grid: false
         }
