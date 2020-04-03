@@ -1,5 +1,6 @@
 import express from 'express';
 import { users, games } from '../../../../models/index';
+import { fn, col } from 'sequelize';
 import uid from 'uid';
 import btoa from 'btoa';
 import jwt from 'jsonwebtoken';
@@ -43,17 +44,19 @@ router.get('/list', async (req, res) => {
   let results = await games.findAll({
     limit: 10,
     offset: page * 10,
-    order: [['votes', 'DESC']]
+    order: [[fn('array_length', col('votes'), 1), 'DESC']],
+    attributes: [
+      'game_id',
+      'game_name',
+      'game_title',
+      'game_desc',
+      'talk_url',
+      'game_owner',
+      'repl',
+      [fn('array_length', col('votes'), 1), 'votes']
+    ]
   });
-  res.json(
-    results
-      .map(x => x.toJSON())
-      .map(x => {
-        delete x.author;
-        delete x.auth_token;
-        return x;
-      })
-  );
+  res.json(results.map(x => x.toJSON()));
 });
 
 router.get('/data/:id', async (req, res) => {
@@ -64,7 +67,20 @@ router.get('/data/:id', async (req, res) => {
     let result = await games.findOne({
       where: {
         game_id: req.params.id
-      }
+      },
+      attributes: [
+        'game_id',
+        'game_name',
+        'game_title',
+        'game_desc',
+        'talk_url',
+        'game_owner',
+        'repl',
+        'author',
+        'auth_token',
+        'game_data',
+        [fn('array_length', col('votes'), 1), 'votes']
+      ]
     });
     if (result === null) res.status(404).json({ error: 'Game not found' });
     else {
@@ -75,6 +91,7 @@ router.get('/data/:id', async (req, res) => {
       ) {
         delete gameData.author;
         delete gameData.auth_token;
+        delete gameData.game_data;
       }
       res.status(200).json(gameData);
     }
@@ -104,7 +121,7 @@ router.post('/new', async (req, res) => {
           talk_url: req.body.talkLink,
           game_owner: replUsername,
           repl: replName,
-          votes: 0,
+          votes: [auth.data.secret_id],
           game_scores: [],
           auth_token: token
         });
@@ -130,13 +147,21 @@ router.post('/new', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-  let gameList = (await games.findAll({ order: [['votes', 'DESC']] }))
-    .map(x => x.toJSON())
-    .map(x => {
-      delete x.author;
-      delete x.auth_token;
-      return x;
-    });
+  let gameList = (
+    await games.findAll({
+      order: [['votes', 'DESC']],
+      attributes: [
+        'game_id',
+        'game_name',
+        'game_title',
+        'game_desc',
+        'talk_url',
+        'game_owner',
+        'repl',
+        [fn('array_length', col('votes'), 1), 'votes']
+      ]
+    })
+  ).map(x => x.toJSON());
   let fuse = new Fuse(gameList, {
     minMatchCharLength: 2,
     findAllMatches: true,
@@ -145,6 +170,14 @@ router.get('/search', async (req, res) => {
     distance: 200
   });
   res.json(fuse.search(decodeURIComponent(req.query.q)).map(x => x.item));
+});
+
+router.get('/vote/:game', async (req, res) => {
+  let auth = await authorize(req);
+  if (auth.status === 200) {
+  } else {
+    res.status(auth.status).json({ error: auth.error });
+  }
 });
 
 export default router;

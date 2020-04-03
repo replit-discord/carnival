@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS games(
     author VARCHAR,  -- carnival username
     game_owner VARCHAR, -- repl.it username
     repl VARCHAR,
-    votes INTEGER,
+    votes VARCHAR [],
     game_scores JSON [],
     auth_token VARCHAR(64), -- fixed 64 characters long
     "createdAt" TIMESTAMPTZ NOT NULL,

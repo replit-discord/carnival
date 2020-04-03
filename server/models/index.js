@@ -32,7 +32,7 @@ const games = sequelize.define(
     author: DataTypes.STRING,
     game_owner: DataTypes.STRING,
     repl: DataTypes.STRING,
-    votes: DataTypes.INTEGER,
+    votes: DataTypes.ARRAY(DataTypes.STRING),
     game_data: DataTypes.ARRAY(DataTypes.JSON),
     auth_token: { type: DataTypes.STRING, validate: { min: 64, max: 64 } }
   },
