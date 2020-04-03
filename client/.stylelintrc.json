@@ -65,7 +65,7 @@
     ],
     "plugin/selector-tag-no-without-class": ["div", "span"],
     "plugin/z-index-value-constraint": {
-      "max": 1000
+      "max": 9999
     },
     "plugin/stylelint-selector-no-empty": true,
     "plugin/stylelint-no-indistinguishable-colors": [
@@ -85,6 +85,6 @@
     "a11y/no-text-align-justify": true,
     "a11y/selector-pseudo-class-focus": true,
 
-    "csstools/use-logical": "always"
+    "csstools/use-logical": "ignore"
   }
 }

@@ -23,7 +23,6 @@ export default {
   position: absolute;
   inset-start: 0;
   inset-inline-start: 0;
-  z-index: 10;
   width: 100%;
   height: 100%;
 }

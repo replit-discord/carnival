@@ -124,7 +124,7 @@ $headerBorderRadius: 5px;
 
 .header-wrapper {
   position: fixed;
-  z-index: 1000;
+  z-index: 9000;
   width: calc(100% - $headerMargin * 2);
   user-select: none;
   border-radius: $headerBorderRadius;
