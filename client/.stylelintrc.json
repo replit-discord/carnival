@@ -17,13 +17,6 @@
     "unicode-bom": "never",
     "no-empty-source": null,
     "declaration-empty-line-before": "never",
-    "comment-empty-line-before": [
-      "always",
-      {
-        "except": ["first-nested"],
-        "ignore": ["stylelint-commands"]
-      }
-    ],
     "font-family-name-quotes": "always-unless-keyword",
     "function-url-quotes": "always",
     "selector-attribute-quotes": "always",
@@ -46,13 +39,6 @@
 
     "scss/dollar-variable-colon-space-after": "always",
     "scss/dollar-variable-no-missing-interpolation": true,
-    "scss/double-slash-comment-empty-line-before": [
-      "always",
-      {
-        "except": ["first-nested"],
-        "ignore": ["between-comments", "stylelint-commands"]
-      }
-    ],
     "scss/no-duplicate-dollar-variables": true,
     "csstools/value-no-unknown-custom-properties": true,
     "images/broken": true,

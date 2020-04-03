@@ -50,6 +50,6 @@ export default {
 }
 
 h1 {
-  color: $oc-gray-4;
+  color: $oc-gray-3;
 }
 </style>

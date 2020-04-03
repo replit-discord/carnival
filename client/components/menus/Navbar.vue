@@ -25,7 +25,7 @@ export default {
         },
         {
           name: 'Browse',
-          to: '/Browse'
+          to: '/browse'
         },
         {
           name: 'Community',

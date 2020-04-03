@@ -27,21 +27,34 @@
       </template>
     </section>
     <aside class="side-content">
-      <HorizontalAspectRatio>
-        <div
-          style="width: 100%; height: 100%; background-color: lightskyblue;"
-        ></div>
-      </HorizontalAspectRatio>
-      <HorizontalAspectRatio>
-        <div
-          style="width: 100%; height: 100%; background-color: lightcoral;"
-        ></div>
-      </HorizontalAspectRatio>
-      <HorizontalAspectRatio>
-        <div
-          style="width: 100%; height: 100%; background-color: lightskyblue;"
-        ></div>
-      </HorizontalAspectRatio>
+      <!-- this will be abstracted later -->
+      <template v-if="!gamesLoaded">
+        <HorizontalAspectRatio>
+          <div
+            style="width: 100%; height: 100%; background-color: lightskyblue;"
+          ></div>
+        </HorizontalAspectRatio>
+        <HorizontalAspectRatio>
+          <div
+            style="width: 100%; height: 100%; background-color: lightcoral;"
+          ></div>
+        </HorizontalAspectRatio>
+        <HorizontalAspectRatio>
+          <div
+            style="width: 100%; height: 100%; background-color: lightskyblue;"
+          ></div>
+        </HorizontalAspectRatio>
+      </template>
+      <template v-else-if="gamesLoaded">
+        <div class="thingy-outer">
+          <HorizontalAspectRatio
+            v-for="gamef in gamesData.games"
+            :key="gamef.id"
+          >
+            <CarnivalGame :game="gamef" />
+          </HorizontalAspectRatio>
+        </div>
+      </template>
     </aside>
     <!-- <template v-if="loading === 'isLoading'">
       <div>
@@ -64,6 +77,7 @@
 </template>
 
 <script>
+import CarnivalGame from '~/components/CarnivalGame';
 import HorizontalAspectRatio from '~/components/layout/HorizontalAspectRatio';
 import Subheading from '~/components/text/Subheading';
 import Title from '~/components/text/Title';
@@ -76,6 +90,7 @@ import Title from '~/components/text/Title';
 export default {
   layout: 'topSpace',
   components: {
+    CarnivalGame,
     Subheading,
     Title,
     HorizontalAspectRatio
@@ -95,11 +110,27 @@ export default {
       // TODO: there was an error, redirect to error page or show in template
     }
   },
+  // spaghetti
+  async asyncData({ params, app, error }) {
+    let gamesData;
+    try {
+      const res = await app.$axios.get('/public/json/games.json');
+
+      gamesData = res.data.data;
+    } catch (err) {
+      console.error(err);
+    }
+
+    return {
+      gamesData
+    };
+  },
   data() {
     return {
       game: null,
       loading: 'isLoading',
-      replRunUrl: null
+      replRunUrl: null,
+      gamesLoaded: true
     };
   }
 };
@@ -138,5 +169,12 @@ export default {
 .side-content {
   width: 100%;
   height: 100%;
+}
+
+.thingy-outer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
 }
 </style>

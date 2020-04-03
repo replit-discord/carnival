@@ -1,5 +1,5 @@
 <template>
-  <div class="carnival-game-wrapper">
+  <div ref="carnivalGameWrapper" class="carnival-game-wrapper">
     <div
       class="carnival-game"
       @mouseenter="mouseEnterMeta"
@@ -7,9 +7,9 @@
     >
       <div class="foreground">
         <nuxt-link class="link" :to="gameLink">{{ game.title }}</nuxt-link>
-        <p class="desc">{{ game.desc }}</p>
       </div>
       <div class="background">
+        <div class="gradient"></div>
         <img
           src="/public/img/z.jpg"
           :alt="(() => `image of game ${game.title}`)()"
@@ -19,13 +19,17 @@
     <div
       ref="overlay"
       class="overlay"
-      :class="{ enabled: isOverlayEnabled }"
+      :class="{
+        'left-side': sideOfScreen === 'left',
+        'right-side': sideOfScreen === 'right'
+      }"
       @mouseenter="mouseEnterOverlay"
       @mouseleave="mouseLeave"
     >
       <div class="overlay-inner">
         <h5 class="title">{{ game.title }}</h5>
         <p class="desc">{{ game.desc }}</p>
+        <button><nuxt-link :to="gameLink">Play!</nuxt-link></button>
       </div>
     </div>
   </div>
@@ -33,6 +37,7 @@
 
 <script>
 import anime from 'animejs';
+import { debounce } from 'lodash';
 
 export default {
   name: 'CarnivalGame',
@@ -53,7 +58,9 @@ export default {
     return {
       isOverlayEnabled: false,
       isInMeta: false,
-      isInOverlay: false
+      isInOverlay: false,
+      /* if is on the left side of the screen, overlay shows to the right */
+      sideOfScreen: 'left'
     };
   },
   computed: {
@@ -63,7 +70,28 @@ export default {
       return `/game/${this.game.author}/${this.game.id}`;
     }
   },
+  mounted() {
+    this.calculateSideOfScreen();
+
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.calculateSideOfScreen();
+      }, 300)
+    );
+  },
   methods: {
+    calculateSideOfScreen() {
+      const domRect = this.$refs.carnivalGameWrapper.getBoundingClientRect();
+
+      const divLocation = domRect.left + domRect.width / 2;
+      const actualCenter = window.innerWidth / 2;
+      if (divLocation < actualCenter + 10) {
+        this.sideOfScreen = 'left';
+      } else {
+        this.sideOfScreen = 'right';
+      }
+    },
     mouseEnterMeta(e) {
       this.isInMeta = true;
 
@@ -73,8 +101,11 @@ export default {
       this.$refs.overlay.style.display = 'inline';
       requestAnimationFrame(() => {
         anime({
+          duration: 77,
+          easing: 'easeOutQuad',
           targets: this.$refs.overlay,
-          translateY: 10,
+          translateY: 0,
+          scale: 1,
           opacity: 1
         });
       });
@@ -88,8 +119,11 @@ export default {
       setTimeout(() => {
         if (!this.isInOverlay && !this.isInMeta) {
           anime({
+            duration: 77,
+            easing: 'easeOutQuad',
             targets: this.$refs.overlay,
-            translateY: 0,
+            translateY: 20,
+            scale: 0.985,
             opacity: 0,
             complete: anim => (this.$refs.overlay.style.display = 'none')
           });
@@ -125,50 +159,98 @@ export default {
 .foreground {
   z-index: 300;
   overflow: hidden;
-  border: 1px solid #868e96;
 
   & .link {
     position: absolute;
-    bottom: 3px;
-    left: 3px;
-    font-size: 22px;
+    bottom: 5px;
+    left: 5px;
+
+    /* to prevent text from being too close to right side */
+    padding-right: 10px;
+    font-size: 20px;
+    color: $oc-gray-2;
+    text-decoration: none;
   }
 
-  .desc {
+  /* .desc {
     margin: 2px 0 0 5px;
-  }
+  } */
 }
 
 .background {
   z-index: 100;
   overflow: hidden;
 
-  & img {
+  & .gradient {
     width: 100%;
-    filter: blur(7px) brightness(80%);
+    height: 100%;
+    background: linear-gradient(to bottom, #2980b9, #2c3e50);
+  }
+
+  & img {
+    visibility: none;
   }
 }
 
 .overlay {
   /* stylelint-disable a11y/no-display-none */
   position: absolute;
-  z-index: 400;
+  top: -15px;
+  z-index: 500;
   display: none;
-  min-width: 200px;
-  margin-left: 100%;
-  opacity: 0;
+  width: 350px;
+  height: 425px;
+  border: 5px;
   /* stylelint-enable a11y/no-display-none */
 }
 
-/* .overlay.enabled {
-  display: inline;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-} */
+.overlay.left-side {
+  margin-left: calc(100% - 15px);
+}
+
+.overlay.right-side {
+  margin-left: calc(-100% - 40px);
+}
 
 .overlay-inner {
   width: 100%;
   height: 100%;
-  background-color: maroon;
+  background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+  border: 5px;
+
+  & .title {
+    margin: 8px;
+    font-size: 24px;
+    color: $oc-gray-3;
+  }
+
+  & .desc {
+    margin: 8px;
+    font-size: 16px;
+    color: $oc-gray-3;
+  }
+
+  & button {
+    padding: 10px;
+    margin: 8px;
+    font-size: 16px;
+    color: $oc-gray-3;
+    background: $oc-blue-9;
+    border-radius: 2px;
+    transition: transform 0.15s ease-in-out;
+    transform: scale(1);
+  }
+
+  & button:hover,
+  & button:focus {
+    cursor: pointer;
+    transition: transform 0.15s ease-in-out;
+    transform: scale(1.05);
+  }
+
+  & button > * {
+    color: $oc-gray-3;
+    text-decoration: none;
+  }
 }
 </style>
