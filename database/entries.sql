@@ -14,8 +14,8 @@ insert into games values
   (13, 'krossy-road', 'Krossy Road', 'This game was developed for educational purposes for Bit By Bit (http://littlebitbybit.org). Worldwide high scores aren''t available yet, but based on my personal experience of watching other people play, the current record is 429. Have fun!', 'https://repl.it/talk/share/Krossy-Road/3088', 'zjhuqpxq1it', 'derekwan', 'KrossyRoad', ARRAY['zjhuqpxq1it', 'r6ewuuk8gek', 'lmywpoyu5t5', 'ke1eajfu59v', 's3dd98jzpj4', 'zkwefh8nqnf', 'woadi8dzjy4', '2vz3nd21spj', 'pk2sn2fjgq7', 'cgmk74bhgpw', 'wfjwaq52t7g', '88d6fcief49', 'h47qp72bntq', '5th1hhmiv6i', 'bbtn9b6do3n', 'b59y0wm1ia5', 'o8mueam6ef7', 'avm16kj76ck', '5f847i9ezvh', 's9xw8mbam13', '1526flwa65y', 't3jys5raep8', 'lj50ujfcjba', 'giepbt39lwi', 'p3dpp60ty60', 'q59zhn5hmr2', 'zv78o66jtil', '4pd3hvh8v94'], null, null, now(), now());
 
 
-insert into users values
-  ('jys8il6dx7c', 'CyanCoding', 'cyancoding@randommail.com', null, '{ "darkMode": true }', now(), now()),
-  ('nhicfg4yqre', 'JSer', 'gldanoob@randommail.com', null, '{ "darkMode": true }', now(), now()),
-  ('orpta7u2reh', 'JJCTPMS', 'jjctpms@randommail.com', null, '{ "darkMode": true }', now(), now()),
-  ('pfk5g2zdhvd', 'ALVINWAN1', 'alvinwan1@randommail.com', null, '{ "darkMode": true }', now(), now());
+-- insert into users values
+--  ('jys8il6dx7c', 'CyanCoding', 'cyancoding@randommail.com', null, '{ "darkMode": true }', now(), now()),
+--  ('nhicfg4yqre', 'JSer', 'gldanoob@randommail.com', null, '{ "darkMode": true }', now(), now()),
+--  ('orpta7u2reh', 'JJCTPMS', 'jjctpms@randommail.com', null, '{ "darkMode": true }', now(), now()),
+--  ('pfk5g2zdhvd', 'ALVINWAN1', 'alvinwan1@randommail.com', null, '{ "darkMode": true }', now(), now());

@@ -175,6 +175,48 @@ router.get('/search', async (req, res) => {
 router.get('/vote/:game', async (req, res) => {
   let auth = await authorize(req);
   if (auth.status === 200) {
+    let result = await games.findOne({ where: { game_id: req.params.game } });
+    if (result === null)
+      res.status(404).json({ error: 'The game was not found.' });
+    else {
+      let voters = result.votes;
+      if (!voters.includes(auth.data.secret_id))
+        voters.push(auth.data.secret_id);
+      try {
+        await games.update(
+          { votes: voters },
+          { where: { game_id: req.params.game } }
+        );
+        res.status(200).json({ success: true });
+      } catch (error) {
+        res.status(500).json({ error: 'Unable to update DB' });
+      }
+    }
+  } else {
+    res.status(auth.status).json({ error: auth.error });
+  }
+});
+
+router.get('/downvote/:game', async (req, res) => {
+  let auth = await authorize(req);
+  if (auth.status === 200) {
+    let result = await games.findOne({ where: { game_id: req.params.game } });
+    if (result === null)
+      res.status(404).json({ error: 'The game was not found.' });
+    else {
+      let voters = result.votes;
+      if (voters.includes(auth.data.secret_id))
+        voters.splice(voters.indexOf(auth.data.secret_id), 1);
+      try {
+        await games.update(
+          { votes: voters },
+          { where: { game_id: req.params.game } }
+        );
+        res.status(200).json({ success: true });
+      } catch (error) {
+        res.status(500).json({ error: 'Unable to update DB' });
+      }
+    }
   } else {
     res.status(auth.status).json({ error: auth.error });
   }
