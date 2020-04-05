@@ -1,0 +1,16 @@
+{
+  "name": "carnival-storybook",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "GPL-3.0",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/vue": "^5.3.18"
+  }
+}

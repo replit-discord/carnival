@@ -1,6 +1,8 @@
 import path from 'path';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 
+import postCssConfig from './postcss.configuration';
+
 const isDev = process.env.NODE_ENV !== 'production';
 
 export default {
@@ -90,26 +92,7 @@ export default {
   },
 
   build: {
-    postcss: {
-      syntax: 'postcss-scss',
-      plugins: {
-        'postcss-import': {},
-        'postcss-normalize': {},
-        'postcss-strip-inline-comments': {},
-        'postcss-simple-extend': {},
-        'postcss-simple-vars': {},
-        'postcss-easings': {},
-        'postcss-easing-gradients': {},
-        'postcss-color-mod-function': {}
-      },
-      // postcss-preset-env config options
-      preset: {
-        stage: 1,
-        autoprefixer: {
-          grid: false
-        }
-      }
-    },
+    postcss: postCssConfig,
 
     // extend webpack config
     plugins: [

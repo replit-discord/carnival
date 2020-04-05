@@ -3,6 +3,7 @@
   "npmClient": "yarn",
   "packages": [
     "client",
+    "client/storybook",
     "server"
   ],
   "bootstrap": {
