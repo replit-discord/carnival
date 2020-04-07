@@ -1,0 +1,67 @@
+// stylelint-disable max-line-length
+// Mixin generated at: http://text-crop.eightshapes.com/?typeface-selection=google-font&typeface=Asap&custom-typeface-name=Helvetica&custom-typeface-url=&custom-typeface-weight=400&custom-typeface-style=normal&weight-and-style=regular&size=2&line-height=1.2&top-crop=10&bottom-crop=8
+
+@mixin text-crop-asap($line-height: 1.3, $top-adjustment: 0, $bottom-adjustment: 0) {
+  $top-crop: 12;
+  $bottom-crop: 10;
+  $crop-font-size: 36;
+  $crop-line-height: 1.3;
+
+  // apply values to calculate em-based margins that work with any font size
+  $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+  $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+  // mixin output
+  line-height: $line-height;
+
+  &::before,
+  &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+
+  &::before {
+    // stylelint-disable-next-line function-calc-no-invalid
+    margin-bottom: calc(-#{$dynamic-top-crop}px + #{$top-adjustment});
+  }
+
+  &::after {
+    // stylelint-disable-next-line function-calc-no-invalid
+    margin-top: calc(-#{$dynamic-bottom-crop}px + #{$bottom-adjustment});
+  }
+}
+
+/* Usage Examples
+    .my-level-1-heading-class {
+        @include text-crop; // Will use default line height of 1.3
+        font-size: 48px;
+        margin: 0 0 0 16px;
+    }
+
+    .my-level-2-heading-class {
+        @include text-crop; // Will use default line height of 1.3
+        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        margin: 0 0 0 16px;
+    }
+
+    .my-body-copy-class {
+        @include text-crop($line-height: 2); // Larger line height desired, set the line height via the mixin
+        font-size: 16px;
+    }
+
+    // Sometimes depending on the font-size, the rendering, the browser, etc. you may need to tweak the output.
+    // You can adjust the top and bottom cropping when invoking the component using the $top-adjustment and $bottom-adjustment settings
+
+    .slight-adjustment-needed {
+        @include text-crop($top-adjustment: -0.5px, $bottom-adjustment: 2px);
+        font-size: 17px;
+    }
+
+    .dont-do-this {
+        @include text-crop;
+        font-size: 16px;
+        line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
+    }
+*/

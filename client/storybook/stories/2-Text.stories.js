@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import Vue from 'vue';
 
-import MyButton from '../../components/text/Heading.vue';
+import MyButton from '~/components/Heading.vue';
 
 export default { title: 'All Text' };
 

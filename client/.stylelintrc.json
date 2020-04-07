@@ -29,7 +29,7 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["define-placeholder", "extend"]
+        "ignoreAtRules": ["define-placeholder", "extend", "include", "mixin"]
       }
     ],
     "max-nesting-depth": 1,

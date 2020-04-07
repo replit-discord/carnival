@@ -20,9 +20,14 @@ export default {
       }
     ],
     link: [
+      // some are duped in storybook
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css?family=Asap&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Sen&display=swap'
       },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
@@ -43,6 +48,7 @@ export default {
     }
   },
 
+  // duped in storybook
   css: ['~/assets/global.css', ...(isDev ? ['~/assets/dev.css'] : [])],
 
   // plugins to load before mounting the app
@@ -92,7 +98,14 @@ export default {
   },
 
   build: {
-    postcss: postCssConfig,
+    postcss: {
+      syntax: postCssConfig.syntax,
+      plugins: {
+        ...postCssConfig.plugins,
+        ...(isDev ? {} : { cssnano: { preset: 'default' } })
+      },
+      order: 'presetEnvAndCssnanoLast'
+    },
 
     // extend webpack config
     plugins: [
@@ -114,7 +127,9 @@ export default {
         options: {
           resources: [
             path.join(__dirname, 'assets/open-color.css'),
-            path.join(__dirname, 'assets/custom.css')
+            path.join(__dirname, 'assets/custom.css'),
+            path.join(__dirname, 'assets/text-crop-sen.scss'),
+            path.join(__dirname, 'assets/text-crop-asap.scss')
           ]
         }
       };
@@ -127,6 +142,12 @@ export default {
       // 3 corresponds to the test for /\.css$/i
       // sass-resource-loader goes right after postcss-loader (array positioning
       config.module.rules[3].oneOf.forEach(item => {
+        item.use.push(sassResourceLoader);
+      });
+
+      // 7 corresponds to the test for /\.scss$/i
+      // sass-resource-loader goes right after postcss-loader (array positioning
+      config.module.rules[7].oneOf.forEach(item => {
         item.use.push(sassResourceLoader);
       });
     }

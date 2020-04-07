@@ -11,8 +11,12 @@ module.exports = {
       loader: 'sass-resources-loader',
       options: {
         resources: [
+          // from sass-resource-loader
           path.join(__dirname, '../../assets/open-color.css'),
           path.join(__dirname, '../../assets/custom.css'),
+          path.join(__dirname, '../../assets/text-crop-sen.scss'),
+          path.join(__dirname, '../../assets/text-crop-asap.scss'),
+          // nuxt global 'css'
           // a little little dirty, but less harmful because this
           // duplicated css doesn't get served to direct users
           path.join(__dirname, '../../assets/global.css'),
@@ -78,17 +82,35 @@ module.exports = {
         }
       ]
     };
+    postcssRule.use.push(sassResourceLoader);
     config.module.rules.push(postcssRule);
 
     //
     // because we are in a nested subdirectory of the actual project,
-    // we have to resolve our dependencies properly
+    // we have to resolve our dependencies properly (just in case as
+    // node looks to parent directories if modules cannot be found)
     config.resolve.modules.push(path.join(__dirname, '../../node_modules'));
 
     //
     // alias so we can access parent directory's source easier
     // and so nuxt alias works in storybook
     config.resolve.alias['~'] = path.join(__dirname, '../../');
+
+    // console.dir(config, { depth: null });
+
+    const htmlWebpackPlugin = config.plugins[1];
+    if (!htmlWebpackPlugin.options.meta)
+      throw new Error('htmlWebapckPlugin not in expected location');
+    htmlWebpackPlugin.options.meta.link = [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Asap&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Sen&display=swap'
+      }
+    ];
     return config;
   }
 };

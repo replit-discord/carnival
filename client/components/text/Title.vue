@@ -1,3 +1,4 @@
+<!-- TODO: remove -->
 <template>
   <h1>
     <slot />

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Heading from '~/components/text/Heading';
+import Heading from '~/components/Heading';
 
 export default {
   layout: 'blank',
